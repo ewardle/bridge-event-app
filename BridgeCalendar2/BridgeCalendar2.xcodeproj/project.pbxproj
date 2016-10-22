@@ -1,0 +1,506 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		873088935E8D412A9F0A9EDB /* Pods_BridgeCalendar2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EC32F3B14A363605ACB2BDD /* Pods_BridgeCalendar2.framework */; };
+		F08312241DAB5EEA00D8DD05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08312231DAB5EEA00D8DD05 /* AppDelegate.swift */; };
+		F08312261DAB5EEA00D8DD05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08312251DAB5EEA00D8DD05 /* ViewController.swift */; };
+		F08312291DAB5EEA00D8DD05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08312271DAB5EEA00D8DD05 /* Main.storyboard */; };
+		F083122B1DAB5EEA00D8DD05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F083122A1DAB5EEA00D8DD05 /* Assets.xcassets */; };
+		F083122E1DAB5EEA00D8DD05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F083122C1DAB5EEA00D8DD05 /* LaunchScreen.storyboard */; };
+		F08312391DAB5EEA00D8DD05 /* BridgeCalendar2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08312381DAB5EEA00D8DD05 /* BridgeCalendar2Tests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F08312351DAB5EEA00D8DD05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F08312181DAB5EEA00D8DD05 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F083121F1DAB5EEA00D8DD05;
+			remoteInfo = BridgeCalendar2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4EC32F3B14A363605ACB2BDD /* Pods_BridgeCalendar2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BridgeCalendar2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78FC5A01355DE52B0C4E1EBF /* Pods-BridgeCalendar2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BridgeCalendar2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BridgeCalendar2/Pods-BridgeCalendar2.debug.xcconfig"; sourceTree = "<group>"; };
+		D41F7D2D3A155947D98FF4B9 /* Pods-BridgeCalendar2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BridgeCalendar2.release.xcconfig"; path = "Pods/Target Support Files/Pods-BridgeCalendar2/Pods-BridgeCalendar2.release.xcconfig"; sourceTree = "<group>"; };
+		F08312201DAB5EEA00D8DD05 /* BridgeCalendar2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeCalendar2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F08312231DAB5EEA00D8DD05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F08312251DAB5EEA00D8DD05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F08312281DAB5EEA00D8DD05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F083122A1DAB5EEA00D8DD05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F083122D1DAB5EEA00D8DD05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F083122F1DAB5EEA00D8DD05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F08312341DAB5EEA00D8DD05 /* BridgeCalendar2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BridgeCalendar2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F08312381DAB5EEA00D8DD05 /* BridgeCalendar2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeCalendar2Tests.swift; sourceTree = "<group>"; };
+		F083123A1DAB5EEA00D8DD05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F083121D1DAB5EEA00D8DD05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				873088935E8D412A9F0A9EDB /* Pods_BridgeCalendar2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F08312311DAB5EEA00D8DD05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		891FBC0F991E0D3E44132F3C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78FC5A01355DE52B0C4E1EBF /* Pods-BridgeCalendar2.debug.xcconfig */,
+				D41F7D2D3A155947D98FF4B9 /* Pods-BridgeCalendar2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F08312171DAB5EEA00D8DD05 = {
+			isa = PBXGroup;
+			children = (
+				F08312221DAB5EEA00D8DD05 /* BridgeCalendar2 */,
+				F08312371DAB5EEA00D8DD05 /* BridgeCalendar2Tests */,
+				F08312211DAB5EEA00D8DD05 /* Products */,
+				891FBC0F991E0D3E44132F3C /* Pods */,
+				F30C1246D8C9C169F9BD9732 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F08312211DAB5EEA00D8DD05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F08312201DAB5EEA00D8DD05 /* BridgeCalendar2.app */,
+				F08312341DAB5EEA00D8DD05 /* BridgeCalendar2Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F08312221DAB5EEA00D8DD05 /* BridgeCalendar2 */ = {
+			isa = PBXGroup;
+			children = (
+				F08312231DAB5EEA00D8DD05 /* AppDelegate.swift */,
+				F08312251DAB5EEA00D8DD05 /* ViewController.swift */,
+				F08312271DAB5EEA00D8DD05 /* Main.storyboard */,
+				F083122A1DAB5EEA00D8DD05 /* Assets.xcassets */,
+				F083122C1DAB5EEA00D8DD05 /* LaunchScreen.storyboard */,
+				F083122F1DAB5EEA00D8DD05 /* Info.plist */,
+			);
+			path = BridgeCalendar2;
+			sourceTree = "<group>";
+		};
+		F08312371DAB5EEA00D8DD05 /* BridgeCalendar2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F08312381DAB5EEA00D8DD05 /* BridgeCalendar2Tests.swift */,
+				F083123A1DAB5EEA00D8DD05 /* Info.plist */,
+			);
+			path = BridgeCalendar2Tests;
+			sourceTree = "<group>";
+		};
+		F30C1246D8C9C169F9BD9732 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EC32F3B14A363605ACB2BDD /* Pods_BridgeCalendar2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F083121F1DAB5EEA00D8DD05 /* BridgeCalendar2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F083123D1DAB5EEA00D8DD05 /* Build configuration list for PBXNativeTarget "BridgeCalendar2" */;
+			buildPhases = (
+				875E7DB8165558941908EE90 /* [CP] Check Pods Manifest.lock */,
+				F083121C1DAB5EEA00D8DD05 /* Sources */,
+				F083121D1DAB5EEA00D8DD05 /* Frameworks */,
+				F083121E1DAB5EEA00D8DD05 /* Resources */,
+				88CEB8A31B74A1F494719457 /* [CP] Embed Pods Frameworks */,
+				1B9C22E0D61837B5805FD78D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BridgeCalendar2;
+			productName = BridgeCalendar2;
+			productReference = F08312201DAB5EEA00D8DD05 /* BridgeCalendar2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F08312331DAB5EEA00D8DD05 /* BridgeCalendar2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F08312401DAB5EEA00D8DD05 /* Build configuration list for PBXNativeTarget "BridgeCalendar2Tests" */;
+			buildPhases = (
+				F08312301DAB5EEA00D8DD05 /* Sources */,
+				F08312311DAB5EEA00D8DD05 /* Frameworks */,
+				F08312321DAB5EEA00D8DD05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F08312361DAB5EEA00D8DD05 /* PBXTargetDependency */,
+			);
+			name = BridgeCalendar2Tests;
+			productName = BridgeCalendar2Tests;
+			productReference = F08312341DAB5EEA00D8DD05 /* BridgeCalendar2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F08312181DAB5EEA00D8DD05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Amrit;
+				TargetAttributes = {
+					F083121F1DAB5EEA00D8DD05 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 5678P7WK6Y;
+						ProvisioningStyle = Automatic;
+					};
+					F08312331DAB5EEA00D8DD05 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 5678P7WK6Y;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F083121F1DAB5EEA00D8DD05;
+					};
+				};
+			};
+			buildConfigurationList = F083121B1DAB5EEA00D8DD05 /* Build configuration list for PBXProject "BridgeCalendar2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F08312171DAB5EEA00D8DD05;
+			productRefGroup = F08312211DAB5EEA00D8DD05 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F083121F1DAB5EEA00D8DD05 /* BridgeCalendar2 */,
+				F08312331DAB5EEA00D8DD05 /* BridgeCalendar2Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F083121E1DAB5EEA00D8DD05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F083122E1DAB5EEA00D8DD05 /* LaunchScreen.storyboard in Resources */,
+				F083122B1DAB5EEA00D8DD05 /* Assets.xcassets in Resources */,
+				F08312291DAB5EEA00D8DD05 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F08312321DAB5EEA00D8DD05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B9C22E0D61837B5805FD78D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BridgeCalendar2/Pods-BridgeCalendar2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		875E7DB8165558941908EE90 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		88CEB8A31B74A1F494719457 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BridgeCalendar2/Pods-BridgeCalendar2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F083121C1DAB5EEA00D8DD05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F08312261DAB5EEA00D8DD05 /* ViewController.swift in Sources */,
+				F08312241DAB5EEA00D8DD05 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F08312301DAB5EEA00D8DD05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F08312391DAB5EEA00D8DD05 /* BridgeCalendar2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F08312361DAB5EEA00D8DD05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F083121F1DAB5EEA00D8DD05 /* BridgeCalendar2 */;
+			targetProxy = F08312351DAB5EEA00D8DD05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F08312271DAB5EEA00D8DD05 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F08312281DAB5EEA00D8DD05 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F083122C1DAB5EEA00D8DD05 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F083122D1DAB5EEA00D8DD05 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F083123B1DAB5EEA00D8DD05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F083123C1DAB5EEA00D8DD05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F083123E1DAB5EEA00D8DD05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78FC5A01355DE52B0C4E1EBF /* Pods-BridgeCalendar2.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5678P7WK6Y;
+				INFOPLIST_FILE = BridgeCalendar2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrit.BridgeCalendar2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F083123F1DAB5EEA00D8DD05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D41F7D2D3A155947D98FF4B9 /* Pods-BridgeCalendar2.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5678P7WK6Y;
+				INFOPLIST_FILE = BridgeCalendar2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrit.BridgeCalendar2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		F08312411DAB5EEA00D8DD05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5678P7WK6Y;
+				INFOPLIST_FILE = BridgeCalendar2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrit.BridgeCalendar2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BridgeCalendar2.app/BridgeCalendar2";
+			};
+			name = Debug;
+		};
+		F08312421DAB5EEA00D8DD05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 5678P7WK6Y;
+				INFOPLIST_FILE = BridgeCalendar2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrit.BridgeCalendar2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BridgeCalendar2.app/BridgeCalendar2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F083121B1DAB5EEA00D8DD05 /* Build configuration list for PBXProject "BridgeCalendar2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F083123B1DAB5EEA00D8DD05 /* Debug */,
+				F083123C1DAB5EEA00D8DD05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F083123D1DAB5EEA00D8DD05 /* Build configuration list for PBXNativeTarget "BridgeCalendar2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F083123E1DAB5EEA00D8DD05 /* Debug */,
+				F083123F1DAB5EEA00D8DD05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F08312401DAB5EEA00D8DD05 /* Build configuration list for PBXNativeTarget "BridgeCalendar2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F08312411DAB5EEA00D8DD05 /* Debug */,
+				F08312421DAB5EEA00D8DD05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F08312181DAB5EEA00D8DD05 /* Project object */;
+}
