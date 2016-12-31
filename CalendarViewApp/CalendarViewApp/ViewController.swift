@@ -39,12 +39,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.dateFor.timeStyle = .short
         
         self.Events.text = "Calendar Events"
+        //self.Events.sizeToFit()
         self.Events.textAlignment = NSTextAlignment.center
         
-        self.EventList.dataSource = self
         //self.EventList.delegate = self
-        self.EventList.estimatedRowHeight = 100
-        self.EventList.rowHeight = UITableViewAutomaticDimension
+        //self.EventList.dataSource = self
+        //self.EventList.estimatedRowHeight = 100
+        //self.EventList.rowHeight = UITableViewAutomaticDimension
         
         getEvents()
         
@@ -59,14 +60,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarPrototypeCell", for: indexPath as IndexPath) as! CalendarPrototypeCell
         
         let cityState = data[indexPath.row].components(separatedBy: ", ")
-        cell.EventDay.text = cityState.first
+        let displayEventSummary = self.eventSummary[indexPath.row]
+        //cell.EventDay.text = cityState.first
+        cell.EventDay.text = displayEventSummary
         //cell.EventDay.text = eventRequest
         return cell
     }
     
     func tableView(_ EventList: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return data.count
-        return 1
+        return self.numberOfEvents!
     }
     
     func getEvents() {
@@ -89,6 +92,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print(self.eventStartDate[self.numberOfEvents!])
                     self.numberOfEvents! += 1
                 }
+                self.EventList.dataSource = self
+                self.EventList.estimatedRowHeight = 100
+                self.EventList.rowHeight = UITableViewAutomaticDimension
+
             case .failure(let error):
                 print(error)
             }
