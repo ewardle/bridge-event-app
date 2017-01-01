@@ -11,6 +11,7 @@ import Alamofire
 //import Gloss
 import SwiftyJSON
 import SwiftDate
+import Foundation
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -20,9 +21,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var eventRequest : String? = ""
     var numberOfEvents: Int? = 0
     var eventSummary = [String]()
-    var eventStartDate = [String]()
-    var convertedStartDate = [DateInRegion]()
+    var eventStartDate = [Double]()
+    var convertedStartDate = [Date]()
     var dateFor: DateFormatter = DateFormatter()
+    let now = DateInRegion()
     
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
                 "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
@@ -59,7 +61,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ EventList: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarPrototypeCell", for: indexPath as IndexPath) as! CalendarPrototypeCell
         
-        let cityState = data[indexPath.row].components(separatedBy: ", ")
+        //let cityState = data[indexPath.row].components(separatedBy: ", ")
         let displayEventSummary = self.eventSummary[indexPath.row]
         //cell.EventDay.text = cityState.first
         cell.EventDay.text = displayEventSummary
@@ -74,22 +76,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func getEvents() {
         
-        let url = "http://138.197.141.224/events/"
+        //let url = "http://138.197.141.224/events/"
+        let url = "http://138.197.129.140:8080/calendar/events?calendarName=bridgekelowna@gmail.com&min=\(now.year)-\(now.month)-01T10:00:31-08:00&max=\(now.year)-\(now.month)-\(now.monthDays)T11:00:31-08:00"
         
         Alamofire.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                for (key,subJson):(String, JSON) in json {
-                    self.eventSummary.append(String(describing: subJson["summary"]))
-                    self.eventStartDate.append(String(describing: subJson["start"]["dateTime"]))
+                for (key,subJson):(String, JSON) in json["eventItems"] {
                     
-                    let date4 = try! DateInRegion(string: self.eventStartDate[self.numberOfEvents!], format: .iso8601(options: .withInternetDateTime))
-                    self.convertedStartDate.append(date4)
+                    self.eventSummary.append(String(describing: subJson["summary"]))
+                    let getStartDate = subJson["start"]["dateTime"]["value"].doubleValue
+                    self.eventStartDate.append(getStartDate)
+                    
+                    //let date4 = try! DateInRegion(string: self.eventStartDate[self.numberOfEvents!], format: .iso8601(options: .withInternetDateTime))
+                    //self.convertedStartDate.append(date4)
                     //print(date4.year)
+                    
+                    //print(self.eventStartDate[self.numberOfEvents!])
+                    let convertUnixDate = Date(timeIntervalSince1970: self.eventStartDate[self.numberOfEvents!]/1000)
+                    self.convertedStartDate.append(convertUnixDate)
                     
                     print(self.eventSummary[self.numberOfEvents!])
                     print(self.eventStartDate[self.numberOfEvents!])
+                    print(self.convertedStartDate[self.numberOfEvents!].year)
                     self.numberOfEvents! += 1
                 }
                 self.EventList.dataSource = self
