@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var convertedStartDate = [Date]()
     var dateFor: DateFormatter = DateFormatter()
     let now = DateInRegion()
+    var calendarListEvents = [Int: [Event]]()
     
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
                 "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
