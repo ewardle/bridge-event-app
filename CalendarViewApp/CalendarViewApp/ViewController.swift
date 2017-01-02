@@ -77,18 +77,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        print("header section called")
+        let headerSection = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarPrototypeHeader") as! CalendarCellHeader
+        
+        let displayEventHeaderDay = Int((self.calendarListEventKeys?[section])!)
+        
+        headerSection.CalendarDay.text = "\(now.monthName) \(String(describing: displayEventHeaderDay)),  \(now.year)"
+        
+        //let headerSection2 = headerSection as TableSectionHeader
+        //headerSection.CalendarDay.text = "Test"
+        
+        return headerSection
+    }
+    
     func tableView(_ EventList: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return 4
+        print("number of rows in section")
+        print(self.calendarListEvent[self.calendarListEventKeys![section]]!.count)
         return self.calendarListEvent[self.calendarListEventKeys![section]]!.count
     }
     
-    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         //return 1
+        print("number of sections in table view:")
+        print(self.calendarListEvent.count)
         return self.calendarListEvent.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1
+        //return UITableViewAutomaticDimension
+        return 30
     }
     
     func getEvents() {
@@ -140,6 +159,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.calendarListEventKeys = [Int](self.calendarListEvent.keys)
                 
                 self.EventList.dataSource = self
+                self.EventList.delegate = self
                 self.EventList.estimatedRowHeight = 100
                 self.EventList.rowHeight = UITableViewAutomaticDimension
                 self.displayEvents()
@@ -178,14 +198,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func displayEvents() {
-        print("Looky")
-        print(self.calendarListEvent.count)
-        print(self.calendarListEvent[2]?.count ?? "No events for this day")
+        //print("Looky")
+        //print(self.calendarListEvent.count)
+        //print(self.calendarListEvent[2]?.count ?? "No events for this day")
         for (_, eventInDay) in self.calendarListEvent {
             for singleEvent in eventInDay{
                 print(singleEvent.eventTitle)
             }
         }
+        print("Keys in calenadr List Event:")
         for keyDay in self.calendarListEventKeys! {
             print(keyDay)
         }
