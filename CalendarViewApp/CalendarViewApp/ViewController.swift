@@ -25,7 +25,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var convertedStartDate = [Date]()
     var dateFor: DateFormatter = DateFormatter()
     let now = DateInRegion()
-    var calendarListEvents = [Int: [Event]]()
+    var calendarListEvent = [Int: [Event]]()
+    var calendarListEventKeys: [Int]? = nil
     
     let data = ["New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX",
                 "Philadelphia, PA", "Phoenix, AZ", "San Diego, CA", "San Antonio, TX",
@@ -63,16 +64,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarPrototypeCell", for: indexPath as IndexPath) as! CalendarPrototypeCell
         
         //let cityState = data[indexPath.row].components(separatedBy: ", ")
-        let displayEventSummary = self.eventSummary[indexPath.row]
+        //let displayEventSummary = self.eventSummary[indexPath.row]
         //cell.EventDay.text = cityState.first
-        cell.EventDay.text = displayEventSummary
+        //cell.EventDay.text = displayEventSummary
         //cell.EventDay.text = eventRequest
+        
+        let displayEventDay = self.calendarListEvent[self.calendarListEventKeys![indexPath.section]]
+        let displayEventTitle = displayEventDay?[indexPath.row].eventTitle
+        
+        cell.EventDay.text = displayEventTitle
+        
         return cell
     }
     
     func tableView(_ EventList: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return data.count
-        return self.numberOfEvents!
+        //return 4
+        return self.calendarListEvent[self.calendarListEventKeys![section]]!.count
+    }
+    
+    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        //return 1
+        return self.calendarListEvent.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1
     }
     
     func getEvents() {
@@ -84,29 +100,49 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                for (key,subJson):(String, JSON) in json["eventItems"] {
-                    
-                    self.eventSummary.append(String(describing: subJson["summary"]))
+                for (_, subJson):(String, JSON) in json["eventItems"] {
+                
+                    let eventTitle = String(describing: subJson["summary"])
                     let getStartDate = subJson["start"]["dateTime"]["value"].doubleValue
-                    self.eventStartDate.append(getStartDate)
+                    let getEndDate = subJson["end"]["dateTime"]["value"].doubleValue
+                    let description = String(describing: subJson["description"])
+                    
+                    //self.eventStartDate.append(getStartDate)
                     
                     //let date4 = try! DateInRegion(string: self.eventStartDate[self.numberOfEvents!], format: .iso8601(options: .withInternetDateTime))
                     //self.convertedStartDate.append(date4)
                     //print(date4.year)
                     
                     //print(self.eventStartDate[self.numberOfEvents!])
-                    let convertUnixDate = Date(timeIntervalSince1970: self.eventStartDate[self.numberOfEvents!]/1000)
-                    self.convertedStartDate.append(convertUnixDate)
+                    let convertUnixDateStart = Date(timeIntervalSince1970: getStartDate/1000)
+                    let convertedStartDate = convertUnixDateStart
                     
-                    print(self.eventSummary[self.numberOfEvents!])
-                    print(self.eventStartDate[self.numberOfEvents!])
-                    print(self.convertedStartDate[self.numberOfEvents!].year)
+                    let convertUnixDateEnd = Date(timeIntervalSince1970: getEndDate/1000)
+                    let convertedEndDate = convertUnixDateEnd
+                    
+                    let currEventObject = Event(eT: eventTitle, eS: convertedStartDate, eE: convertedEndDate, desc: description)
+                    
+                    if self.calendarListEvent[(currEventObject.eventStart?.day)!] != nil {
+                        self.calendarListEvent[(currEventObject.eventStart?.day)!]?.append(currEventObject)
+                    }
+                    else {
+                        self.calendarListEvent[(currEventObject.eventStart?.day)!] = [Event]()
+                        self.calendarListEvent[(currEventObject.eventStart?.day)!]?.append(currEventObject)
+                    }
+                    
+                    //print(self.eventSummary[self.numberOfEvents!])
+                    //print(self.eventStartDate[self.numberOfEvents!])
+                    //print(self.convertedStartDate[self.numberOfEvents!].year)
                     self.numberOfEvents! += 1
                 }
+                
+                //Create a list of keys(dates for events) for use with uitableview methods
+                self.calendarListEventKeys = [Int](self.calendarListEvent.keys)
+                
                 self.EventList.dataSource = self
                 self.EventList.estimatedRowHeight = 100
                 self.EventList.rowHeight = UITableViewAutomaticDimension
-
+                self.displayEvents()
             case .failure(let error):
                 print(error)
             }
@@ -135,8 +171,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.numberOfEvents! += 1
             }
             
+            
+            
         }
         print("HERE LOOK: \(numberOfEvents)")
+    }
+    
+    func displayEvents() {
+        print("Looky")
+        print(self.calendarListEvent.count)
+        print(self.calendarListEvent[2]?.count ?? "No events for this day")
+        for (_, eventInDay) in self.calendarListEvent {
+            for singleEvent in eventInDay{
+                print(singleEvent.eventTitle)
+            }
+        }
+        for keyDay in self.calendarListEventKeys! {
+            print(keyDay)
+        }
     }
     
     
