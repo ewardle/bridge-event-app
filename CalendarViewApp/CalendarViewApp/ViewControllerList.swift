@@ -13,7 +13,7 @@ import SwiftyJSON
 import SwiftDate
 import Foundation
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var Events: UILabel!
     @IBOutlet weak var EventList: UITableView!

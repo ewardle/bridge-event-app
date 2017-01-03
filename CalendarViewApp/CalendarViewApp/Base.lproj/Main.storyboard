@@ -13,7 +13,7 @@
         <!--Event Calendar-->
         <scene sceneID="t6F-vd-Z3i">
             <objects>
-                <viewController title="Event Calendar" id="wPd-lC-K6G" sceneMemberID="viewController">
+                <viewController title="Event Calendar" id="wPd-lC-K6G" customClass="ViewControllerCalendar" customModule="CalendarViewApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aSF-VI-rbQ"/>
                         <viewControllerLayoutGuide type="bottom" id="c6b-vr-sUy"/>
@@ -50,7 +50,7 @@
         <!--Event List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Event List" id="BYZ-38-t0r" customClass="ViewController" customModule="CalendarViewApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Event List" id="BYZ-38-t0r" customClass="ViewControllerList" customModule="CalendarViewApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
