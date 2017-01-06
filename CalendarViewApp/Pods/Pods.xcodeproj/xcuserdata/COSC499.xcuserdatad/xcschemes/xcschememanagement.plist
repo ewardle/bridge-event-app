@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JTAppleCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CalendarViewApp.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,17 +42,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13C3CC1BCAAC40263E5DAA50C5658F0C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>39C69D9B6A709F788E7F5A5E2BDCF612</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>632E42162FC83DC74DD37A041F3BEC8C</key>
+		<key>69BE0F2C82C28499AE9D381D7B26DDF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E1EB7DFABA74F2B4B3B014417AF47BBD</key>
+		<key>9B22756F1BC69AB282A6C7FFC7EB05C3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C3B34F296E773DFF4F77E682E8FEC2FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F3F3022430A964E746E8EC5E02C000F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
