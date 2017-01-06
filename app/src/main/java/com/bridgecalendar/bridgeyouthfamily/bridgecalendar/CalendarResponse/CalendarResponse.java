@@ -5,4 +5,5 @@ package com.bridgecalendar.bridgeyouthfamily.bridgecalendar.CalendarResponse;
  */
 
 public class CalendarResponse {
+
 }

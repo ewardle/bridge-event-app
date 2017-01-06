@@ -19,20 +19,23 @@ public class EventResponseManager {
     private EventResponse mEventResponse;
     private EventListListener mEventListListener;
 
-    public void getSearchList(String calendarName,String minTime,String maxTime) {
+    public EventResponseManager(EventListListener eventListListener) {
+        mEventListListener = eventListListener;
+    }
+
+    public void getSearchList(String calendarName, String minTime, String maxTime) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         CalendarAPI calendarAPI = retrofit.create(CalendarAPI.class);
-        Call<EventResponse> call2 = calendarAPI.getEvents(calendarName, minTime ,maxTime);
+        Call<EventResponse> call2 = calendarAPI.getEvents(calendarName, minTime, maxTime);
         call2.enqueue(new Callback<EventResponse>() {
             @Override
             public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {
                 if (response.isSuccessful()) {
                     mEventResponse = response.body();
-
-                    mEventListListener.setEventList(mEventResponse);
+                    mEventListListener.setEventList(mEventResponse.getEventItems());
 
                 } else {
                     Log.d("TEST", "Response Error");

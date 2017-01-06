@@ -1,15 +1,18 @@
 package com.bridgecalendar.bridgeyouthfamily.bridgecalendar.EventResponse;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 /**
  * Created by Arya on 1/4/2017.
  */
 
 public class EventResponse {
-    private EventItems mEventItems;
+    @SerializedName("eventItems")
+    private List<Event> mEventItems;
 
-    public EventItems getEventItems() {
+    public List<Event> getEventItems() {
         return mEventItems;
     }
-
-
 }
