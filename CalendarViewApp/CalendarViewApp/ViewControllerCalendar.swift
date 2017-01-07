@@ -12,7 +12,8 @@ import JTAppleCalendar
 class ViewControllerCalendar: UIViewController {
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
-
+    @IBOutlet weak var eventTitle: UILabel!
+    
     let white = UIColor(colorWithHexValue: 0xECEAED)
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
     let dimPurple = UIColor(colorWithHexValue: 0x574865)
@@ -46,36 +47,6 @@ class ViewControllerCalendar: UIViewController {
         )
     */
     
-    func handleCellTextColor(view: JTAppleDayCellView?, cellState: CellState) {
-        
-        guard let myCustomCell = view as? CellView  else {
-            return
-        }
-        
-        if cellState.isSelected {
-            myCustomCell.dayLabel.textColor = darkPurple
-        } else {
-            if cellState.dateBelongsTo == .thisMonth {
-                myCustomCell.dayLabel.textColor = dimPurple
-            } else {
-                myCustomCell.dayLabel.textColor = lightGrey
-            }
-        }
-    }
-    
-    // Function to handle the calendar selection
-    func handleCellSelection(view: JTAppleDayCellView?, cellState: CellState) {
-        guard let myCustomCell = view as? CellView  else {
-            return
-        }
-        if cellState.isSelected {
-            myCustomCell.selectedView.layer.cornerRadius =  25
-            myCustomCell.selectedView.isHidden = false
-        } else {
-            myCustomCell.selectedView.isHidden = true
-        }
-    }
-    
 }
 
 extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
@@ -94,6 +65,40 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             generateOutDates: .tillEndOfGrid,
             firstDayOfWeek: .sunday)
         return parameters
+    }
+    
+    func handleCellTextColor(view: JTAppleDayCellView?, cellState: CellState) {
+        
+        guard let myCustomCell = view as? CellView  else {
+            return
+        }
+        
+        if cellState.isSelected {
+            myCustomCell.dayLabel.textColor = darkPurple
+        } else {
+            if cellState.dateBelongsTo == .thisMonth {
+                myCustomCell.dayLabel.textColor = dimPurple
+            } else {
+                myCustomCell.dayLabel.textColor = lightGrey
+            }
+        }
+        
+        //display event for selected date here
+        self.eventTitle.text = String(describing: cellState.date.day)
+        
+    }
+    
+    // Function to handle the calendar selection
+    func handleCellSelection(view: JTAppleDayCellView?, cellState: CellState) {
+        guard let myCustomCell = view as? CellView  else {
+            return
+        }
+        if cellState.isSelected {
+            myCustomCell.selectedView.layer.cornerRadius =  25
+            myCustomCell.selectedView.isHidden = false
+        } else {
+            myCustomCell.selectedView.isHidden = true
+        }
     }
     
     func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {

@@ -26,6 +26,13 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqh-tK-0p1">
+                                <rect key="frame" x="16" y="476" width="343" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -38,6 +45,7 @@
                     <tabBarItem key="tabBarItem" title="Calendar" id="Vl4-lD-5ob" userLabel="Calendar"/>
                     <connections>
                         <outlet property="calendarView" destination="5Gu-zM-Hee" id="uB2-PF-Q9J"/>
+                        <outlet property="eventTitle" destination="lqh-tK-0p1" id="aPK-G8-U4a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohO-cu-r8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
