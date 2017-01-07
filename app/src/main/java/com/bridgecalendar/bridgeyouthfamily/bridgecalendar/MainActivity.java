@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
         mCalendarView = (CalendarView) findViewById(R.id.calendar_view);
 
 
-
+        //calendar listener for user date selection change
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
