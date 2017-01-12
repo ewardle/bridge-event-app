@@ -45,12 +45,7 @@ public class Bcalendar {
     func parseEvents(events: JSON) -> [Int: [Event]] {
         
         var calendarListEvent = [Int: [Event]]()
-        
-        //clear calendarEventList in order to add newly updated events
-        //if(calendarListEvent != nil) {
-        //   calendarListEvent.removeAll()
-        //}
-        
+                
         //Loop through JSON from server to parse events into components
         for (_, subJson):(String, JSON) in events["eventItems"] {
             
@@ -81,11 +76,6 @@ public class Bcalendar {
         }
         
         return calendarListEvent
-
     }
-    
-    //func sendEvents() -> [Int: [Event]] {
-        //return self.calendarListEvent
-    //}
     
 }
