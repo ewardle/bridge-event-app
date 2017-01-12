@@ -16,6 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("View Loaded")
+        /*Bcalendar().getEvents{ (responseObject, responseObject2) in
+            print(responseObject! as String)
+            let displayEventDay = responseObject2[2]
+            let displayEventTitle = displayEventDay?[0].eventTitle
+            print(displayEventTitle! as String)
+        }*/
+        
         return true
     }
 
