@@ -35,7 +35,7 @@ public class Bcalendar {
             case .success(let value):
                 let json = JSON(value)
                 let dictionaryOfEvents = self.parseEvents(events: json)
-                completionHandler("done deal!", dictionaryOfEvents)
+                completionHandler("Retrived Events", dictionaryOfEvents)
             case .failure(let error):
                 print(error)
             }
@@ -76,6 +76,10 @@ public class Bcalendar {
         }
         
         return calendarListEvent
+    }
+    
+    func keySort(_ s1: Int, _ s2: Int) -> Bool {
+        return s1 < s2
     }
     
 }

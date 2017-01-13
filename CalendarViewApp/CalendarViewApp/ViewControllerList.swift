@@ -14,6 +14,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var Events: UILabel!
     @IBOutlet weak var EventList: UITableView!
+    @IBOutlet weak var Sync: UIButton!
     
     let now = DateInRegion()
     var calendarListEvent: [Int: [Event]]? = nil
@@ -24,6 +25,10 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         //"Event List" UITable Header
         self.Events.text = "Calendar Events"
         self.Events.textAlignment = NSTextAlignment.center
+        
+        //Reloads calendar list with new event list when pressed
+        Sync.addTarget(self, action: #selector(updateListOfEvents(button:)), for: .touchUpInside)
+        
         //Make call to server
         getEvents()
     }
@@ -80,13 +85,31 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     //load the list view
     func setDataSource() {
         //Create a list of keys(dates for events) for use with uitableview methods
-        self.calendarListEventKeys = [Int](self.calendarListEvent!.keys)
+        //Keys sorted by ascending date
+        self.calendarListEventKeys = self.calendarListEvent?.keys.sorted { (_ key1: Int, _ key2: Int) -> Bool in
+            return key1 < key2
+        }
+        
         //load data source and delegate
         self.EventList.dataSource = self
         self.EventList.delegate = self
         self.EventList.estimatedRowHeight = 100
         self.EventList.rowHeight = UITableViewAutomaticDimension
         self.displayEvents()
+    }
+    
+    //Update calendarListEvent and reload UITableView
+    func updateListOfEvents(button: UIButton) {
+        Bcalendar().getEvents{ (responseObject, responseObject2) in
+            self.calendarListEvent = responseObject2
+            //load list view
+            self.setDataSource()
+            self.EventList.reloadData()
+        }
+    }
+    
+    func testClick(button: UIButton) {
+        print("Button pressed!")
     }
     
     //For testing purposes. Prints events and keys in event array to console
