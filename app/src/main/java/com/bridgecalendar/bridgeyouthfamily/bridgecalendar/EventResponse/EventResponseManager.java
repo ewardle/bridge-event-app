@@ -50,4 +50,10 @@ public class EventResponseManager {
         });
 
     }
+    public void attachListener(EventListListener eventListListener){
+        this.mEventListListener = eventListListener;
+    }
+    public void detachListener(){
+        this.mEventListListener = null;
+    }
 }

@@ -14,7 +14,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".UpcomingEvents.UpcomingEventsActivity">
 
+        </activity>
+        <activity android:name=".Settings.SettingsActivity">
+
+        </activity>
     </application>
 
 </manifest>
