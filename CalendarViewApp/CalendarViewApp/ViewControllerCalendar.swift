@@ -14,7 +14,7 @@ class ViewControllerCalendar: UIViewController {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var eventTitle: UILabel!
     
-    let white = UIColor(colorWithHexValue: 0xECEAED)
+    let white = UIColor(colorWithHexValue: 0xffffff)
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
     let black = UIColor(colorWithHexValue: 0x000000)
     
@@ -34,6 +34,10 @@ class ViewControllerCalendar: UIViewController {
         // Register the calendar header view
         //calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView"])
         calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView", "CalendarHeaderView2"])
+        
+        //automatically selects the current date cell calendar is first opened
+        //e.g. displays today's events
+        self.calendarView.selectDates([NSDate() as Date], triggerSelectionDelegate: false)
     }
 
     /*
