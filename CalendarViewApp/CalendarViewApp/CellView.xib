@@ -19,8 +19,8 @@
                     <rect key="frame" x="108" y="66" width="45" height="45"/>
                     <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="gcg-3q-CaE"/>
-                        <constraint firstAttribute="width" constant="45" id="leb-yq-HPj"/>
+                        <constraint firstAttribute="height" constant="40" id="gcg-3q-CaE"/>
+                        <constraint firstAttribute="width" constant="40" id="leb-yq-HPj"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="dateTextGoesHere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxU-9X-zcU">

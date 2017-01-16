@@ -16,7 +16,7 @@ class ViewControllerCalendar: UIViewController {
     
     let white = UIColor(colorWithHexValue: 0xECEAED)
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
-    let dimPurple = UIColor(colorWithHexValue: 0x574865)
+    let black = UIColor(colorWithHexValue: 0x000000)
     
     let lightGrey = UIColor(colorWithHexValue: 0xB3B3B3)
 
@@ -74,10 +74,10 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         }
         
         if cellState.isSelected {
-            myCustomCell.dayLabel.textColor = darkPurple
+            myCustomCell.dayLabel.textColor = white
         } else {
             if cellState.dateBelongsTo == .thisMonth {
-                myCustomCell.dayLabel.textColor = dimPurple
+                myCustomCell.dayLabel.textColor = black
             } else {
                 myCustomCell.dayLabel.textColor = lightGrey
             }
@@ -94,7 +94,7 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             return
         }
         if cellState.isSelected {
-            myCustomCell.selectedView.layer.cornerRadius =  25
+            myCustomCell.selectedView.layer.cornerRadius =  20
             myCustomCell.selectedView.isHidden = false
         } else {
             myCustomCell.selectedView.isHidden = true
