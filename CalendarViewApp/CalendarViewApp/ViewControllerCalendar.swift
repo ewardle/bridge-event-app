@@ -12,7 +12,10 @@ import JTAppleCalendar
 class ViewControllerCalendar: UIViewController {
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
-    @IBOutlet weak var eventTitle: UILabel!
+    @IBOutlet weak var testEventTitle: UILabel!
+    
+    var calendarListEvent: [Int: [Event]]? = nil
+    var calendarListEventKeys: [Int]? = nil
     
     let white = UIColor(colorWithHexValue: 0xECEAED)
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
@@ -31,9 +34,15 @@ class ViewControllerCalendar: UIViewController {
         // Add this new line
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         
-        // Register the calendar header view
+        // Register the calendar header view (month 1 & month 2)
         //calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView"])
         calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView", "CalendarHeaderView2"])
+        
+        // Get list of events from Google Calendar
+        Bcalendar().getEvents{ (responseObject, responseObject2) in
+            self.calendarListEvent = responseObject2
+            print("Calendar Events Received")
+        }
     }
 
     /*
@@ -83,8 +92,23 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             }
         }
         
+        let keyExists = calendarListEvent?[cellState.date.day]
         //display event for selected date here
-        self.eventTitle.text = String(describing: cellState.date.day)
+        if keyExists != nil {
+            let displayEventDay = self.calendarListEvent?[cellState.date.day]
+            
+            if displayEventDay?[0].eventStart?.month == cellState.date.month {
+                self.testEventTitle.text = displayEventDay?[0].eventTitle
+            }
+            else {
+                self.testEventTitle.text = "No events for selected day"
+            }
+            
+            
+        }
+        else {
+            self.testEventTitle.text = "No events for selected day"
+        }
         
     }
     
@@ -172,6 +196,17 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         }
         return "CalendarHeaderView2"
     }
+    
+    //Update calendarListEvent and reload UITableView
+    func updateListOfEvents(button: UIButton) {
+        Bcalendar().getEvents{ (responseObject, responseObject2) in
+            self.calendarListEvent = responseObject2
+            //load list view
+            //self.setDataSource()
+            //self.EventList.reloadData()
+        }
+    }
+    
 }
 
 extension UIColor {
