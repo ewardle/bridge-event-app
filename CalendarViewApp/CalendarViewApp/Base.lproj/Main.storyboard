@@ -46,23 +46,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eSQ-0n-xkV">
                                 <rect key="frame" x="20" y="335" width="335" height="283"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="testEventTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gkJ-Ni-ywh">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.CalendarViewApp.CalendarPrototypeCell" rowHeight="65" id="vHC-9P-Tao" customClass="CalendarPrototypeCell" customModule="CalendarViewApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="335" height="65"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.CalendarViewApp.CalendarViewSelectionCell" rowHeight="65" id="vHC-9P-Tao" customClass="CalendarViewSelectionCell" customModule="CalendarViewApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="335" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHC-9P-Tao" id="DKm-AP-xAJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jx-I5-8K9">
-                                                    <rect key="frame" x="8" y="21" width="319" height="21"/>
+                                                    <rect key="frame" x="8" y="20" width="319" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -76,32 +69,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="EventDay" destination="4Jx-I5-8K9" id="2k7-dM-SZm"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.CalendarViewApp.CalendarPrototypeHeader" rowHeight="65" id="Zh1-9p-jzu" customClass="CalendarCellHeader" customModule="CalendarViewApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="137" width="335" height="65"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zh1-9p-jzu" id="9uH-rg-DPp">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="64"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSU-1e-mhD">
-                                                    <rect key="frame" x="8" y="22" width="319" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="nSU-1e-mhD" firstAttribute="centerX" secondItem="9uH-rg-DPp" secondAttribute="centerX" id="TrE-Um-IH0"/>
-                                                <constraint firstItem="nSU-1e-mhD" firstAttribute="trailing" secondItem="9uH-rg-DPp" secondAttribute="trailingMargin" id="cV6-yi-7Lr"/>
-                                                <constraint firstItem="nSU-1e-mhD" firstAttribute="centerY" secondItem="9uH-rg-DPp" secondAttribute="centerY" id="dg6-zn-2vo"/>
-                                                <constraint firstItem="nSU-1e-mhD" firstAttribute="leading" secondItem="9uH-rg-DPp" secondAttribute="leadingMargin" id="zCu-oW-acB"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="CalendarDay" destination="nSU-1e-mhD" id="ehy-IS-ZMK"/>
+                                            <outlet property="CalendarEventDay" destination="4Jx-I5-8K9" id="EW5-ls-c5b"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -130,8 +98,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendar" id="Vl4-lD-5ob" userLabel="Calendar"/>
                     <connections>
+                        <outlet property="EventListCalendar" destination="eSQ-0n-xkV" id="Ixt-by-sAD"/>
                         <outlet property="calendarView" destination="5Gu-zM-Hee" id="uB2-PF-Q9J"/>
-                        <outlet property="testEventTitle" destination="gkJ-Ni-ywh" id="nl7-By-Uej"/>
+                        <outlet property="syncCalendarButton" destination="I85-e3-2b7" id="w4C-Q0-9jb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohO-cu-r8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -198,7 +167,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR0-Wr-pJr">
-                                                    <rect key="frame" x="8" y="21" width="319" height="21"/>
+                                                    <rect key="frame" x="8" y="20" width="319" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

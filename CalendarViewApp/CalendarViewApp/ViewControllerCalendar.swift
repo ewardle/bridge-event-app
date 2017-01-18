@@ -12,10 +12,12 @@ import JTAppleCalendar
 class ViewControllerCalendar: UIViewController {
     
     @IBOutlet weak var calendarView: JTAppleCalendarView!
-    @IBOutlet weak var testEventTitle: UILabel!
+    @IBOutlet weak var EventListCalendar: UITableView!
+    @IBOutlet weak var syncCalendarButton: UIButton!
     
     var calendarListEvent: [Int: [Event]]? = nil
-    var calendarListEventKeys: [Int]? = nil
+    var calendarListEventDay: [Event]? = nil
+    //var calendarListEventKeys: [Int]? = nil
     
     let white = UIColor(colorWithHexValue: 0xECEAED)
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
@@ -25,24 +27,33 @@ class ViewControllerCalendar: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //get list of events from Google Calendar
+        
+        Bcalendar().getEvents{ (responseObject, responseObject2) in
+            self.calendarListEvent = responseObject2
+            print("Calendar Events Received")
+            //self.loadCalendarView()
+        }
+        //load CalendarView after retriving list from Server
+        self.loadCalendarView()
+    }
+    
+    //load calendar view after calendar list events are received
+    func loadCalendarView() {
+        //do any additional setup after loading the view.
         calendarView.dataSource = self
         calendarView.delegate = self
         calendarView.registerCellViewXib(file: "CellView") // Registering your cell is manditory
         
-        // Add this new line
+        //add this new line
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         
-        // Register the calendar header view (month 1 & month 2)
+        //register the calendar header view (month 1 & month 2)
         //calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView"])
         calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView", "CalendarHeaderView2"])
         
-        // Get list of events from Google Calendar
-        Bcalendar().getEvents{ (responseObject, responseObject2) in
-            self.calendarListEvent = responseObject2
-            print("Calendar Events Received")
-        }
+        //Reloads calendar list with new event list when pressed
+        syncCalendarButton.addTarget(self, action: #selector(updateListOfEvents(button:)), for: .touchUpInside)
     }
 
     /*
@@ -82,6 +93,7 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             return
         }
         
+        
         if cellState.isSelected {
             myCustomCell.dayLabel.textColor = darkPurple
         } else {
@@ -92,7 +104,7 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             }
         }
         
-        let keyExists = calendarListEvent?[cellState.date.day]
+        /*let keyExists = calendarListEvent?[cellState.date.day]
         //display event for selected date here
         if keyExists != nil {
             let displayEventDay = self.calendarListEvent?[cellState.date.day]
@@ -108,7 +120,10 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         }
         else {
             self.testEventTitle.text = "No events for selected day"
-        }
+        }*/
+        
+        //Reload TableView with events for selected date
+        selectedNewDate(dateSelected: cellState.date.day, monthOfSelected: cellState.date.month)
         
     }
     
@@ -197,16 +212,67 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         return "CalendarHeaderView2"
     }
     
+    func selectedNewDate(dateSelected: Int, monthOfSelected: Int) {
+        //Set calendarListEventDay to nil in order to check if event exists
+        //for newly selected date
+        self.calendarListEventDay = nil
+        
+        //If event list for selected date exists set calendarListEventDay to that list
+        if (self.calendarListEvent?[dateSelected]) != nil && self.calendarListEvent?[dateSelected]?[0].eventStart?.month == monthOfSelected{
+            // now val is not nil and the Optional has been unwrapped, so use it
+            self.calendarListEventDay = self.calendarListEvent?[dateSelected]
+        }
+        //otherwise leave calendarListEventDay nil
+        
+        //reload TableView to show events for newly selected date if they exist
+        self.EventListCalendar.dataSource = self
+        self.EventListCalendar.delegate = self
+        self.EventListCalendar.reloadData()
+    }
+    
     //Update calendarListEvent and reload UITableView
     func updateListOfEvents(button: UIButton) {
         Bcalendar().getEvents{ (responseObject, responseObject2) in
+            //retrieve list from server
             self.calendarListEvent = responseObject2
-            //load list view
-            //self.setDataSource()
-            //self.EventList.reloadData()
         }
+        //reload calendar view
+        self.EventListCalendar.dataSource = self
+        self.EventListCalendar.delegate = self
+        self.EventListCalendar.reloadData()
+
+    }
+}
+
+extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ EventListCalendar: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarViewSelectionCell", for: indexPath as IndexPath) as! CalendarViewSelectionCell
+        //Traverse through calendarListEventDay list
+        
+        //displayEventDay?[0].eventStart?.month == cellState.date.month
+        
+        if self.calendarListEventDay != nil {
+            let eventTitle = self.calendarListEventDay?[indexPath.row].eventTitle
+            //cell.CalendarEventDay.text = eventTitle
+            cell.CalendarEventDay.text = eventTitle
+        }
+        else {
+            cell.CalendarEventDay.text = "No events for selected date"
+        }
+        
+        return cell
     }
     
+    func tableView(_ EventListCalendar: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //print("number of rows in section")
+        //print(self.calendarListEvent?[self.calendarListEventKeys![section]]!.count ?? 0)
+        if self.calendarListEventDay != nil {
+            return self.calendarListEventDay!.count
+        }
+        else {
+            return 1
+        }
+    }
 }
 
 extension UIColor {

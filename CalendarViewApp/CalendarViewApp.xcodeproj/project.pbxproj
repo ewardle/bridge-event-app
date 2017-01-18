@@ -22,6 +22,7 @@
 		D024F03C1E1317D1004AD2A5 /* CalendarViewAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D024F03B1E1317D1004AD2A5 /* CalendarViewAppTests.swift */; };
 		D060B86E1E1461C000C12638 /* CalendarPrototypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D060B86D1E1461C000C12638 /* CalendarPrototypeCell.swift */; };
 		D08996221E1BF748008AA738 /* ViewControllerCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08996211E1BF748008AA738 /* ViewControllerCalendar.swift */; };
+		D0A00B7C1E2DDEE30085BD06 /* CalendarViewSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A00B7B1E2DDEE30085BD06 /* CalendarViewSelectionCell.swift */; };
 		D0BF1BFF1E1F3D660063DEE6 /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0BF1BFE1E1F3D660063DEE6 /* CellView.xib */; };
 		D0BF1C011E1F3FE40063DEE6 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BF1C001E1F3FE40063DEE6 /* CellView.swift */; };
 		D0C74CAE1E1AEC7A0064F795 /* CalendarCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C74CAD1E1AEC7A0064F795 /* CalendarCellHeader.swift */; };
@@ -61,6 +62,7 @@
 		D024F03D1E1317D1004AD2A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D060B86D1E1461C000C12638 /* CalendarPrototypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPrototypeCell.swift; sourceTree = "<group>"; };
 		D08996211E1BF748008AA738 /* ViewControllerCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCalendar.swift; sourceTree = "<group>"; };
+		D0A00B7B1E2DDEE30085BD06 /* CalendarViewSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewSelectionCell.swift; sourceTree = "<group>"; };
 		D0BF1BFE1E1F3D660063DEE6 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		D0BF1C001E1F3FE40063DEE6 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		D0C74CAD1E1AEC7A0064F795 /* CalendarCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCellHeader.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				D0BF1C001E1F3FE40063DEE6 /* CellView.swift */,
 				D0C74CAD1E1AEC7A0064F795 /* CalendarCellHeader.swift */,
 				D060B86D1E1461C000C12638 /* CalendarPrototypeCell.swift */,
+				D0A00B7B1E2DDEE30085BD06 /* CalendarViewSelectionCell.swift */,
 				D024F02D1E1317D1004AD2A5 /* Assets.xcassets */,
 				D024F02F1E1317D1004AD2A5 /* LaunchScreen.storyboard */,
 				D024F0321E1317D1004AD2A5 /* Info.plist */,
@@ -372,6 +375,7 @@
 				D00614411E208B2D00866B11 /* CalendarHeaderView2.swift in Sources */,
 				D006143D1E20715300866B11 /* CalendarHeaderView.swift in Sources */,
 				D0C74CAE1E1AEC7A0064F795 /* CalendarCellHeader.swift in Sources */,
+				D0A00B7C1E2DDEE30085BD06 /* CalendarViewSelectionCell.swift in Sources */,
 				D024F0291E1317D1004AD2A5 /* ViewControllerList.swift in Sources */,
 				D024F0271E1317D1004AD2A5 /* AppDelegate.swift in Sources */,
 				D08996221E1BF748008AA738 /* ViewControllerCalendar.swift in Sources */,
