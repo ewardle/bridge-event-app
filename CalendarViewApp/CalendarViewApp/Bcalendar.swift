@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftDate
 import SwiftyJSON
-
+//MUST STILL ADJUST URL TO BRING BACK CURRENT MONTH'S AND NEXT MONTH'S EVENTS
 public class Bcalendar {
     
     private let url: String

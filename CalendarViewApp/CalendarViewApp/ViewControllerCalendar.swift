@@ -33,7 +33,14 @@ class ViewControllerCalendar: UIViewController {
             self.calendarListEvent = responseObject2
             print("Calendar Events Received")
             //self.loadCalendarView()
+            
+            //Select current date as default date when calendar view loads
+            self.calendarView.selectDates([NSDate() as Date])
         }
+        
+        
+        //self.calendarView.selectDates([NSDate() as Date])
+        
         //load CalendarView after retriving list from Server
         self.loadCalendarView()
     }
@@ -121,6 +128,8 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         else {
             self.testEventTitle.text = "No events for selected day"
         }*/
+        
+        //print(cellState.date.day)
         
         //Reload TableView with events for selected date
         selectedNewDate(dateSelected: cellState.date.day, monthOfSelected: cellState.date.month)
@@ -235,12 +244,18 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         Bcalendar().getEvents{ (responseObject, responseObject2) in
             //retrieve list from server
             self.calendarListEvent = responseObject2
+            
+            //Select current date as default date when calendar view reloads
+            self.calendarView.selectDates([NSDate() as Date])
         }
+        print("Reloading calendar view")
+        
+        //self.EventListCalendar.dataSource = self
+        //self.EventListCalendar.delegate = self
+        //self.EventListCalendar.reloadData()
+        
         //reload calendar view
-        self.EventListCalendar.dataSource = self
-        self.EventListCalendar.delegate = self
-        self.EventListCalendar.reloadData()
-
+        self.calendarView.reloadData()
     }
 }
 
