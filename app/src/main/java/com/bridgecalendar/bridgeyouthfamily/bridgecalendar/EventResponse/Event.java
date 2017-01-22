@@ -1,6 +1,7 @@
 package com.bridgecalendar.bridgeyouthfamily.bridgecalendar.EventResponse;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import com.alamkanak.weekview.WeekViewEvent;
 import com.bridgecalendar.bridgeyouthfamily.bridgecalendar.Time.End;
@@ -44,44 +45,27 @@ public class Event {
 
     public WeekViewEvent toWeekViewEvent() {
 
-        // Parse time.
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        Date start = new Date();
-        Date end = new Date();
-        try {
-            start = sdf.parse("09:22");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        try {
-            end = sdf.parse("12:22");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
         // Initialize start and end time.
         Calendar now = Calendar.getInstance();
         Calendar startTime = (Calendar) now.clone();
-        startTime.setTimeInMillis(start.getTime());
+        startTime.setTimeInMillis(mStart.getCalendarDateTime().getValue());
         startTime.set(Calendar.YEAR, now.get(Calendar.YEAR));
         startTime.set(Calendar.MONTH, now.get(Calendar.MONTH));
-        startTime.set(Calendar.DAY_OF_MONTH, 9);
+        startTime.set(Calendar.DAY_OF_MONTH, startTime.get(Calendar.DAY_OF_MONTH));
         Calendar endTime = (Calendar) startTime.clone();
-        endTime.setTimeInMillis(end.getTime());
+        endTime.setTimeInMillis(mEnd.getCalendarDateTime().getValue());
         endTime.set(Calendar.YEAR, startTime.get(Calendar.YEAR));
         endTime.set(Calendar.MONTH, startTime.get(Calendar.MONTH));
         endTime.set(Calendar.DAY_OF_MONTH, startTime.get(Calendar.DAY_OF_MONTH));
 
         // Create an week view event.
-        WeekViewEvent weekViewEvent = new WeekViewEvent();
-        weekViewEvent.setName(getSummary());
-        weekViewEvent.setStartTime(startTime);
-        weekViewEvent.setEndTime(endTime);
+        WeekViewEvent weekViewEvent = new WeekViewEvent(0, getSummary(), startTime, endTime);
 
-
+        Log.d("APP DEBUG", " weekViewEvent creation getStartTime:" + weekViewEvent.getStartTime().toString());
         return weekViewEvent;
     }
-    public String getEventStartTime(){
+
+    public String getEventStartTime() {
         Date date = new Date(mStart.getCalendarDateTime().getValue());
         return date.toString();
     }

@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
@@ -33,15 +34,17 @@ public class UpcomingEventsActivity extends AppCompatActivity implements EventLi
 
         mEventList = new ArrayList<>();
         eventResponseManager = new EventResponseManager(this);
-        eventResponseManager.getSearchList("bridgekelowna@gmail.com", "2016-01-12T10:00:31-08:00", "2017-12-31T11:00:31-08:00");
+        eventResponseManager.getSearchList("bridgekelowna@gmail.com", "2016-01-09T10:00:31-08:00", "2017-12-31T11:00:31-08:00");
+
 
         mWeekView.setMonthChangeListener(new MonthLoader.MonthChangeListener() {
             @Override
             public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-                List<WeekViewEvent> weekViewEvents = new ArrayList<WeekViewEvent>();
+                List<WeekViewEvent> weekViewEvents = new ArrayList<>();
                 for(Event event: mEventList){
                     weekViewEvents.add(event.toWeekViewEvent());
                 }
+                Log.d("APP DEBUG"," weekViewEvents.add(event.toWeekViewEvent()) size:" + weekViewEvents.size());
                     return weekViewEvents;
             }
         });
@@ -76,5 +79,6 @@ public class UpcomingEventsActivity extends AppCompatActivity implements EventLi
     public void setEventList(List<Event> eventList) {
         mEventList.clear();
         mEventList.addAll(eventList);
+        Log.d("APP DEBUG"," retrofit event list size:" + mEventList.size());
     }
 }
