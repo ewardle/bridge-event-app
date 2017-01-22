@@ -22,7 +22,6 @@ class ViewControllerCalendar: UIViewController {
     let white = UIColor(colorWithHexValue: 0xECEAED)
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
     let dimPurple = UIColor(colorWithHexValue: 0x574865)
-    
     let lightGrey = UIColor(colorWithHexValue: 0xB3B3B3)
 
     override func viewDidLoad() {
@@ -249,6 +248,9 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             self.calendarView.selectDates([NSDate() as Date])
         }
         print("Reloading calendar view")
+        
+        //ViewControllerList will reload UITableView if set to true
+        Bcalendar().setListUpdated(updated: true)
         
         //self.EventListCalendar.dataSource = self
         //self.EventListCalendar.delegate = self

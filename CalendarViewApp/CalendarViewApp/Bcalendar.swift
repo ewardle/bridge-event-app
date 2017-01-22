@@ -16,6 +16,8 @@ public class Bcalendar {
     private let url: String
     private let now: Date
     private var numberOfEvents: Int?
+    private static var sCalendarListEvent = [Int: [Event]]()
+    private static var listUpdated = false
     
     init() {
         now = Date()
@@ -75,6 +77,8 @@ public class Bcalendar {
             self.numberOfEvents! += 1
         }
         
+        Bcalendar.sCalendarListEvent = calendarListEvent
+        
         return calendarListEvent
     }
     
@@ -82,4 +86,17 @@ public class Bcalendar {
         return s1 < s2
     }
     
+    func getBCalListEvents() -> [Int: [Event]] {
+        return Bcalendar.sCalendarListEvent
+    }
+    
+    //method to check if list was updated by pressing sync button on calendar view
+    func updated() -> Bool {
+        return Bcalendar.listUpdated
+    }
+    
+    //method to set listUpdated back to false once viewControllerList updates UITableView
+    func setListUpdated(updated: Bool) {
+        Bcalendar.listUpdated = updated
+    }
 }

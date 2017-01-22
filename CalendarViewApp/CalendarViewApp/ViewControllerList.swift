@@ -18,6 +18,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     
     let now = DateInRegion()
     var calendarListEvent: [Int: [Event]]? = nil
+    var calendarListEvent2: [Int: [Event]]? = nil
     var calendarListEventKeys: [Int]? = nil
     
     override func viewDidLoad() {
@@ -45,7 +46,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print("header section called")
+        //print("header section called")
         let headerSection = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarPrototypeHeader") as! CalendarCellHeader
         
         //Use key as date for header sections in UITable
@@ -57,14 +58,14 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ EventList: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return 4
-        print("number of rows in section")
-        print(self.calendarListEvent?[self.calendarListEventKeys![section]]!.count ?? 0)
+        //print("number of rows in section")
+        //print(self.calendarListEvent?[self.calendarListEventKeys![section]]!.count ?? 0)
         return self.calendarListEvent![self.calendarListEventKeys![section]]!.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("number of sections in table view:")
-        print(self.calendarListEvent?.count ?? 0)
+        //print("number of sections in table view:")
+        //print(self.calendarListEvent?.count ?? 0)
         return self.calendarListEvent!.count
     }
     
@@ -75,11 +76,19 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     
     //Use completion handler to make call to server using Alamofire
     func getEvents() {
-        Bcalendar().getEvents{ (responseObject, responseObject2) in
+        
+        print("Getting events")
+        
+        self.calendarListEvent = Bcalendar().getBCalListEvents()
+        self.setDataSource()
+        //let testDate = self.calendarListEvent2?[19]
+        //print(testDate?[0].eventTitle ?? "No events for test date")
+        
+        /*Bcalendar().getEvents{ (responseObject, responseObject2) in
             self.calendarListEvent = responseObject2
             //load list view
             self.setDataSource()
-        }
+        }*/
     }
     
     //load the list view
@@ -95,7 +104,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         self.EventList.delegate = self
         self.EventList.estimatedRowHeight = 100
         self.EventList.rowHeight = UITableViewAutomaticDimension
-        self.displayEvents()
+        //self.displayEvents()
     }
     
     //Update calendarListEvent and reload UITableView
@@ -103,6 +112,19 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         Bcalendar().getEvents{ (responseObject, responseObject2) in
             self.calendarListEvent = responseObject2
             //load list view
+            self.setDataSource()
+            self.EventList.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //print("Calendar List View appeared")
+        
+        //check if CalendarEventList was updated
+        if(Bcalendar().updated() == true) {
+            print("ViewControllerList check: calendar was updated")
+            Bcalendar().setListUpdated(updated: false)
+            self.calendarListEvent = Bcalendar().getBCalListEvents()
             self.setDataSource()
             self.EventList.reloadData()
         }
