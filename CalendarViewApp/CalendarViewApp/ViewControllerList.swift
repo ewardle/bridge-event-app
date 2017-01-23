@@ -26,6 +26,9 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         self.Events.text = "Calendar Events"
         self.Events.textAlignment = NSTextAlignment.center
         
+        // Register event summary cell type for event list
+        tableView.registerClass(EventSummaryCell.self, forCellReuseIdentifier: "summaryCell")
+        
         //Reloads calendar list with new event list when pressed
         Sync.addTarget(self, action: #selector(updateListOfEvents(button:)), for: .touchUpInside)
         
@@ -34,12 +37,24 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ EventList: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        /* Default: generate prototype cell
         let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarPrototypeCell", for: indexPath as IndexPath) as! CalendarPrototypeCell
+        */
+        // Generate event summary cell
+        let cell = EventList.dequeueReusableCell(withIdentifier: "summaryCell", for: indexPath as IndexPath) as! EventSummaryCell
+        
+        /*
         //Get event array list for current section header and display all event titles for that header section
         let displayEventDay = self.calendarListEvent?[self.calendarListEventKeys![indexPath.section]]
         let displayEventTitle = displayEventDay?[indexPath.row].eventTitle
         
         cell.EventDay.text = displayEventTitle
+        */
+        
+        // Get event array list for current section header and initialize each cell's details
+        let eventArray = self.calendarListEvent?[self.calendarListEventKeys![indexPath.section]]
+        let curr = eventArray?[indexPath.row]
+        cell.fillData(curr)
         
         return cell
     }
@@ -128,3 +143,13 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     
 }
 
+extension UIColor {
+    convenience init(colorWithHexValue value: Int, alpha:CGFloat = 1.0){
+        self.init(
+            red: CGFloat((value & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((value & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(value & 0x0000FF) / 255.0,
+            alpha: alpha
+        )
+    }
+}

@@ -17,7 +17,7 @@ class ViewControllerCalendar: UIViewController {
     
     var calendarListEvent: [Int: [Event]]? = nil
     var calendarListEventDay: [Event]? = nil
-    //var calendarListEventKeys: [Int]? = nil
+    var calendarListEventKeys: [Int]? = nil
     
     let white = UIColor(colorWithHexValue: 0xECEAED)
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
@@ -38,6 +38,9 @@ class ViewControllerCalendar: UIViewController {
             self.calendarView.selectDates([NSDate() as Date])
         }
         
+        
+        // Register event summary cell type for event list section
+        tableView.registerClass(EventSummaryCell.self, forCellReuseIdentifier: "summaryCell")
         
         //self.calendarView.selectDates([NSDate() as Date])
         
@@ -261,19 +264,30 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
 
 extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ EventListCalendar: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        /* Default: generate prototype cell
         let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarViewSelectionCell", for: indexPath as IndexPath) as! CalendarViewSelectionCell
+        */
+        // Generate event summary cell
+        let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "summaryCell", for: indexPath as IndexPath) as! EventSummaryCell
+        
         //Traverse through calendarListEventDay list
         
         //displayEventDay?[0].eventStart?.month == cellState.date.month
         
         if self.calendarListEventDay != nil {
+            /*
             let eventTitle = self.calendarListEventDay?[indexPath.row].eventTitle
-            //cell.CalendarEventDay.text = eventTitle
             cell.CalendarEventDay.text = eventTitle
+            */
+            // Initialize cell details
+            let eventArray = self.calendarListEventDay?[self.calendarListEventKeys![indexPath.section]]
+            let curr = eventArray?[indexPath.row]
+            cell.fillData(curr)
         }
         else {
             cell.CalendarEventDay.text = "No events for selected date"
         }
+        
         
         return cell
     }
