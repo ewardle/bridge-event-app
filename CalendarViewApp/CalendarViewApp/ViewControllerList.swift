@@ -14,7 +14,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var Events: UILabel!
     @IBOutlet weak var EventList: UITableView!
-    @IBOutlet weak var Sync: UIButton!
+    //@IBOutlet weak var Sync: UIButton!
     
     let now = DateInRegion()
     var calendarListEvent: [Int: [Event]]? = nil
@@ -28,7 +28,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         self.Events.textAlignment = NSTextAlignment.center
         
         //Reloads calendar list with new event list when pressed
-        Sync.addTarget(self, action: #selector(updateListOfEvents(button:)), for: .touchUpInside)
+        //Sync.addTarget(self, action: #selector(updateListOfEvents(button:)), for: .touchUpInside)
         
         //Make call to server
         getEvents()
@@ -108,6 +108,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //Update calendarListEvent and reload UITableView
+    //No longer used****
     func updateListOfEvents(button: UIButton) {
         Bcalendar().getEvents{ (responseObject, responseObject2) in
             self.calendarListEvent = responseObject2
@@ -128,10 +129,6 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
             self.setDataSource()
             self.EventList.reloadData()
         }
-    }
-    
-    func testClick(button: UIButton) {
-        print("Button pressed!")
     }
     
     //For testing purposes. Prints events and keys in event array to console
