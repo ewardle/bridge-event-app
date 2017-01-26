@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.alamkanak.weekview.MonthLoader;
@@ -33,6 +34,9 @@ public class UpcomingEventsActivity extends AppCompatActivity implements EventLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upcoming_events_activity);
         mWeekView = (WeekView) findViewById(R.id.weekView);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         mEventList = new ArrayList<>();
         eventResponseManager = new EventResponseManager(this);
