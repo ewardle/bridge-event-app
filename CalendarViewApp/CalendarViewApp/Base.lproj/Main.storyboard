@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZY-7s-KEW">
-                                <rect key="frame" x="20" y="15" width="335" height="30"/>
+                                <rect key="frame" x="20" y="14" width="335" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Calendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpg-nO-t7R">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -44,7 +44,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eSQ-0n-xkV">
-                                <rect key="frame" x="20" y="335" width="335" height="283"/>
+                                <rect key="frame" x="20" y="334" width="335" height="284"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.CalendarViewApp.CalendarViewSelectionCell" rowHeight="65" id="vHC-9P-Tao" customClass="CalendarViewSelectionCell" customModule="CalendarViewApp" customModuleProvider="target">
@@ -87,7 +87,7 @@
                             <constraint firstItem="eSQ-0n-xkV" firstAttribute="top" secondItem="hZY-7s-KEW" secondAttribute="bottom" constant="290" id="DCX-JB-b8W"/>
                             <constraint firstItem="5Gu-zM-Hee" firstAttribute="top" secondItem="aSF-VI-rbQ" secondAttribute="bottom" constant="30" id="H2d-yc-HAb"/>
                             <constraint firstAttribute="trailing" secondItem="5Gu-zM-Hee" secondAttribute="trailing" id="HLB-ix-s5D"/>
-                            <constraint firstItem="hZY-7s-KEW" firstAttribute="top" secondItem="NxV-cz-7o2" secondAttribute="topMargin" constant="15" id="KXQ-gC-Tc0"/>
+                            <constraint firstItem="hZY-7s-KEW" firstAttribute="top" secondItem="NxV-cz-7o2" secondAttribute="topMargin" constant="14" id="KXQ-gC-Tc0"/>
                             <constraint firstItem="hZY-7s-KEW" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leadingMargin" constant="4" id="Z3M-RT-tFE"/>
                             <constraint firstItem="5Gu-zM-Hee" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leading" id="ajV-If-Uf3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hZY-7s-KEW" secondAttribute="trailing" constant="4" id="gA7-cy-g3y"/>

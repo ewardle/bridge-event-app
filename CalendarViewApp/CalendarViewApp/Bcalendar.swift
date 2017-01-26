@@ -14,16 +14,19 @@ import SwiftyJSON
 public class Bcalendar {
     
     private let url: String
+    private let url2: String
+    private var setUrl: String?
     private let now: Date
     private var numberOfEvents: Int?
     private static var sCalendarListEvent = [Int: [Event]]()
     private static var listUpdated = false
+    private static var nextMonth = false
     
     init() {
         now = Date()
         //Url for Spring Server hosting the google calendar api
         url = "http://138.197.129.140:8080/calendar/events?calendarName=bridgekelowna@gmail.com&min=\(now.year)-\(now.month)-01T10:00:31-08:00&max=\(now.year)-\(now.month)-\(now.monthDays)T11:00:31-08:00"
-        //calendarListEvent = [Int: [Event]]()
+        url2 = "http://138.197.129.140:8080/calendar/events?calendarName=bridgekelowna@gmail.com&min=\(now.year)-\(now.month+1)-01T10:00:31-08:00&max=\(now.year)-\(now.month+1)-28T11:00:31-08:00"
         numberOfEvents = 0
     }
     
@@ -32,12 +35,22 @@ public class Bcalendar {
     }
     
     func updateEvents(completionHandler: @escaping (_ responseObject: String?, _ responseObject2: [Int:[Event]]) -> ()) {
-        Alamofire.request(url, method: .get).validate().responseJSON { response in
+        
+        //print(self.setUrl ?? "Not see from Bcal")
+        
+        if(Bcalendar.nextMonth == false) {
+            self.setUrl = self.url
+        }
+        else {
+            self.setUrl = self.url2
+        }
+        
+        Alamofire.request(self.setUrl!, method: .get).validate().responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 let dictionaryOfEvents = self.parseEvents(events: json)
-                completionHandler("Retrived Events", dictionaryOfEvents)
+                completionHandler("Retrieved Events", dictionaryOfEvents)
             case .failure(let error):
                 print(error)
             }
@@ -98,5 +111,10 @@ public class Bcalendar {
     //method to set listUpdated back to false once viewControllerList updates UITableView
     func setListUpdated(updated: Bool) {
         Bcalendar.listUpdated = updated
+    }
+    
+    //Switch between getting current or next month's events
+    func setMonth(nextMonthSet: Bool) {
+        Bcalendar.nextMonth = nextMonthSet
     }
 }

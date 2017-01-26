@@ -52,7 +52,8 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         //cell.EventDay.text = displayEventTitle
         let sectionDate = self.week?.endDate.day
         if let dateExists = self.calendarListEvent?[sectionDate!+indexPath.section+1] {
-            cell.EventDay.text = dateExists[indexPath.row].eventTitle
+            cell.EventDay.text = "\(dateExists[indexPath.row].eventStart!.hour):00-\(dateExists[indexPath.row].eventEnd!.hour):00 \(dateExists[indexPath.row].eventTitle)"
+            //cell.EventDay.text = "eventTester"
         }
         else {
             cell.EventDay.text = "No events for today"

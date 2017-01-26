@@ -16,6 +16,7 @@ class ViewControllerCalendar: UIViewController {
     @IBOutlet weak var syncCalendarButton: UIButton!
     
     var calendarListEvent: [Int: [Event]]? = nil
+    var calendarListEventNext: [Int: [Event]]? = nil
     var calendarListEventDay: [Event]? = nil
     //var calendarListEventKeys: [Int]? = nil
     
@@ -26,21 +27,25 @@ class ViewControllerCalendar: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //get list of events from Google Calendar
         
+        //switch url to retrieve next month's events
+        Bcalendar().setMonth(nextMonthSet: true)
+        
+        //get list of events from Google Calendar for next month
         Bcalendar().getEvents{ (responseObject, responseObject2) in
-            self.calendarListEvent = responseObject2
-            print("Calendar Events Received")
-            //self.loadCalendarView()
+            self.calendarListEventNext = responseObject2
+            print("Next Month Calendar Events Received")
+            Bcalendar().setMonth(nextMonthSet: false)
             
-            //Select current date as default date when calendar view loads
-            self.calendarView.selectDates([NSDate() as Date])
+            if (self.calendarListEventNext?[1]) == nil {
+                print("Not SEE")
+            }
+            self.retrieveCurrentMonthEvents()
         }
-        
         
         //self.calendarView.selectDates([NSDate() as Date])
         
-        //load CalendarView after retriving list from Server
+        //load CalendarView after retrieving list from Server
         self.loadCalendarView()
     }
     
@@ -60,18 +65,21 @@ class ViewControllerCalendar: UIViewController {
         
         //Reloads calendar list with new event list when pressed
         syncCalendarButton.addTarget(self, action: #selector(updateListOfEvents(button:)), for: .touchUpInside)
+        
     }
-
-    /*
-    @IBAction func resize(_ sender: UIButton) {
-        calendarView.frame = CGRect(
-            x: calendarView.frame.origin.x,
-            y: calendarView.frame.origin.y,
-            width: calendarView.frame.width,
-            height: calendarView.frame.height - 50
+    
+    func retrieveCurrentMonthEvents() {
+        //get list of events from Google Calendar
+        Bcalendar().getEvents{ (responseObject, responseObject2) in
+            self.calendarListEvent = responseObject2
+            print("Current Month Calendar Events Received")
+            //self.loadCalendarView()
             
-        )
-    */
+            //Select current date as default date when calendar view loads
+            self.calendarView.selectDates([NSDate() as Date])
+        }
+
+    }
     
 }
 
@@ -225,10 +233,17 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         //for newly selected date
         self.calendarListEventDay = nil
         
+        
+        //print("Month: \(monthOfSelected)")
+        
+        
         //If event list for selected date exists set calendarListEventDay to that list
-        if (self.calendarListEvent?[dateSelected]) != nil && self.calendarListEvent?[dateSelected]?[0].eventStart?.month == monthOfSelected{
-            // now val is not nil and the Optional has been unwrapped, so use it
+        if (self.calendarListEvent?[dateSelected]) != nil && self.calendarListEvent?[dateSelected]?[0].eventStart?.month == monthOfSelected {
             self.calendarListEventDay = self.calendarListEvent?[dateSelected]
+            //print("Dont see this!")
+        }
+        else if (self.calendarListEventNext?[dateSelected]) != nil && self.calendarListEventNext?[dateSelected]?[0].eventStart?.month == monthOfSelected {
+            self.calendarListEventDay = self.calendarListEventNext?[dateSelected]
         }
         //otherwise leave calendarListEventDay nil
         
