@@ -1,21 +1,20 @@
 //
-//  CalendarCellHeader.swift
+//  CalendarViewSelectionCell.swift
 //  CalendarViewApp
 //
-//  Created by Cosc499Capstone on 2017-01-02.
+//  Created by Cosc499Capstone on 2017-01-16.
 //  Copyright © 2017 Amrit. All rights reserved.
 //
 
 import UIKit
 
-class CalendarCellHeader: UITableViewCell {
-
-    @IBOutlet weak var CalendarDay: UILabel!
+class CalendarViewSelectionCell: UITableViewCell {
     
+    @IBOutlet weak var CalendarEventDay: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.CalendarDay.backgroundColor = UIColor.lightGray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
