@@ -15,7 +15,7 @@ class CalendarCellHeader: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.CalendarDay.backgroundColor = UIColor.lightGray
+        //self.CalendarDay.backgroundColor = UIColor.lightGray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
