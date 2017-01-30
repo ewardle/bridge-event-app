@@ -62,19 +62,19 @@ public class Event extends WeekViewEvent {
         endTime.set(Calendar.YEAR, startTime.get(Calendar.YEAR));
         endTime.set(Calendar.MONTH, startTime.get(Calendar.MONTH));
         endTime.set(Calendar.DAY_OF_MONTH, startTime.get(Calendar.DAY_OF_MONTH));
-
+        String[] summary = getSummary().split(",");
         // Create an week view event.
-        WeekViewEvent weekViewEvent = new WeekViewEvent(0, getSummary(), startTime, endTime);
-        if (startTime.get(Calendar.DAY_OF_MONTH) == Calendar.MONDAY) {
-            weekViewEvent.setColor(Color.CYAN);
+        WeekViewEvent weekViewEvent = new WeekViewEvent(0, summary[0], startTime, endTime);
+        weekViewEvent.setColor(Color.parseColor("#D48C70"));
+//        if(weekViewEvent.getId() == 1){
+//            weekViewEvent.setColor();
+//        }
+        if(summary.length > 1) {
+            weekViewEvent.setLocation(summary[1]);
+            if(weekViewEvent.getLocation().equals("Kelowna")){
+                weekViewEvent.setColor(Color.CYAN);
+            }
         }
-        if (startTime.get(Calendar.DAY_OF_MONTH) == Calendar.WEDNESDAY) {
-            weekViewEvent.setColor(Color.BLUE);
-        }
-        if (startTime.get(Calendar.DAY_OF_MONTH) == Calendar.FRIDAY) {
-            weekViewEvent.setColor(Color.GRAY);
-        }
-
         return weekViewEvent;
     }
 

@@ -3,6 +3,7 @@ package com.bridgecalendar.bridgeyouthfamily.bridgecalendar;
 import android.content.Context;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import com.bridgecalendar.bridgeyouthfamily.bridgecalendar.EventResponse.Event;
 
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -41,8 +44,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         Event event = mEventList.get(position);
         TextView eventSummaryTextView = holder.eventSummaryTextView;
         TextView eventStartTextView = holder.eventStartTextView;
-
-        eventSummaryTextView.setText(event.getSummary());
+        TextView eventDescriptionTextView = holder.eventDescriptionTextView;
+        String[] summary = event.getSummary().split(",");
+        Log.d("APP DEBUG",summary.toString());
+        if(summary.length > 1) {
+            eventSummaryTextView.setText(summary[0]);
+            eventDescriptionTextView.setText("Location: " + summary[1]);
+        }else {
+            eventSummaryTextView.setText(summary[0]);
+            eventDescriptionTextView.setText("Location: Unkown");
+        }
         eventStartTextView.setText(event.getEventStartTime());
 
     }
@@ -55,10 +66,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView eventSummaryTextView;
         private TextView eventStartTextView;
+        private TextView eventDescriptionTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             eventSummaryTextView = (TextView) itemView.findViewById(R.id.event_summary_text_view);
+            eventDescriptionTextView = (TextView) itemView.findViewById(R.id.event_description_text_view);
             eventStartTextView = (TextView) itemView.findViewById(R.id.event_start_time_text_view);
         }
     }

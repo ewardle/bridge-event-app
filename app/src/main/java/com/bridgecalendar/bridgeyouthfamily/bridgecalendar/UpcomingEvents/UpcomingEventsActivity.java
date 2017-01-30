@@ -1,11 +1,13 @@
 package com.bridgecalendar.bridgeyouthfamily.bridgecalendar.UpcomingEvents;
 
 import android.app.Fragment;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
@@ -62,10 +64,18 @@ public class UpcomingEventsActivity extends AppCompatActivity implements EventLi
                 return weekViewEvents;
             }
         });
+        mWeekView.setOnEventClickListener(new WeekView.EventClickListener() {
+            @Override
+            public void onEventClick(WeekViewEvent event, RectF eventRect) {
+
+                    Toast.makeText(UpcomingEventsActivity.this, "Location: " + event.getLocation(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     private boolean eventMatches(WeekViewEvent event, int year, int month) {
-        return (event.getStartTime().get(Calendar.YEAR) == year && event.getStartTime().get(Calendar.MONTH) == month-1 ) && (event.getEndTime().get(Calendar.YEAR) == year && event.getEndTime().get(Calendar.MONTH) == month-1 );
+        return (event.getStartTime().get(Calendar.YEAR) == year && event.getStartTime().get(Calendar.MONTH) == month - 1) && (event.getEndTime().get(Calendar.YEAR) == year && event.getEndTime().get(Calendar.MONTH) == month - 1);
     }
 
     @Override

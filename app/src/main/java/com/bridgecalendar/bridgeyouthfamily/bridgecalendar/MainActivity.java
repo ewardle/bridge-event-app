@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ import com.bridgecalendar.bridgeyouthfamily.bridgecalendar.EventResponse.EventLi
 import com.bridgecalendar.bridgeyouthfamily.bridgecalendar.EventResponse.EventResponseManager;
 import com.bridgecalendar.bridgeyouthfamily.bridgecalendar.Settings.SettingsActivity;
 import com.bridgecalendar.bridgeyouthfamily.bridgecalendar.UpcomingEvents.UpcomingEventsActivity;
+
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -42,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements EventListListener
     private RecyclerView mRecyclerView;
     private EventAdapter mEventAdapter;
 
+    private TextView mEmptyEventsTextView;
+    //TODO set to query only current month + previous + next
+    //TODO reupload server code to update setMaxResults = 2499
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements EventListListener
         setSupportActionBar(toolbar);
 
         mCalendarView = (CalendarView) findViewById(R.id.calendar_view);
+        mEmptyEventsTextView = (TextView) findViewById(R.id.no_event_text_view);
+        mEmptyEventsTextView.setVisibility(View.GONE);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.event_recycler_view);
         mEventAdapter = new EventAdapter(this, mRecyclerViewEventList);
@@ -98,9 +106,16 @@ public class MainActivity extends AppCompatActivity implements EventListListener
                             mRecyclerViewEventList.add(mEventList.get(i));
                             //mTextView.setText("" + mEventList.get(i).getSummary());
                         }
-                        if (count == 0) {
-                            //mTextView.setText("No Event Scheduled");
-                        }
+
+
+                    }
+                    if (count == 0) {
+                        mEmptyEventsTextView.setVisibility(View.VISIBLE);
+                        mRecyclerView.setVisibility(View.GONE);
+                    }
+                    else {
+                        mRecyclerView.setVisibility(View.VISIBLE);
+                        mEmptyEventsTextView.setVisibility(View.GONE);
 
                     }
                     mEventAdapter.notifyDataSetChanged();
@@ -108,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
                     String dateFormatted = dateFormat.format(date);
                     //Toast.makeText(MainActivity.this, dateFormatted, Toast.LENGTH_SHORT).show();
                     //Toast.makeText(MainActivity.this, ""+unixTimeStart, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(MainActivity.this, "" + count, Toast.LENGTH_SHORT).show();
+
 
                 } catch (ParseException e) {
                     e.printStackTrace();
