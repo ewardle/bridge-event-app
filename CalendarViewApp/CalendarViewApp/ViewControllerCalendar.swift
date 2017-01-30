@@ -28,22 +28,8 @@ class ViewControllerCalendar: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //switch url to retrieve next month's events
-        Bcalendar().setMonth(nextMonthSet: true)
-        
-        //get list of events from Google Calendar for next month
-        Bcalendar().getEvents{ (responseObject, responseObject2) in
-            self.calendarListEventNext = responseObject2
-            print("Next Month Calendar Events Received")
-            Bcalendar().setMonth(nextMonthSet: false)
-            
-            if (self.calendarListEventNext?[1]) == nil {
-                print("Not SEE")
-            }
-            self.retrieveCurrentMonthEvents()
-        }
-        
-        //self.calendarView.selectDates([NSDate() as Date])
+        //First retrieve next mont's events
+        self.retrieveNextMonthEvents()
         
         //load CalendarView after retrieving list from Server
         self.loadCalendarView()
@@ -77,6 +63,26 @@ class ViewControllerCalendar: UIViewController {
             
             //Select current date as default date when calendar view loads
             self.calendarView.selectDates([NSDate() as Date])
+        }
+        
+        //reload calendar view
+        self.calendarView.reloadData()
+    }
+    
+    func retrieveNextMonthEvents() {
+        //switch url to retrieve next month's events
+        Bcalendar().setMonth(nextMonthSet: true)
+        
+        //get list of events from Google Calendar for next month
+        Bcalendar().getEvents{ (responseObject, responseObject2) in
+            self.calendarListEventNext = responseObject2
+            print("Next Month Calendar Events Received")
+            Bcalendar().setMonth(nextMonthSet: false)
+            
+            if (self.calendarListEventNext?[1]) == nil {
+                print("Not SEE")
+            }
+            self.retrieveCurrentMonthEvents()
         }
 
     }
@@ -255,24 +261,14 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     //Update calendarListEvent and reload UITableView
     func updateListOfEvents(button: UIButton) {
-        Bcalendar().getEvents{ (responseObject, responseObject2) in
-            //retrieve list from server
-            self.calendarListEvent = responseObject2
-            
-            //Select current date as default date when calendar view reloads
-            self.calendarView.selectDates([NSDate() as Date])
-        }
+        
+        //call linked calendarEventList methods
+        self.retrieveNextMonthEvents()
+        
         print("Reloading calendar view")
         
         //ViewControllerList will reload UITableView if set to true
         Bcalendar().setListUpdated(updated: true)
-        
-        //self.EventListCalendar.dataSource = self
-        //self.EventListCalendar.delegate = self
-        //self.EventListCalendar.reloadData()
-        
-        //reload calendar view
-        self.calendarView.reloadData()
     }
 }
 

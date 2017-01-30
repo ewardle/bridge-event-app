@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftDate
 import SwiftyJSON
-//MUST STILL ADJUST URL TO BRING BACK CURRENT MONTH'S AND NEXT MONTH'S EVENTS******************
+
 public class Bcalendar {
     
     private let url: String
@@ -19,6 +19,7 @@ public class Bcalendar {
     private let now: Date
     private var numberOfEvents: Int?
     private static var sCalendarListEvent = [Int: [Event]]()
+    private static var sCalendarListEvent2 = [Int: [Event]]()
     private static var listUpdated = false
     private static var nextMonth = false
     
@@ -90,7 +91,12 @@ public class Bcalendar {
             self.numberOfEvents! += 1
         }
         
-        Bcalendar.sCalendarListEvent = calendarListEvent
+        if(Bcalendar.nextMonth == true) {
+            Bcalendar.sCalendarListEvent2 = calendarListEvent
+        }
+        else {
+            Bcalendar.sCalendarListEvent = calendarListEvent
+        }
         
         return calendarListEvent
     }
@@ -101,6 +107,10 @@ public class Bcalendar {
     
     func getBCalListEvents() -> [Int: [Event]] {
         return Bcalendar.sCalendarListEvent
+    }
+    
+    func getBCalListEvents2() -> [Int: [Event]] {
+        return Bcalendar.sCalendarListEvent2
     }
     
     //method to check if list was updated by pressing sync button on calendar view

@@ -21,7 +21,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     var calendarListEvent2: [Int: [Event]]? = nil
     var calendarListEventKeys: [Int]? = nil
     let daysOfTheWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
-    let week = DateInRegion().previousWeekend
+    let week = DateInRegion().thisWeekend
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +49,16 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         //let displayEventDay = self.calendarListEvent?[self.calendarListEventKeys![indexPath.section]]
         //let displayEventTitle = displayEventDay?[indexPath.row].eventTitle
         
-        //cell.EventDay.text = displayEventTitle
-        let sectionDate = self.week?.endDate.day
-        if let dateExists = self.calendarListEvent?[sectionDate!+indexPath.section+1] {
+        var listToPullFrom = self.calendarListEvent
+        
+        let dayinWeek = self.week?.endDate
+        var sectionDay = (dayinWeek?.day)! + indexPath.section + 1
+        if sectionDay > now.monthDays {
+            sectionDay = sectionDay - now.monthDays
+            listToPullFrom = self.calendarListEvent2
+        }
+        
+        if let dateExists = listToPullFrom?[sectionDay] {
             cell.EventDay.text = "\(dateExists[indexPath.row].eventStart!.hour):00-\(dateExists[indexPath.row].eventEnd!.hour):00 \(dateExists[indexPath.row].eventTitle)"
             //cell.EventDay.text = "eventTester"
         }
@@ -66,12 +73,14 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         //print("header section called")
         let headerSection = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarPrototypeHeader") as! CalendarCellHeader
         
-        //Use key as date for header sections in UITable
-        //let displayEventHeaderDay = Int((self.calendarListEventKeys?[section])!)
-        //headerSection.CalendarDay.text = "\(now.monthName) \(String(describing: displayEventHeaderDay)),  \(now.year)"
+        let dayinWeek = self.week?.endDate
+        var headerDay = (dayinWeek?.day)! + section + 1
+        if headerDay > now.monthDays {
+            headerDay = headerDay - now.monthDays
+        }
         
         //var dayInWeek = self.week?.endDate
-        headerSection.CalendarDay.text = "\(self.daysOfTheWeek[section]) \(now.monthName) \((week?.endDate.day)!+section+1)"
+        headerSection.CalendarDay.text = "\(self.daysOfTheWeek[section]) \(now.monthName) \(headerDay)"
         
         return headerSection
     }
@@ -81,8 +90,16 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         //print(self.calendarListEvent?[self.calendarListEventKeys![section]]!.count ?? 0)
         //return self.calendarListEvent![self.calendarListEventKeys![section]]!.count
         
-        let sectionDateR = self.week?.endDate.day
-        if let eventRow = self.calendarListEvent?[sectionDateR!+section+1] {
+        var listToPullFromR = self.calendarListEvent
+        
+        let dayinWeek = self.week?.endDate
+        var sectionDayR = (dayinWeek?.day)! + section + 1
+        if sectionDayR > now.monthDays {
+            sectionDayR = sectionDayR - now.monthDays
+            listToPullFromR = self.calendarListEvent2
+        }
+
+        if let eventRow = listToPullFromR?[sectionDayR] {
             return eventRow.count
         }
         else {
@@ -106,17 +123,10 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     func getEvents() {
         
         print("Getting events")
-        
         self.calendarListEvent = Bcalendar().getBCalListEvents()
+        self.calendarListEvent2 = Bcalendar().getBCalListEvents2()
         self.setDataSource()
-        //let testDate = self.calendarListEvent2?[19]
-        //print(testDate?[0].eventTitle ?? "No events for test date")
         
-        /*Bcalendar().getEvents{ (responseObject, responseObject2) in
-            self.calendarListEvent = responseObject2
-            //load list view
-            self.setDataSource()
-        }*/
     }
     
     //load the list view
@@ -154,6 +164,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
             print("ViewControllerList check: calendar was updated")
             Bcalendar().setListUpdated(updated: false)
             self.calendarListEvent = Bcalendar().getBCalListEvents()
+            self.calendarListEvent2 = Bcalendar().getBCalListEvents2()
             self.setDataSource()
             self.EventList.reloadData()
         }
