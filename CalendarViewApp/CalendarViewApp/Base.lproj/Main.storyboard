@@ -22,58 +22,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZY-7s-KEW">
-                                <rect key="frame" x="16" y="18" width="343" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        Event Calendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpg-nO-t7R">
-                                        <rect key="frame" x="0.0" y="0.0" width="308" height="30"/>
-                                        <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I85-e3-2b7">
-                                        <rect key="frame" x="308" y="0.0" width="35" height="30"/>
-                                        <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="CJR-0W-OYg"/>
-                                        </constraints>
-                                        <state key="normal" title="Sync">
-                                            <color key="titleColor" red="0.26274509800000001" green="0.45882352939999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="I85-e3-2b7" secondAttribute="trailing" id="wJi-aV-MIr"/>
-                                </constraints>
-                            </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eSQ-0n-xkV">
-                                <rect key="frame" x="16" y="338" width="343" height="280"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eSQ-0n-xkV">
+                                <rect key="frame" x="0.0" y="345" width="375" height="273"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.CalendarViewApp.CalendarViewSelectionCell" rowHeight="65" id="vHC-9P-Tao" customClass="CalendarViewSelectionCell" customModule="CalendarViewApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="65"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHC-9P-Tao" id="DKm-AP-xAJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jx-I5-8K9">
-                                                    <rect key="frame" x="8" y="20" width="327" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ras-Ry-X9H">
+                                                    <rect key="frame" x="8" y="5" width="359" height="128"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nia-YF-PHN">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="128"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="C E Time Start" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpy-0e-NSX">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="107.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C E Time End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9w-Ia-A0Y">
+                                                                    <rect key="frame" x="0.0" y="107.5" width="50" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="7NM-0W-yCt"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QcQ-oj-SSu" userLabel="Separator">
+                                                            <rect key="frame" x="50" y="0.0" width="10" height="128"/>
+                                                            <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="10" id="z02-Pb-ZHz"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar Event Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jx-I5-8K9">
+                                                            <rect key="frame" x="60" y="0.0" width="299" height="128"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="4Jx-I5-8K9" firstAttribute="top" secondItem="ras-Ry-X9H" secondAttribute="top" id="FFp-tP-6re"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.26274509800000001" green="0.45882352939999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="4Jx-I5-8K9" firstAttribute="trailing" secondItem="DKm-AP-xAJ" secondAttribute="trailingMargin" id="ZBN-6K-C5K"/>
-                                                <constraint firstItem="4Jx-I5-8K9" firstAttribute="leading" secondItem="DKm-AP-xAJ" secondAttribute="leadingMargin" id="oNa-oc-FqG"/>
-                                                <constraint firstItem="4Jx-I5-8K9" firstAttribute="centerY" secondItem="DKm-AP-xAJ" secondAttribute="centerY" constant="-1.5" id="oyp-1b-ok5"/>
-                                                <constraint firstItem="4Jx-I5-8K9" firstAttribute="centerX" secondItem="DKm-AP-xAJ" secondAttribute="centerX" id="upu-wg-bB7"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ras-Ry-X9H" secondAttribute="trailing" id="QSy-i5-wvX"/>
+                                                <constraint firstItem="ras-Ry-X9H" firstAttribute="top" secondItem="DKm-AP-xAJ" secondAttribute="top" constant="5" id="swg-uE-Keb"/>
+                                                <constraint firstItem="ras-Ry-X9H" firstAttribute="leading" secondItem="DKm-AP-xAJ" secondAttribute="leadingMargin" id="wfK-iT-qXS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="CalendarEventDay" destination="4Jx-I5-8K9" id="EW5-ls-c5b"/>
+                                            <outlet property="CalendarEventTimeEnd" destination="X9w-Ia-A0Y" id="63B-gi-qQ9"/>
+                                            <outlet property="CalendarEventTimeStart" destination="wpy-0e-NSX" id="Sdj-Q8-GoZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -85,19 +97,47 @@
                                     <constraint firstAttribute="height" constant="300" id="bcH-x0-kH9"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZY-7s-KEW">
+                                <rect key="frame" x="0.0" y="18" width="375" height="32"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="              Event Calendar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpg-nO-t7R">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="32"/>
+                                        <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I85-e3-2b7">
+                                        <rect key="frame" x="315" y="0.0" width="60" height="32"/>
+                                        <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="CJR-0W-OYg"/>
+                                        </constraints>
+                                        <state key="normal" title="Sync">
+                                            <color key="titleColor" red="0.26274509800000001" green="0.45882352939999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="19D-2Z-PDN" userLabel="Phone Status Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="eSQ-0n-xkV" firstAttribute="top" secondItem="hZY-7s-KEW" secondAttribute="bottom" constant="290" id="DCX-JB-b8W"/>
+                            <constraint firstItem="hZY-7s-KEW" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leading" id="5UV-hL-lRU"/>
+                            <constraint firstItem="eSQ-0n-xkV" firstAttribute="top" secondItem="hZY-7s-KEW" secondAttribute="bottom" constant="295" id="DCX-JB-b8W"/>
                             <constraint firstItem="5Gu-zM-Hee" firstAttribute="top" secondItem="aSF-VI-rbQ" secondAttribute="bottom" constant="30" id="H2d-yc-HAb"/>
                             <constraint firstAttribute="trailing" secondItem="5Gu-zM-Hee" secondAttribute="trailing" id="HLB-ix-s5D"/>
                             <constraint firstItem="hZY-7s-KEW" firstAttribute="top" secondItem="NxV-cz-7o2" secondAttribute="topMargin" constant="18" id="KXQ-gC-Tc0"/>
-                            <constraint firstItem="hZY-7s-KEW" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leadingMargin" id="Z3M-RT-tFE"/>
+                            <constraint firstItem="5Gu-zM-Hee" firstAttribute="top" secondItem="hZY-7s-KEW" secondAttribute="bottom" id="YVM-Vx-rfd"/>
                             <constraint firstItem="5Gu-zM-Hee" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leading" id="ajV-If-Uf3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hZY-7s-KEW" secondAttribute="trailing" id="gA7-cy-g3y"/>
                             <constraint firstItem="eSQ-0n-xkV" firstAttribute="leading" secondItem="hZY-7s-KEW" secondAttribute="leading" id="iT5-lf-jGv"/>
                             <constraint firstItem="eSQ-0n-xkV" firstAttribute="trailing" secondItem="hZY-7s-KEW" secondAttribute="trailing" id="p2P-dv-ORd"/>
                             <constraint firstItem="eSQ-0n-xkV" firstAttribute="bottom" secondItem="c6b-vr-sUy" secondAttribute="top" id="sqY-yN-E5d"/>
+                            <constraint firstAttribute="trailing" secondItem="hZY-7s-KEW" secondAttribute="trailing" id="zQW-Tf-Djl"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendar" id="Vl4-lD-5ob" userLabel="Calendar"/>
@@ -160,7 +200,7 @@
                                         <rect key="frame" x="0.0" y="28" width="335" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KkO-7j-tYD" id="5lu-qN-uHt">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR0-Wr-pJr">
@@ -185,7 +225,7 @@
                                         <rect key="frame" x="0.0" y="93" width="335" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F2T-79-3RJ" id="Hpm-cn-vyp">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDC-DO-YvL">

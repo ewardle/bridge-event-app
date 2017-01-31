@@ -79,9 +79,9 @@ class ViewControllerCalendar: UIViewController {
             print("Next Month Calendar Events Received")
             Bcalendar().setMonth(nextMonthSet: false)
             
-            if (self.calendarListEventNext?[1]) == nil {
+            /*if (self.calendarListEventNext?[1]) == nil {
                 print("Not SEE")
-            }
+            }*/
             self.retrieveCurrentMonthEvents()
         }
 
@@ -115,10 +115,10 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         
         if cellState.isSelected {
-            myCustomCell.dayLabel.textColor = darkPurple
+            myCustomCell.dayLabel.textColor = white
         } else {
             if cellState.dateBelongsTo == .thisMonth {
-                myCustomCell.dayLabel.textColor = dimPurple
+                myCustomCell.dayLabel.textColor = white
             } else {
                 myCustomCell.dayLabel.textColor = lightGrey
             }
@@ -155,7 +155,7 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             return
         }
         if cellState.isSelected {
-            myCustomCell.selectedView.layer.cornerRadius =  25
+            myCustomCell.selectedView.layer.cornerRadius =  20
             myCustomCell.selectedView.isHidden = false
         } else {
             myCustomCell.selectedView.isHidden = true
@@ -256,6 +256,7 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         //reload TableView to show events for newly selected date if they exist
         self.EventListCalendar.dataSource = self
         self.EventListCalendar.delegate = self
+        //self.EventListCalendar.rowHeight = 45
         self.EventListCalendar.reloadData()
     }
     
@@ -280,9 +281,21 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
         //displayEventDay?[0].eventStart?.month == cellState.date.month
         
         if self.calendarListEventDay != nil {
-            let eventTitle = self.calendarListEventDay?[indexPath.row].eventTitle
-            //cell.CalendarEventDay.text = eventTitle
-            cell.CalendarEventDay.text = eventTitle
+            let eventInfo = self.calendarListEventDay?[indexPath.row]
+            
+            cell.CalendarEventDay.text = eventInfo!.eventTitle
+            
+            var minuteStart = String(eventInfo!.eventStart!.minute)
+            var minuteEnd = String(eventInfo!.eventEnd!.minute)
+            if(minuteStart == "0") {
+                minuteStart = "00"
+            }
+            if(minuteEnd == "0") {
+                minuteEnd = "00"
+            }
+            
+            cell.CalendarEventTimeStart.text = "\(eventInfo!.eventStart!.hour):\(minuteStart)"
+            cell.CalendarEventTimeEnd.text = "\(eventInfo!.eventEnd!.hour):\(minuteEnd)"
         }
         else {
             cell.CalendarEventDay.text = "No events for selected date"

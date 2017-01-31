@@ -21,7 +21,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     var calendarListEvent2: [Int: [Event]]? = nil
     var calendarListEventKeys: [Int]? = nil
     let daysOfTheWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
-    let week = DateInRegion().thisWeekend
+    let week = DateInRegion().previousWeekend
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,12 +75,14 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         
         let dayinWeek = self.week?.endDate
         var headerDay = (dayinWeek?.day)! + section + 1
+        var monthOfDate = now.monthName
         if headerDay > now.monthDays {
             headerDay = headerDay - now.monthDays
+            monthOfDate = now.nextMonth.monthName
         }
         
         //var dayInWeek = self.week?.endDate
-        headerSection.CalendarDay.text = "\(self.daysOfTheWeek[section]) \(now.monthName) \(headerDay)"
+        headerSection.CalendarDay.text = "\(self.daysOfTheWeek[section]) \(monthOfDate) \(headerDay)"
         
         return headerSection
     }
@@ -94,6 +96,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         
         let dayinWeek = self.week?.endDate
         var sectionDayR = (dayinWeek?.day)! + section + 1
+        //var sectionDayT = (dayinWeek?.day)! + section + 1
         if sectionDayR > now.monthDays {
             sectionDayR = sectionDayR - now.monthDays
             listToPullFromR = self.calendarListEvent2
