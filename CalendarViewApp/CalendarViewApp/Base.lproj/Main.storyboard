@@ -23,14 +23,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eSQ-0n-xkV">
-                                <rect key="frame" x="0.0" y="345" width="375" height="273"/>
+                                <rect key="frame" x="0.0" y="349" width="375" height="269"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.CalendarViewApp.CalendarViewSelectionCell" rowHeight="65" id="vHC-9P-Tao" customClass="CalendarViewSelectionCell" customModule="CalendarViewApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHC-9P-Tao" id="DKm-AP-xAJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ras-Ry-X9H">
@@ -125,10 +125,9 @@
                                 <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hZY-7s-KEW" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leading" id="5UV-hL-lRU"/>
-                            <constraint firstItem="eSQ-0n-xkV" firstAttribute="top" secondItem="hZY-7s-KEW" secondAttribute="bottom" constant="295" id="DCX-JB-b8W"/>
+                            <constraint firstItem="eSQ-0n-xkV" firstAttribute="top" secondItem="hZY-7s-KEW" secondAttribute="bottom" constant="299" id="DCX-JB-b8W"/>
                             <constraint firstItem="5Gu-zM-Hee" firstAttribute="top" secondItem="aSF-VI-rbQ" secondAttribute="bottom" constant="30" id="H2d-yc-HAb"/>
                             <constraint firstAttribute="trailing" secondItem="5Gu-zM-Hee" secondAttribute="trailing" id="HLB-ix-s5D"/>
                             <constraint firstItem="hZY-7s-KEW" firstAttribute="top" secondItem="NxV-cz-7o2" secondAttribute="topMargin" constant="18" id="KXQ-gC-Tc0"/>
@@ -140,7 +139,7 @@
                             <constraint firstAttribute="trailing" secondItem="hZY-7s-KEW" secondAttribute="trailing" id="zQW-Tf-Djl"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendar" id="Vl4-lD-5ob" userLabel="Calendar"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="Vl4-lD-5ob" userLabel="Calendar"/>
                     <connections>
                         <outlet property="EventListCalendar" destination="eSQ-0n-xkV" id="Ixt-by-sAD"/>
                         <outlet property="calendarView" destination="5Gu-zM-Hee" id="uB2-PF-Q9J"/>
@@ -151,16 +150,16 @@
             </objects>
             <point key="canvasLocation" x="-554.39999999999998" y="-125.4872563718141"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--View Controller Tab Bar-->
         <scene sceneID="bXv-2T-RBe">
             <objects>
-                <tabBarController id="phg-e6-A1o" sceneMemberID="viewController">
+                <tabBarController id="phg-e6-A1o" customClass="ViewControllerTabBar" customModule="CalendarViewApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="21X-Ne-WrS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="TabBar" destination="21X-Ne-WrS" id="uoe-Qj-Ttd"/>
                         <segue destination="wPd-lC-K6G" kind="relationship" relationship="viewControllers" id="btJ-TX-lX4"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="c31-W3-bkP"/>
                     </connections>
@@ -200,7 +199,7 @@
                                         <rect key="frame" x="0.0" y="28" width="335" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KkO-7j-tYD" id="5lu-qN-uHt">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR0-Wr-pJr">
@@ -225,7 +224,7 @@
                                         <rect key="frame" x="0.0" y="93" width="335" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F2T-79-3RJ" id="Hpm-cn-vyp">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDC-DO-YvL">
@@ -261,7 +260,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="0dA-v3-eJC" secondAttribute="bottom" constant="45" id="tcq-6d-DuD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" id="BT2-aY-bvw" userLabel="List"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="BT2-aY-bvw" userLabel="List"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="EventList" destination="0dA-v3-eJC" id="4dL-6b-trV"/>
