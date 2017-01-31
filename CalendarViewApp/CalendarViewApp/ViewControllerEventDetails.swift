@@ -10,29 +10,50 @@ import UIKit
 import SwiftDate
 import Foundation
 
-class ViewControllerEventDetails: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewControllerEventDetails: UIViewController {
     
     
-    // @TODO: Get IBOutlets from the fields
+    // Parts of cell
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var description: UITextView!
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var startTime: UILabel!
+    @IBOutlet weak var endTime: UILabel!
+    @IBOutlet weak var divider: UIView!
+    
+    // Event that we get the data for this view from
+    var contents: Event? = nil
+    
+    let locationColors: [String: UIColor] = ["Peachland": UIColor(colorWithHexValue: 0xFF9999), "Kelowna": UIColor(colorWithHexValue: 0x99CCFF)] //placeholders until we can get the place names programmatically
+    let gray = UIColor.gray
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // @TODO: register Event Details cell type, or else treat the view as a monolithic one; get details passed in from initial event summary
+        fillData(contents!) // contents variable filled when preparing for segue
     }
     
 
+    // Populate cell with the data and store the event that it comes from
+    func fillData(curr: Event) {
+        contents = curr
+        self.title.text = curr.eventTitle
+        self.description.text = curr.description
+        self.startTime.text = curr.eventStart
+        if let endTime = curr.eventEnd {
+            self.endTime.text = curr.eventEnd
+        }
+        else { // no end time (all-day event)
+            self.endTime.text = ""
+        }
+        if let newColor = locationColors[curr.location] {
+            self.divider.backgroundColor = newColor
+        }
+        else { // unrecognized location
+            self.divider.backgroundColor = gray
+        }
+    }
     
 }
 
-extension UIColor {
-    convenience init(colorWithHexValue value: Int, alpha:CGFloat = 1.0){
-        self.init(
-            red: CGFloat((value & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((value & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(value & 0x0000FF) / 255.0,
-            alpha: alpha
-        )
-    }
-}
+

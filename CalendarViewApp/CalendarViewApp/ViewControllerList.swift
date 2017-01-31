@@ -20,6 +20,8 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     var calendarListEvent: [Int: [Event]]? = nil
     var calendarListEventKeys: [Int]? = nil
     
+    var selectedListCellEvent: Event? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //"Event List" UITable Header
@@ -77,6 +79,20 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         return self.calendarListEvent![self.calendarListEventKeys![section]]!.count
     }
     
+    // Go to event details (trigger segue) when event list row selected
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let rowIndex = tableView.indexPathForSelectedRow!.row
+        selectedListCellEvent = calendarListEvent[rowIndex]
+        performSegue(withIdentifier: "EventDetails", sender: self)
+    }
+    // Send current event when viewing details
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EventDetails" {
+            let destination = segue.destination as? ViewControllerEventDetails
+            destination!.contents = selectedListCellEvent
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         print("number of sections in table view:")
         print(self.calendarListEvent?.count ?? 0)
@@ -123,6 +139,14 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
+    func tableView(tableView: UITableView!, didSelectRowAtPath indexPath: NSIndexPath!) {
+        indexPath.row
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    }
+    
     func testClick(button: UIButton) {
         print("Button pressed!")
     }
@@ -143,13 +167,3 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     
 }
 
-extension UIColor {
-    convenience init(colorWithHexValue value: Int, alpha:CGFloat = 1.0){
-        self.init(
-            red: CGFloat((value & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((value & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(value & 0x0000FF) / 255.0,
-            alpha: alpha
-        )
-    }
-}

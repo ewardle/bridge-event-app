@@ -11,6 +11,7 @@
 		3E89B2AE3B3B8C2D4539CC67 /* Pods_CalendarViewApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1DE938AA0B6789800E6638 /* Pods_CalendarViewApp.framework */; };
 		692D63671E35B2460094FDFA /* EventSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692D63661E35B2460094FDFA /* EventSummaryCell.xib */; };
 		69DCDBDD1E35BB0B00B6E9BC /* EventSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DCDBDC1E35BB0B00B6E9BC /* EventSummaryCell.swift */; };
+		69DE36FC1E407086004C5F8F /* UIColorHexExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DE36FB1E407086004C5F8F /* UIColorHexExtension.swift */; };
 		69FEA62A1E37231D00986BA7 /* ViewControllerEventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FEA6291E37231D00986BA7 /* ViewControllerEventDetails.swift */; };
 		D00614351E206E6A00866B11 /* CalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00614341E206E6A00866B11 /* CalendarHeaderView.xib */; };
 		D006143D1E20715300866B11 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006143C1E20715300866B11 /* CalendarHeaderView.swift */; };
@@ -48,6 +49,7 @@
 		671723650B19A8B9134B9D90 /* Pods-CalendarViewApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewApp/Pods-CalendarViewApp.release.xcconfig"; sourceTree = "<group>"; };
 		692D63661E35B2460094FDFA /* EventSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventSummaryCell.xib; sourceTree = "<group>"; };
 		69DCDBDC1E35BB0B00B6E9BC /* EventSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSummaryCell.swift; sourceTree = "<group>"; };
+		69DE36FB1E407086004C5F8F /* UIColorHexExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorHexExtension.swift; sourceTree = "<group>"; };
 		69FEA6291E37231D00986BA7 /* ViewControllerEventDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEventDetails.swift; sourceTree = "<group>"; };
 		9FBE3F96A5A4403CA515C9B3 /* Pods-CalendarViewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewApp/Pods-CalendarViewApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C3F0F7519AC3CA6022EB3305 /* Pods-CalendarViewAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewAppTests/Pods-CalendarViewAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				69FEA6291E37231D00986BA7 /* ViewControllerEventDetails.swift */,
 				692D63661E35B2460094FDFA /* EventSummaryCell.xib */,
 				69DCDBDC1E35BB0B00B6E9BC /* EventSummaryCell.swift */,
+				69DE36FB1E407086004C5F8F /* UIColorHexExtension.swift */,
 				D0CDEE6E1E25C31D00409A92 /* Bcalendar.swift */,
 				D00F43D51E1A0476008C1D62 /* Event.swift */,
 				D024F02A1E1317D1004AD2A5 /* Main.storyboard */,
@@ -386,6 +389,7 @@
 				D006143D1E20715300866B11 /* CalendarHeaderView.swift in Sources */,
 				D0C74CAE1E1AEC7A0064F795 /* CalendarCellHeader.swift in Sources */,
 				D0A00B7C1E2DDEE30085BD06 /* CalendarViewSelectionCell.swift in Sources */,
+				69DE36FC1E407086004C5F8F /* UIColorHexExtension.swift in Sources */,
 				D024F0291E1317D1004AD2A5 /* ViewControllerList.swift in Sources */,
 				D024F0271E1317D1004AD2A5 /* AppDelegate.swift in Sources */,
 				D08996221E1BF748008AA738 /* ViewControllerCalendar.swift in Sources */,

@@ -14,12 +14,15 @@ class EventSummaryCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var description: UILabel!
     @IBOutlet weak var location: UILabel!
-    
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
-    
     @IBOutlet weak var divider: UIView!
     
+    // Event that we got the data for this cell from
+    var contents: Event? = nil
+    
+    // The controller that will let us segue to details view
+    var delegate: EventDetailsDelegate?
     
     let locationColors: [String: UIColor] = ["Peachland": UIColor(colorWithHexValue: 0xFF9999), "Kelowna": UIColor(colorWithHexValue: 0x99CCFF)] //placeholders until we can get the place names programmatically
     let gray = UIColor.gray
@@ -35,7 +38,9 @@ class EventSummaryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // Populate cell with the data and store the event that it comes from
     func fillData(curr: Event) {
+        contents = curr
         self.title.text = curr.eventTitle
         self.description.text = curr.description
         self.startTime.text = curr.eventStart
@@ -52,4 +57,11 @@ class EventSummaryCell: UITableViewCell {
             self.divider.backgroundColor = gray
         }
     }
+    
+}
+
+
+// For switching to summary cell
+public protocol EventDetailsDelegate {
+    func goToDetails(content: Event)
 }
