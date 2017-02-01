@@ -9,7 +9,7 @@
 import UIKit
 
 class CalendarViewSelectionCell: UITableViewCell {
-    
+    //Change background to green tint
     @IBOutlet weak var CalendarEventDay: UILabel!
     @IBOutlet weak var CalendarEventLocation: UILabel!
     @IBOutlet weak var CalendarEventTime: UILabel!
