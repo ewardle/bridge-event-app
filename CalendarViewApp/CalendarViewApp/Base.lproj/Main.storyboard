@@ -22,6 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZY-7s-KEW">
                                 <rect key="frame" x="16" y="18" width="343" height="30"/>
                                 <subviews>
@@ -64,43 +65,129 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+=======
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eSQ-0n-xkV">
+                                <rect key="frame" x="0.0" y="338" width="375" height="280"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.CalendarViewApp.CalendarViewSelectionCell" rowHeight="90" id="vHC-9P-Tao" customClass="CalendarViewSelectionCell" customModule="CalendarViewApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHC-9P-Tao" id="DKm-AP-xAJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IET-7x-UR7" userLabel="Event Description">
+                                                    <rect key="frame" x="10" y="8" width="355" height="75"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Calendar Event Day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jx-I5-8K9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="L4t-kb-0rq"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Event Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0az-Kf-Fd4">
+                                                            <rect key="frame" x="0.0" y="25" width="355" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="2YF-QI-afS"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Event Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpy-0e-NSX" userLabel="Calendar Event Time">
+                                                            <rect key="frame" x="0.0" y="50" width="355" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="vKC-og-i00"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="4Jx-I5-8K9" firstAttribute="leading" secondItem="IET-7x-UR7" secondAttribute="leading" id="2Nu-gK-wGi"/>
+                                                        <constraint firstItem="0az-Kf-Fd4" firstAttribute="leading" secondItem="IET-7x-UR7" secondAttribute="leading" id="YDe-c4-iZv"/>
+                                                    </constraints>
+                                                </stackView>
+>>>>>>> amrit_branch
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="4Jx-I5-8K9" firstAttribute="trailing" secondItem="DKm-AP-xAJ" secondAttribute="trailingMargin" id="ZBN-6K-C5K"/>
-                                                <constraint firstItem="4Jx-I5-8K9" firstAttribute="leading" secondItem="DKm-AP-xAJ" secondAttribute="leadingMargin" id="oNa-oc-FqG"/>
-                                                <constraint firstItem="4Jx-I5-8K9" firstAttribute="centerY" secondItem="DKm-AP-xAJ" secondAttribute="centerY" constant="-1.5" id="oyp-1b-ok5"/>
-                                                <constraint firstItem="4Jx-I5-8K9" firstAttribute="centerX" secondItem="DKm-AP-xAJ" secondAttribute="centerX" id="upu-wg-bB7"/>
+                                                <constraint firstItem="IET-7x-UR7" firstAttribute="top" secondItem="DKm-AP-xAJ" secondAttribute="topMargin" id="60a-R7-xed"/>
+                                                <constraint firstItem="IET-7x-UR7" firstAttribute="leading" secondItem="DKm-AP-xAJ" secondAttribute="leading" constant="10" id="MOI-0n-pXw"/>
+                                                <constraint firstAttribute="trailing" secondItem="IET-7x-UR7" secondAttribute="trailing" constant="10" id="Y62-TT-dLf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="CalendarEventDay" destination="4Jx-I5-8K9" id="EW5-ls-c5b"/>
+                                            <outlet property="CalendarEventLocation" destination="0az-Kf-Fd4" id="dYu-wW-Q7O"/>
+                                            <outlet property="CalendarEventTime" destination="wpy-0e-NSX" id="phX-KH-crG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Gu-zM-Hee" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="0.0" y="50" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="bcH-x0-kH9"/>
+                                    <constraint firstAttribute="height" constant="280" id="bcH-x0-kH9"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZY-7s-KEW" userLabel="Header">
+                                <rect key="frame" x="0.0" y="18" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   The Bridge Calendar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpg-nO-t7R">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
+                                        <color key="backgroundColor" red="0.26274509800000001" green="0.45882352939999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I85-e3-2b7">
+                                        <rect key="frame" x="315" y="0.0" width="60" height="50"/>
+                                        <color key="backgroundColor" red="0.26274509800000001" green="0.45882352939999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="CJR-0W-OYg"/>
+                                        </constraints>
+                                        <state key="normal" title="Sync">
+                                            <color key="titleColor" red="0.51372549020000002" green="0.2274509804" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6dw-Cd-9cC"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="19D-2Z-PDN" userLabel="Phone Status Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.15294117647058825" green="0.31764705882352939" blue="0.019607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eSQ-0n-xkV" firstAttribute="top" secondItem="hZY-7s-KEW" secondAttribute="bottom" constant="290" id="DCX-JB-b8W"/>
-                            <constraint firstItem="5Gu-zM-Hee" firstAttribute="top" secondItem="aSF-VI-rbQ" secondAttribute="bottom" constant="30" id="H2d-yc-HAb"/>
+                            <constraint firstItem="hZY-7s-KEW" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leading" id="5UV-hL-lRU"/>
+                            <constraint firstItem="eSQ-0n-xkV" firstAttribute="top" secondItem="hZY-7s-KEW" secondAttribute="bottom" constant="270" id="DCX-JB-b8W"/>
+                            <constraint firstItem="5Gu-zM-Hee" firstAttribute="top" secondItem="aSF-VI-rbQ" secondAttribute="bottom" constant="40" id="H2d-yc-HAb"/>
                             <constraint firstAttribute="trailing" secondItem="5Gu-zM-Hee" secondAttribute="trailing" id="HLB-ix-s5D"/>
                             <constraint firstItem="hZY-7s-KEW" firstAttribute="top" secondItem="NxV-cz-7o2" secondAttribute="topMargin" constant="18" id="KXQ-gC-Tc0"/>
+<<<<<<< HEAD
                             <constraint firstItem="hZY-7s-KEW" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leadingMargin" id="Z3M-RT-tFE"/>
                             <constraint firstItem="5Gu-zM-Hee" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leading" id="ajV-If-Uf3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hZY-7s-KEW" secondAttribute="trailing" id="gA7-cy-g3y"/>
+=======
+                            <constraint firstItem="5Gu-zM-Hee" firstAttribute="leading" secondItem="NxV-cz-7o2" secondAttribute="leading" id="ajV-If-Uf3"/>
+>>>>>>> amrit_branch
                             <constraint firstItem="eSQ-0n-xkV" firstAttribute="leading" secondItem="hZY-7s-KEW" secondAttribute="leading" id="iT5-lf-jGv"/>
                             <constraint firstItem="eSQ-0n-xkV" firstAttribute="trailing" secondItem="hZY-7s-KEW" secondAttribute="trailing" id="p2P-dv-ORd"/>
                             <constraint firstItem="eSQ-0n-xkV" firstAttribute="bottom" secondItem="c6b-vr-sUy" secondAttribute="top" id="sqY-yN-E5d"/>
+                            <constraint firstAttribute="trailing" secondItem="hZY-7s-KEW" secondAttribute="trailing" id="zQW-Tf-Djl"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendar" id="Vl4-lD-5ob" userLabel="Calendar"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="Vl4-lD-5ob" userLabel="Calendar"/>
                     <connections>
                         <outlet property="EventListCalendar" destination="eSQ-0n-xkV" id="Ixt-by-sAD"/>
                         <outlet property="calendarView" destination="5Gu-zM-Hee" id="uB2-PF-Q9J"/>
@@ -111,16 +198,16 @@
             </objects>
             <point key="canvasLocation" x="-554.39999999999998" y="-125.4872563718141"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--View Controller Tab Bar-->
         <scene sceneID="bXv-2T-RBe">
             <objects>
-                <tabBarController id="phg-e6-A1o" sceneMemberID="viewController">
+                <tabBarController id="phg-e6-A1o" customClass="ViewControllerTabBar" customModule="CalendarViewApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="21X-Ne-WrS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="TabBar" destination="21X-Ne-WrS" id="uoe-Qj-Ttd"/>
                         <segue destination="wPd-lC-K6G" kind="relationship" relationship="viewControllers" id="btJ-TX-lX4"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="c31-W3-bkP"/>
                     </connections>
@@ -221,7 +308,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="0dA-v3-eJC" secondAttribute="bottom" constant="45" id="tcq-6d-DuD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" id="BT2-aY-bvw" userLabel="List"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="BT2-aY-bvw" userLabel="List"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="EventList" destination="0dA-v3-eJC" id="4dL-6b-trV"/>

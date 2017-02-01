@@ -15,14 +15,21 @@
             <rect key="frame" x="0.0" y="0.0" width="385" height="127"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+<<<<<<< HEAD
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="myHeader" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDz-df-Urf">
                     <rect key="frame" x="120" y="48" width="134" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+=======
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="myHeader" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDz-df-Urf">
+                    <rect key="frame" x="151" y="10" width="83" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <nil key="textColor"/>
+>>>>>>> amrit_branch
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1X4-98-VeM">
-                    <rect key="frame" x="0.0" y="106" width="375" height="21"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1X4-98-VeM">
+                    <rect key="frame" x="5" y="106.5" width="375" height="20.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdL-Xb-byN">
                             <rect key="frame" x="0.0" y="0.0" width="53.5" height="20.5"/>
@@ -69,7 +76,10 @@
                     </subviews>
                 </stackView>
             </subviews>
+<<<<<<< HEAD
             <color key="backgroundColor" red="0.26274509800000001" green="0.45882352939999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+=======
+>>>>>>> amrit_branch
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="1X4-98-VeM" secondAttribute="trailing" constant="5" id="0t7-Rc-dUo"/>
                 <constraint firstItem="KDz-df-Urf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="TXO-iG-ZLT"/>

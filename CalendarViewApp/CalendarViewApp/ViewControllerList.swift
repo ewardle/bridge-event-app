@@ -75,12 +75,23 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         
         let dayinWeek = self.week?.endDate
         var headerDay = (dayinWeek?.day)! + section + 1
+<<<<<<< HEAD
         if headerDay > now.monthDays {
             headerDay = headerDay - now.monthDays
         }
         
         //var dayInWeek = self.week?.endDate
         headerSection.CalendarDay.text = "\(self.daysOfTheWeek[section]) \(now.monthName) \(headerDay)"
+=======
+        var monthOfDate = now.monthName
+        if headerDay > now.monthDays {
+            headerDay = headerDay - now.monthDays
+            monthOfDate = now.nextMonth.monthName
+        }
+        
+        //var dayInWeek = self.week?.endDate
+        headerSection.CalendarDay.text = "\(self.daysOfTheWeek[section]) \(monthOfDate) \(headerDay)"
+>>>>>>> amrit_branch
         
         return headerSection
     }
@@ -94,6 +105,10 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         
         let dayinWeek = self.week?.endDate
         var sectionDayR = (dayinWeek?.day)! + section + 1
+<<<<<<< HEAD
+=======
+        //var sectionDayT = (dayinWeek?.day)! + section + 1
+>>>>>>> amrit_branch
         if sectionDayR > now.monthDays {
             sectionDayR = sectionDayR - now.monthDays
             listToPullFromR = self.calendarListEvent2

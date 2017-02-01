@@ -18,17 +18,26 @@ class ViewControllerCalendar: UIViewController {
     var calendarListEvent: [Int: [Event]]? = nil
     var calendarListEventNext: [Int: [Event]]? = nil
     var calendarListEventDay: [Event]? = nil
-    //var calendarListEventKeys: [Int]? = nil
-    
-    let white = UIColor(colorWithHexValue: 0xECEAED)
+
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
     let dimPurple = UIColor(colorWithHexValue: 0x574865)
     let lightGrey = UIColor(colorWithHexValue: 0xB3B3B3)
+    let green = UIColor(colorWithHexValue: 0x437519)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+<<<<<<< HEAD
         //First retrieve next mont's events
+=======
+        //set view appearance characteristics
+        self.EventListCalendar.backgroundColor = UIColor.white
+        self.calendarView.backgroundColor = UIColor.white
+        //self.calendarView.layer.borderColor = dimPurple.cgColor
+        //self.calendarView.layer.borderWidth = 1
+        
+        //first retrieve next mont's events
+>>>>>>> amrit_branch
         self.retrieveNextMonthEvents()
         
         //load CalendarView after retrieving list from Server
@@ -46,7 +55,6 @@ class ViewControllerCalendar: UIViewController {
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         
         //register the calendar header view (month 1 & month 2)
-        //calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView"])
         calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView", "CalendarHeaderView2"])
         
         //Reloads calendar list with new event list when pressed
@@ -59,7 +67,6 @@ class ViewControllerCalendar: UIViewController {
         Bcalendar().getEvents{ (responseObject, responseObject2) in
             self.calendarListEvent = responseObject2
             print("Current Month Calendar Events Received")
-            //self.loadCalendarView()
             
             //Select current date as default date when calendar view loads
             self.calendarView.selectDates([NSDate() as Date])
@@ -78,10 +85,13 @@ class ViewControllerCalendar: UIViewController {
             self.calendarListEventNext = responseObject2
             print("Next Month Calendar Events Received")
             Bcalendar().setMonth(nextMonthSet: false)
+<<<<<<< HEAD
             
             if (self.calendarListEventNext?[1]) == nil {
                 print("Not SEE")
             }
+=======
+>>>>>>> amrit_branch
             self.retrieveCurrentMonthEvents()
         }
 
@@ -113,9 +123,8 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             return
         }
         
-        
         if cellState.isSelected {
-            myCustomCell.dayLabel.textColor = darkPurple
+            myCustomCell.dayLabel.textColor = UIColor.white
         } else {
             if cellState.dateBelongsTo == .thisMonth {
                 myCustomCell.dayLabel.textColor = dimPurple
@@ -123,26 +132,6 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
                 myCustomCell.dayLabel.textColor = lightGrey
             }
         }
-        
-        /*let keyExists = calendarListEvent?[cellState.date.day]
-        //display event for selected date here
-        if keyExists != nil {
-            let displayEventDay = self.calendarListEvent?[cellState.date.day]
-            
-            if displayEventDay?[0].eventStart?.month == cellState.date.month {
-                self.testEventTitle.text = displayEventDay?[0].eventTitle
-            }
-            else {
-                self.testEventTitle.text = "No events for selected day"
-            }
-            
-            
-        }
-        else {
-            self.testEventTitle.text = "No events for selected day"
-        }*/
-        
-        //print(cellState.date.day)
         
         //Reload TableView with events for selected date
         selectedNewDate(dateSelected: cellState.date.day, monthOfSelected: cellState.date.month)
@@ -155,7 +144,7 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             return
         }
         if cellState.isSelected {
-            myCustomCell.selectedView.layer.cornerRadius =  25
+            myCustomCell.selectedView.layer.cornerRadius =  20
             myCustomCell.selectedView.isHidden = false
         } else {
             myCustomCell.selectedView.isHidden = true
@@ -168,43 +157,16 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         // Setup Cell text
         myCustomCell.dayLabel.text = cellState.text
         
-        /*
-        // Setup text color
-        if cellState.dateBelongsTo == .thisMonth {
-            myCustomCell.dayLabel.textColor = UIColor(colorWithHexValue: 0x000000)
-        } else {
-            myCustomCell.dayLabel.textColor = UIColor(colorWithHexValue: 0xb3b3b3)
-        }
-         */
-        
         handleCellTextColor(view: cell, cellState: cellState)
         handleCellSelection(view: cell, cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
-        
-        /*
-        let myCustomCell = cell as! CellView
-        
-        // Let's make the view have rounded corners. Set corner radius to 25
-        myCustomCell.selectedView.layer.cornerRadius =  25
-        
-        if cellState.isSelected {
-            myCustomCell.selectedView.isHidden = false
-        }
-         */
-        
         handleCellSelection(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleDayCellView?, cellState: CellState) {
-        
-        /*
-        let myCustomCell = cell as! CellView
-        myCustomCell.selectedView.isHidden = true
-         */
-        
         handleCellSelection(view: cell, cellState: cellState)
         handleCellTextColor(view: cell, cellState: cellState)
     }
@@ -239,11 +201,8 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         //for newly selected date
         self.calendarListEventDay = nil
         
-        
-        //print("Month: \(monthOfSelected)")
-        
-        
         //If event list for selected date exists set calendarListEventDay to that list
+        //otherwise leave calendarListEventDay nil
         if (self.calendarListEvent?[dateSelected]) != nil && self.calendarListEvent?[dateSelected]?[0].eventStart?.month == monthOfSelected {
             self.calendarListEventDay = self.calendarListEvent?[dateSelected]
             //print("Dont see this!")
@@ -251,7 +210,6 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         else if (self.calendarListEventNext?[dateSelected]) != nil && self.calendarListEventNext?[dateSelected]?[0].eventStart?.month == monthOfSelected {
             self.calendarListEventDay = self.calendarListEventNext?[dateSelected]
         }
-        //otherwise leave calendarListEventDay nil
         
         //reload TableView to show events for newly selected date if they exist
         self.EventListCalendar.dataSource = self
@@ -275,25 +233,35 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
 extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ EventListCalendar: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarViewSelectionCell", for: indexPath as IndexPath) as! CalendarViewSelectionCell
+        
         //Traverse through calendarListEventDay list
-        
-        //displayEventDay?[0].eventStart?.month == cellState.date.month
-        
         if self.calendarListEventDay != nil {
-            let eventTitle = self.calendarListEventDay?[indexPath.row].eventTitle
-            //cell.CalendarEventDay.text = eventTitle
-            cell.CalendarEventDay.text = eventTitle
+            let eventInfo = self.calendarListEventDay?[indexPath.row]
+            
+            cell.CalendarEventDay.text = "\(eventInfo!.eventTitle)"
+            cell.CalendarEventLocation.text = "Location:  "
+            
+            var minuteStart = String(eventInfo!.eventStart!.minute)
+            var minuteEnd = String(eventInfo!.eventEnd!.minute)
+            if(minuteStart == "0") {
+                minuteStart = "00"
+            }
+            if(minuteEnd == "0") {
+                minuteEnd = "00"
+            }
+            
+            cell.CalendarEventTime.text = "\(eventInfo!.eventStart!.hour):\(minuteStart)-\(eventInfo!.eventEnd!.hour):\(minuteEnd)"
         }
         else {
             cell.CalendarEventDay.text = "No events for selected date"
+            cell.CalendarEventLocation.text = " "
+            cell.CalendarEventTime.text = " "
         }
         
         return cell
     }
     
     func tableView(_ EventListCalendar: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("number of rows in section")
-        //print(self.calendarListEvent?[self.calendarListEventKeys![section]]!.count ?? 0)
         if self.calendarListEventDay != nil {
             return self.calendarListEventDay!.count
         }
