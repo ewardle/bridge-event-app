@@ -17,7 +17,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5s-o9-RWG">
                     <rect key="frame" x="114.5" y="72" width="38" height="38"/>
-                    <color key="backgroundColor" red="0.33333333329999998" green="0.070588235289999995" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.51372549019607838" green="0.22745098039215686" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="38" id="gcg-3q-CaE"/>
                         <constraint firstAttribute="width" constant="38" id="leb-yq-HPj"/>
@@ -26,11 +26,10 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateTextGoesHere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxU-9X-zcU">
                     <rect key="frame" x="62" y="81" width="142" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.26274509800000001" green="0.45882352939999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="K5s-o9-RWG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="08G-Sg-9UY"/>
                 <constraint firstItem="YxU-9X-zcU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BSH-cv-BQl"/>

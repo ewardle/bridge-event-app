@@ -11,9 +11,9 @@ import UIKit
 class CalendarViewSelectionCell: UITableViewCell {
     
     @IBOutlet weak var CalendarEventDay: UILabel!
-    @IBOutlet weak var CalendarEventTimeStart: UILabel!
-    @IBOutlet weak var CalendarEventTimeEnd: UILabel!
-
+    @IBOutlet weak var CalendarEventLocation: UILabel!
+    @IBOutlet weak var CalendarEventTime: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +23,7 @@ class CalendarViewSelectionCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        //self.CalendarEventDay.backgroundColor = UIColor.green
     }
 
 }

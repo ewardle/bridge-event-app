@@ -16,8 +16,7 @@ class ViewControllerTabBar: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        TabBar.barTintColor = UIColor.purple
+        TabBar.backgroundColor = UIColor.green
     }
 
     override func didReceiveMemoryWarning() {

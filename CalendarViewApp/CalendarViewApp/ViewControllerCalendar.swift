@@ -18,11 +18,7 @@ class ViewControllerCalendar: UIViewController {
     var calendarListEvent: [Int: [Event]]? = nil
     var calendarListEventNext: [Int: [Event]]? = nil
     var calendarListEventDay: [Event]? = nil
-    //var calendarListEventKeys: [Int]? = nil
-    var followingBlankCells = false
-    var numberOfBlankCells = 0
-    
-    let white = UIColor(colorWithHexValue: 0xECEAED)
+
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
     let dimPurple = UIColor(colorWithHexValue: 0x574865)
     let lightGrey = UIColor(colorWithHexValue: 0xB3B3B3)
@@ -32,10 +28,10 @@ class ViewControllerCalendar: UIViewController {
         super.viewDidLoad()
         
         //set view appearance characteristics
-        self.EventListCalendar.backgroundColor = green
-        self.calendarView.backgroundColor = green
-        self.calendarView.layer.borderColor = dimPurple.cgColor
-        self.calendarView.layer.borderWidth = 1
+        self.EventListCalendar.backgroundColor = UIColor.white
+        self.calendarView.backgroundColor = UIColor.white
+        //self.calendarView.layer.borderColor = dimPurple.cgColor
+        //self.calendarView.layer.borderWidth = 1
         
         //first retrieve next mont's events
         self.retrieveNextMonthEvents()
@@ -55,7 +51,6 @@ class ViewControllerCalendar: UIViewController {
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         
         //register the calendar header view (month 1 & month 2)
-        //calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView"])
         calendarView.registerHeaderView(xibFileNames: ["CalendarHeaderView", "CalendarHeaderView2"])
         
         //Reloads calendar list with new event list when pressed
@@ -68,7 +63,6 @@ class ViewControllerCalendar: UIViewController {
         Bcalendar().getEvents{ (responseObject, responseObject2) in
             self.calendarListEvent = responseObject2
             print("Current Month Calendar Events Received")
-            //self.loadCalendarView()
             
             //Select current date as default date when calendar view loads
             self.calendarView.selectDates([NSDate() as Date])
@@ -87,10 +81,6 @@ class ViewControllerCalendar: UIViewController {
             self.calendarListEventNext = responseObject2
             print("Next Month Calendar Events Received")
             Bcalendar().setMonth(nextMonthSet: false)
-            
-            /*if (self.calendarListEventNext?[1]) == nil {
-                print("Not SEE")
-            }*/
             self.retrieveCurrentMonthEvents()
         }
 
@@ -122,12 +112,11 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             return
         }
         
-        
         if cellState.isSelected {
-            myCustomCell.dayLabel.textColor = white
+            myCustomCell.dayLabel.textColor = UIColor.white
         } else {
             if cellState.dateBelongsTo == .thisMonth {
-                myCustomCell.dayLabel.textColor = white
+                myCustomCell.dayLabel.textColor = dimPurple
             } else {
                 myCustomCell.dayLabel.textColor = lightGrey
             }
@@ -214,7 +203,6 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         //reload TableView to show events for newly selected date if they exist
         self.EventListCalendar.dataSource = self
         self.EventListCalendar.delegate = self
-        //self.EventListCalendar.rowHeight = 45
         self.EventListCalendar.reloadData()
     }
     
@@ -239,7 +227,8 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
         if self.calendarListEventDay != nil {
             let eventInfo = self.calendarListEventDay?[indexPath.row]
             
-            cell.CalendarEventDay.text = " \(eventInfo!.eventTitle)"
+            cell.CalendarEventDay.text = "\(eventInfo!.eventTitle)"
+            cell.CalendarEventLocation.text = "Location:  "
             
             var minuteStart = String(eventInfo!.eventStart!.minute)
             var minuteEnd = String(eventInfo!.eventEnd!.minute)
@@ -250,32 +239,20 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
                 minuteEnd = "00"
             }
             
-            cell.CalendarEventTimeStart.text = "\(eventInfo!.eventStart!.hour):\(minuteStart)"
-            cell.CalendarEventTimeEnd.text = "\(eventInfo!.eventEnd!.hour):\(minuteEnd)"
+            cell.CalendarEventTime.text = "\(eventInfo!.eventStart!.hour):\(minuteStart)-\(eventInfo!.eventEnd!.hour):\(minuteEnd)"
         }
         else {
-            cell.CalendarEventDay.text = " No events for selected date"
-            cell.CalendarEventTimeStart.text = " "
-            cell.CalendarEventTimeEnd.text = " "
+            cell.CalendarEventDay.text = "No events for selected date"
+            cell.CalendarEventLocation.text = " "
+            cell.CalendarEventTime.text = " "
         }
         
         return cell
     }
     
     func tableView(_ EventListCalendar: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //reset followingBlankCells when loading new list
-        self.followingBlankCells = false
-        
         if self.calendarListEventDay != nil {
-            if self.calendarListEventDay!.count < 4 {
-                self.followingBlankCells = true
-                self.numberOfBlankCells = (self.calendarListEventDay?.count)!
-                //return 4
-                return self.calendarListEventDay!.count
-            }
-            else {
-                return self.calendarListEventDay!.count
-            }
+            return self.calendarListEventDay!.count
         }
         else {
             return 1
