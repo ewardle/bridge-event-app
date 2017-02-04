@@ -18,6 +18,7 @@ class ViewControllerCalendar: UIViewController {
     var calendarListEvent: [Int: [Event]]? = nil
     var calendarListEventNext: [Int: [Event]]? = nil
     var calendarListEventDay: [Event]? = nil
+    let now = Date()
 
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
     let dimPurple = UIColor(colorWithHexValue: 0x574865)
@@ -122,12 +123,12 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             }
         }
         
-        //Reload TableView with events for selected date
+        //reload TableView with events for selected date
         selectedNewDate(dateSelected: cellState.date.day, monthOfSelected: cellState.date.month)
         
     }
     
-    // Function to handle the calendar selection
+    //function to handle the calendar selection
     func handleCellSelection(view: JTAppleDayCellView?, cellState: CellState) {
         guard let myCustomCell = view as? CellView  else {
             return
@@ -143,7 +144,7 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
     func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
         let myCustomCell = cell as! CellView
         
-        // Setup Cell text
+        //cell date text
         myCustomCell.dayLabel.text = cellState.text
         
         handleCellTextColor(view: cell, cellState: cellState)
@@ -168,6 +169,8 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
     // This setups the display of your header
     func calendar(_ calendar: JTAppleCalendarView, willDisplaySectionHeader header: JTAppleHeaderView, range: (start: Date, end: Date), identifier: String) {
         
+        //print("Identifier: \(identifier)");
+        
         if(identifier=="CalendarHeaderView"){
             let headerCell = (header as? CalendarHeaderView)
             headerCell?.title.text = Date().monthName
@@ -175,23 +178,24 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
             let headerCell2 = (header as? CalendarHeaderView2)
             headerCell2?.title2.text = Calendar.current.date(byAdding: .month, value: 1, to: Date())?.monthName
         }
-        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, sectionHeaderIdentifierFor range: (start: Date, end: Date), belongingTo month: Int) -> String {
-        if month % 2 > 0 {
+        if month == now.month {
             return "CalendarHeaderView"
         }
         return "CalendarHeaderView2"
     }
     
     func selectedNewDate(dateSelected: Int, monthOfSelected: Int) {
-        //Set calendarListEventDay to nil in order to check if event exists
-        //for newly selected date
+        /*Set calendarListEventDay to nil in order to check if event exists
+          for newly selected date
+        */
         self.calendarListEventDay = nil
         
-        //If event list for selected date exists set calendarListEventDay to that list
-        //otherwise leave calendarListEventDay nil
+        /*If event list for selected date exists set calendarListEventDay to that list
+          otherwise leave calendarListEventDay nil
+        */
         if (self.calendarListEvent?[dateSelected]) != nil && self.calendarListEvent?[dateSelected]?[0].eventStart?.month == monthOfSelected {
             self.calendarListEventDay = self.calendarListEvent?[dateSelected]
             //print("Dont see this!")

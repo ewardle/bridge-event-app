@@ -26,8 +26,8 @@ public class Bcalendar {
     init() {
         now = Date()
         //Url for Spring Server hosting the google calendar api
-        url = "http://138.197.129.140:8080/calendar/events?calendarName=bridgekelowna@gmail.com&min=\(now.year)-\(now.month)-01T10:00:31-08:00&max=\(now.year)-\(now.month)-\(now.monthDays)T11:00:31-08:00"
-        url2 = "http://138.197.129.140:8080/calendar/events?calendarName=bridgekelowna@gmail.com&min=\(now.year)-\(now.month+1)-01T10:00:31-08:00&max=\(now.year)-\(now.month+1)-28T11:00:31-08:00"
+        url = "http://138.197.129.140:8080/calendar/events?calendarName=bridgekelowna@gmail.com&min=\(now.year)-\(now.month)-01T01:00:31-08:00&max=\(now.year)-\(now.month)-\(now.monthDays)T23:00:31-08:00"
+        url2 = "http://138.197.129.140:8080/calendar/events?calendarName=bridgekelowna@gmail.com&min=\(now.year)-\(now.month+1)-01T01:00:31-08:00&max=\(now.year)-\(now.month+1)-28T23:00:31-08:00"
         numberOfEvents = 0
     }
     
