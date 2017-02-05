@@ -52,7 +52,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
             eventDescriptionTextView.setText("Location: " + summary[1]);
         }else {
             eventSummaryTextView.setText(summary[0]);
-            eventDescriptionTextView.setText("Location: Unkown");
+            eventDescriptionTextView.setText("Location: Unknown");
         }
         eventStartTextView.setText(event.getEventStartTime());
 

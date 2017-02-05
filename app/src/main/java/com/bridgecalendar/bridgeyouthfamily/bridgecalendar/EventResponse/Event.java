@@ -80,7 +80,9 @@ public class Event extends WeekViewEvent {
 
     public String getEventStartTime() {
         Date date = new Date(mStart.getCalendarDateTime().getValue());
-        return date.toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
+        String dateString = sdf.format(date);
+        return dateString;
     }
 
 }
