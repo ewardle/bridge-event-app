@@ -44,15 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		23F578198E3F5A31EA11E6BC /* Pods-CalendarViewAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewAppTests/Pods-CalendarViewAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		29F5734E3DC56F627D099836 /* Pods-CalendarViewAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewAppTests/Pods-CalendarViewAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		5A1DE938AA0B6789800E6638 /* Pods_CalendarViewApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarViewApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		671723650B19A8B9134B9D90 /* Pods-CalendarViewApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewApp/Pods-CalendarViewApp.release.xcconfig"; sourceTree = "<group>"; };
 		692D63661E35B2460094FDFA /* EventSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventSummaryCell.xib; sourceTree = "<group>"; };
 		69DCDBDC1E35BB0B00B6E9BC /* EventSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSummaryCell.swift; sourceTree = "<group>"; };
 		69DE36FB1E407086004C5F8F /* UIColorHexExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorHexExtension.swift; sourceTree = "<group>"; };
 		69FEA6291E37231D00986BA7 /* ViewControllerEventDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEventDetails.swift; sourceTree = "<group>"; };
-		9FBE3F96A5A4403CA515C9B3 /* Pods-CalendarViewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewApp/Pods-CalendarViewApp.debug.xcconfig"; sourceTree = "<group>"; };
-		C3F0F7519AC3CA6022EB3305 /* Pods-CalendarViewAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewAppTests/Pods-CalendarViewAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		D00614341E206E6A00866B11 /* CalendarHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarHeaderView.xib; sourceTree = "<group>"; };
 		D006143C1E20715300866B11 /* CalendarHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHeaderView.swift; sourceTree = "<group>"; };
 		D006143E1E208ADA00866B11 /* CalendarHeaderView2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarHeaderView2.xib; sourceTree = "<group>"; };
@@ -110,12 +107,10 @@
 		BCBEF5410D85D4DC28ACDAA2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9FBE3F96A5A4403CA515C9B3 /* Pods-CalendarViewApp.debug.xcconfig */,
-				671723650B19A8B9134B9D90 /* Pods-CalendarViewApp.release.xcconfig */,
-				23F578198E3F5A31EA11E6BC /* Pods-CalendarViewAppTests.debug.xcconfig */,
-				C3F0F7519AC3CA6022EB3305 /* Pods-CalendarViewAppTests.release.xcconfig */,
+				29F5734E3DC56F627D099836 /* Pods-CalendarViewAppTests.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods/JTAppleCalendar;
 			sourceTree = "<group>";
 		};
 		D024F01A1E1317D1004AD2A5 = {
@@ -481,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -528,7 +523,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -540,7 +535,6 @@
 		};
 		D024F0411E1317D1004AD2A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FBE3F96A5A4403CA515C9B3 /* Pods-CalendarViewApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5678P7WK6Y;
@@ -561,7 +555,6 @@
 		};
 		D024F0421E1317D1004AD2A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 671723650B19A8B9134B9D90 /* Pods-CalendarViewApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5678P7WK6Y;
@@ -582,12 +575,12 @@
 		};
 		D024F0441E1317D1004AD2A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23F578198E3F5A31EA11E6BC /* Pods-CalendarViewAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 5678P7WK6Y;
 				INFOPLIST_FILE = CalendarViewAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amrit.CalendarViewAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -598,12 +591,12 @@
 		};
 		D024F0451E1317D1004AD2A5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3F0F7519AC3CA6022EB3305 /* Pods-CalendarViewAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 5678P7WK6Y;
 				INFOPLIST_FILE = CalendarViewAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amrit.CalendarViewAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

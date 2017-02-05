@@ -161,10 +161,17 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KpF-G3-PIL">
+                                <frame key="frameInset" minX="25" minY="28" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="wPd-lC-K6G" kind="show" id="ryV-WH-IOo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="F8B-T7-1RO"/>
                     <connections>
                         <outlet property="description" destination="emY-zW-ak9" id="GPi-n6-Ash"/>
                         <outlet property="divider" destination="gof-p1-lPd" id="WM9-n6-pbJ"/>
@@ -176,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Msy-2Z-HDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="412" y="-77"/>
+            <point key="canvasLocation" x="348" y="-152"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bXv-2T-RBe">
@@ -307,5 +314,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="96S-fP-Nts"/>
+        <segue reference="ryV-WH-IOo"/>
     </inferredMetricsTieBreakers>
 </document>
