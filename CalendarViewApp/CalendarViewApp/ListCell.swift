@@ -8,9 +8,11 @@
 
 import UIKit
 
-class CalendarPrototypeCell: UITableViewCell {
-
-    @IBOutlet weak var EventDay: UILabel!
+class ListCell: UITableViewCell {
+    
+    @IBOutlet weak var EventTitle: UILabel!
+    @IBOutlet weak var EventLocation: UILabel!
+    @IBOutlet weak var EventTime: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

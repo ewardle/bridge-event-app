@@ -232,7 +232,7 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
             let eventInfo = self.calendarListEventDay?[indexPath.row]
             
             cell.CalendarEventDay.text = "\(eventInfo!.eventTitle)"
-            cell.CalendarEventLocation.text = "Location:  "
+            cell.CalendarEventLocation.text = "Location: \(eventInfo!.location)"
             
             var minuteStart = String(eventInfo!.eventStart!.minute)
             var minuteEnd = String(eventInfo!.eventEnd!.minute)
@@ -246,7 +246,7 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
             cell.CalendarEventTime.text = "\(eventInfo!.eventStart!.hour):\(minuteStart)-\(eventInfo!.eventEnd!.hour):\(minuteEnd)"
         }
         else {
-            cell.CalendarEventDay.text = "No events for selected date"
+            cell.CalendarEventDay.text = "No events for date"
             cell.CalendarEventLocation.text = " "
             cell.CalendarEventTime.text = " "
         }
@@ -263,16 +263,3 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
-extension UIColor {
-    convenience init(colorWithHexValue value: Int, alpha:CGFloat = 1.0){
-        self.init(
-            red: CGFloat((value & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((value & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(value & 0x0000FF) / 255.0,
-            alpha: alpha
-        )
-    }
-}
-
-

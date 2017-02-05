@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CalendarCellHeader: UITableViewCell {
+class ListCellHeader: UITableViewCell {
 
-    @IBOutlet weak var CalendarDay: UILabel!
+    @IBOutlet weak var DateHeader: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.CalendarDay.backgroundColor = UIColor.lightGray
+        //self.DateHeader.backgroundColor = UIColor.lightGray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -66,17 +66,26 @@ public class Bcalendar {
         for (_, subJson):(String, JSON) in events["eventItems"] {
             
             //Get event summary, description and UNIX start and end date for event
-            let eventTitle = String(describing: subJson["summary"])
+            let eventSummary = String(describing: subJson["summary"])
             let getStartDate = subJson["start"]["dateTime"]["value"].doubleValue
             let getEndDate = subJson["end"]["dateTime"]["value"].doubleValue
             let description = String(describing: subJson["description"])
+            var eventTitle = String(describing: subJson["summary"])
+            var location = "Unknown"
+            
+            //Split Event Summary into eventTitle and Location
+            let summaryArray = eventSummary.components(separatedBy: ",")
+            if summaryArray.count > 1 {
+                eventTitle = summaryArray[0]
+                location = summaryArray[1]
+            }
             
             //Convert UNIX date into Date object
             let convertUnixStartDate = Date(timeIntervalSince1970: getStartDate/1000)
             let convertUnixEndDate = Date(timeIntervalSince1970: getEndDate/1000)
             
             //Send components to Event.swift to create Event object
-            let currEventObject = Event(eT: eventTitle, eS: convertUnixStartDate, eE: convertUnixEndDate, desc: description)
+            let currEventObject = Event(eT: eventTitle, eS: convertUnixStartDate, eE: convertUnixEndDate, desc: description, loc: location)
             
             //If date key does not exist in dictionary then initialize array with new date key
             //before adding new event object

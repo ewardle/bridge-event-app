@@ -12,9 +12,8 @@ import Foundation
 
 class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var Events: UILabel!
+    @IBOutlet weak var ListHeader: UILabel!
     @IBOutlet weak var EventList: UITableView!
-    //@IBOutlet weak var Sync: UIButton!
     
     let now = DateInRegion()
     var calendarListEvent: [Int: [Event]]? = nil
@@ -25,81 +24,84 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //"Event List" UITable Header
-        self.Events.text = "Calendar Events"
-        self.Events.textAlignment = NSTextAlignment.center
-        
-        //Reloads calendar list with new event list when pressed
-        //Sync.addTarget(self, action: #selector(updateListOfEvents(button:)), for: .touchUpInside)
-        
-        //let week = self.now.previousWeekend
-        
-        //print(week?.endDate.day ?? "NO WEEKEND DATE")
-        
-        
-        
         
         //Make call to server
         getEvents()
     }
     
     func tableView(_ EventList: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarPrototypeCell", for: indexPath as IndexPath) as! CalendarPrototypeCell
+        
+        let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.ListEvent", for: indexPath as IndexPath) as! ListCell
+        
         //Get event array list for current section header and display all event titles for that header section
-        //let displayEventDay = self.calendarListEvent?[self.calendarListEventKeys![indexPath.section]]
-        //let displayEventTitle = displayEventDay?[indexPath.row].eventTitle
-        
         var listToPullFrom = self.calendarListEvent
-        
         let dayinWeek = self.week?.endDate
         var sectionDay = (dayinWeek?.day)! + indexPath.section + 1
-        if sectionDay > now.monthDays {
-            sectionDay = sectionDay - now.monthDays
+        
+        if sectionDay > (dayinWeek?.monthDays)! && dayinWeek?.month == now.month {
+            sectionDay = sectionDay - (dayinWeek?.monthDays)!
             listToPullFrom = self.calendarListEvent2
+        }
+        else if sectionDay > (dayinWeek?.monthDays)! {
+            sectionDay = sectionDay - (dayinWeek?.monthDays)!
         }
         
         if let dateExists = listToPullFrom?[sectionDay] {
-            cell.EventDay.text = "\(dateExists[indexPath.row].eventStart!.hour):00-\(dateExists[indexPath.row].eventEnd!.hour):00 \(dateExists[indexPath.row].eventTitle)"
-            //cell.EventDay.text = "eventTester"
+            
+            var minuteStart = String(describing: (dateExists[indexPath.row].eventStart?.minute)!)
+            var minuteEnd = String(describing: (dateExists[indexPath.row].eventEnd?.minute)!)
+            
+            if minuteStart == "0" {
+                minuteStart = "00"
+            }
+            if minuteEnd == "0" {
+                minuteEnd = "00"
+            }
+            
+            let currEvent = dateExists[indexPath.row]
+            
+            cell.EventTitle.text = "\(currEvent.eventTitle)"
+            cell.EventLocation.text = "Location: \(currEvent.location)"
+            cell.EventTime.text = "\(currEvent.eventStart!.hour):\(minuteStart)-\(currEvent.eventEnd!.hour):\(minuteEnd)"
         }
         else {
-            cell.EventDay.text = "No events for today"
+            cell.EventTitle.text = "No events for date"
+            cell.EventLocation.text = " "
+            cell.EventTime.text = " "
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        //print("header section called")
-        let headerSection = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarPrototypeHeader") as! CalendarCellHeader
+        
+        let headerSection = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.ListEventHeader") as! ListCellHeader
         
         let dayinWeek = self.week?.endDate
         var headerDay = (dayinWeek?.day)! + section + 1
-        var monthOfDate = now.monthName
-        if headerDay > now.monthDays {
-            headerDay = headerDay - now.monthDays
-            monthOfDate = now.nextMonth.monthName
+        var monthOfDate = (dayinWeek?.monthName)!
+        if headerDay > (dayinWeek?.monthDays)! {
+            headerDay = headerDay - (dayinWeek?.monthDays)!
+            monthOfDate = (dayinWeek?.nextMonth.monthName)!
         }
         
-        //var dayInWeek = self.week?.endDate
-        headerSection.CalendarDay.text = "\(self.daysOfTheWeek[section]) \(monthOfDate) \(headerDay)"
+        headerSection.DateHeader.text = "  \(self.daysOfTheWeek[section]), \(monthOfDate) \(headerDay)"
         
         return headerSection
     }
     
     func tableView(_ EventList: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("number of rows in section")
-        //print(self.calendarListEvent?[self.calendarListEventKeys![section]]!.count ?? 0)
-        //return self.calendarListEvent![self.calendarListEventKeys![section]]!.count
         
         var listToPullFromR = self.calendarListEvent
-        
         let dayinWeek = self.week?.endDate
         var sectionDayR = (dayinWeek?.day)! + section + 1
-        //var sectionDayT = (dayinWeek?.day)! + section + 1
-        if sectionDayR > now.monthDays {
-            sectionDayR = sectionDayR - now.monthDays
+        
+        if sectionDayR > (dayinWeek?.monthDays)! && dayinWeek?.month == now.month {
+            sectionDayR = sectionDayR - (dayinWeek?.monthDays)!
             listToPullFromR = self.calendarListEvent2
+        }
+        else if sectionDayR > (dayinWeek?.monthDays)! {
+            sectionDayR = sectionDayR - (dayinWeek?.monthDays)!
         }
 
         if let eventRow = listToPullFromR?[sectionDayR] {
@@ -111,18 +113,19 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //print("number of sections in table view:")
-        //print(self.calendarListEvent?.count ?? 0)
-        //return self.calendarListEvent!.count
         return 5
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         //return UITableViewAutomaticDimension
-        return 30
+        return 55
     }
     
-    //Use completion handler to make call to server using Alamofire
+    //use completion handler to make call to server using Alamofire
     func getEvents() {
         
         print("Getting events")
@@ -134,8 +137,9 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     
     //load the list view
     func setDataSource() {
-        //Create a list of keys(dates for events) for use with uitableview methods
-        //Keys sorted by ascending date
+        /* create a list of keys(dates for events) for use with uitableview methods
+         * keys sorted by ascending date
+         */
         self.calendarListEventKeys = self.calendarListEvent?.keys.sorted { (_ key1: Int, _ key2: Int) -> Bool in
             return key1 < key2
         }
@@ -143,8 +147,6 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         //load data source and delegate
         self.EventList.dataSource = self
         self.EventList.delegate = self
-        //self.EventList.estimatedRowHeight = 100
-        self.EventList.rowHeight = UITableViewAutomaticDimension
         //self.displayEvents()
     }
     

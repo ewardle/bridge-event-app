@@ -13,13 +13,14 @@ class Event {
     var eventTitle = ""
     var eventStart: Date? = nil
     var eventEnd: Date? = nil
-    let location = ""
+    var location = ""
     var description = ""
     
-    init(eT: String, eS: Date, eE: Date, desc: String){
+    init(eT: String, eS: Date, eE: Date, desc: String, loc: String){
         self.eventTitle = eT
         self.eventStart = eS
         self.eventEnd = eE
         self.description = desc
+        self.location = loc
     }
 }
