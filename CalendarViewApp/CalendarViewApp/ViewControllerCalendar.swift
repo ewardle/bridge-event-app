@@ -37,6 +37,10 @@ class ViewControllerCalendar: UIViewController {
         //first retrieve next mont's events
         self.retrieveNextMonthEvents()
         
+        
+        // Register event summary cell type for event list section
+        EventListCalendar.register(EventSummaryCell.self, forCellReuseIdentifier: "summaryCell")
+        
         //load CalendarView after retrieving list from Server
         self.loadCalendarView()
     }
@@ -47,6 +51,7 @@ class ViewControllerCalendar: UIViewController {
         calendarView.dataSource = self
         calendarView.delegate = self
         calendarView.registerCellViewXib(file: "CellView") // Registering your cell is manditory
+        
         
         //add this new line
         calendarView.cellInset = CGPoint(x: 0, y: 0)
@@ -224,16 +229,18 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
 }
 
 extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ EventListCalendar: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarViewSelectionCell", for: indexPath as IndexPath) as! CalendarViewSelectionCell
         
         //Traverse through calendarListEventDay list
         if self.calendarListEventDay != nil {
+            // Use event summary cell
+            let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.EventSummaryCell", for: indexPath as IndexPath) as! EventSummaryCell
             let eventInfo = self.calendarListEventDay?[indexPath.row]
             
+            /*
             cell.CalendarEventDay.text = "\(eventInfo!.eventTitle)"
             cell.CalendarEventLocation.text = "Location: \(eventInfo!.location)"
-            
             var minuteStart = String(eventInfo!.eventStart!.minute)
             var minuteEnd = String(eventInfo!.eventEnd!.minute)
             if(minuteStart == "0") {
@@ -242,16 +249,21 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
             if(minuteEnd == "0") {
                 minuteEnd = "00"
             }
-            
             cell.CalendarEventTime.text = "\(eventInfo!.eventStart!.hour):\(minuteStart)-\(eventInfo!.eventEnd!.hour):\(minuteEnd)"
+            */
+            
+            // Let the cell handle its own display setup
+            cell.fillData(curr: eventInfo!)
+            return cell
         }
         else {
+            // Use prototype cell
+            let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.CalendarViewSelectionCell", for: indexPath as IndexPath) as! CalendarViewSelectionCell
             cell.CalendarEventDay.text = "No events for date"
             cell.CalendarEventLocation.text = " "
             cell.CalendarEventTime.text = " "
+            return cell
         }
-        
-        return cell
     }
     
     func tableView(_ EventListCalendar: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -25,13 +25,16 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Register event summary cell type for event list
+        EventList.register(EventSummaryCell.self, forCellReuseIdentifier: "summaryCell")
+        
         //Make call to server
         getEvents()
     }
     
     func tableView(_ EventList: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.ListEvent", for: indexPath as IndexPath) as! ListCell
+
         
         //Get event array list for current section header and display all event titles for that header section
         var listToPullFrom = self.calendarListEvent
@@ -47,30 +50,37 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         if let dateExists = listToPullFrom?[sectionDay] {
+            // Use event summary cell
+            let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.EventSummaryCell", for: indexPath as IndexPath) as! EventSummaryCell
             
+            let currEvent = dateExists[indexPath.row]
+            
+            /*
             var minuteStart = String(describing: (dateExists[indexPath.row].eventStart?.minute)!)
             var minuteEnd = String(describing: (dateExists[indexPath.row].eventEnd?.minute)!)
-            
             if minuteStart == "0" {
                 minuteStart = "00"
             }
             if minuteEnd == "0" {
                 minuteEnd = "00"
             }
-            
-            let currEvent = dateExists[indexPath.row]
-            
             cell.EventTitle.text = "\(currEvent.eventTitle)"
             cell.EventLocation.text = "Location: \(currEvent.location)"
             cell.EventTime.text = "\(currEvent.eventStart!.hour):\(minuteStart)-\(currEvent.eventEnd!.hour):\(minuteEnd)"
+            */
+            
+            // Let the cell handle its own display setup
+            cell.fillData(curr: currEvent)
+            return cell
         }
         else {
+            // Use prototype cell
+            let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.ListEvent", for: indexPath as IndexPath) as! ListCell
             cell.EventTitle.text = "No events for date"
             cell.EventLocation.text = " "
             cell.EventTime.text = " "
+            return cell
         }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
