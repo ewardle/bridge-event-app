@@ -130,7 +130,7 @@
                         <outlet property="calendarView" destination="5Gu-zM-Hee" id="uB2-PF-Q9J"/>
                         <outlet property="syncCalendarButton" destination="I85-e3-2b7" id="w4C-Q0-9jb"/>
                         <outlet property="tableView" destination="eSQ-0n-xkV" id="Z8e-Vw-bIp"/>
-                        <segue destination="BH6-dY-F79" kind="popoverPresentation" identifier="EventDetails" id="KvW-Eo-N0Z">
+                        <segue destination="BH6-dY-F79" kind="popoverPresentation" identifier="EventDetails" popoverAnchorView="eSQ-0n-xkV" id="KvW-Eo-N0Z">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
@@ -278,7 +278,7 @@
                     <connections>
                         <outlet property="EventList" destination="0dA-v3-eJC" id="4dL-6b-trV"/>
                         <outlet property="ListHeader" destination="pp3-xB-NJa" id="Qri-w6-qIB"/>
-                        <segue destination="BH6-dY-F79" kind="popoverPresentation" identifier="EventDetails" id="F13-eT-Yd9">
+                        <segue destination="BH6-dY-F79" kind="popoverPresentation" identifier="EventDetails" popoverAnchorView="8bC-Xf-vdC" id="F13-eT-Yd9">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
