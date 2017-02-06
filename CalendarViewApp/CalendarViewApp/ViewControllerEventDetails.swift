@@ -19,6 +19,7 @@ class ViewControllerEventDetails: UIViewController {
     @IBOutlet weak var startTime: UILabel!
     @IBOutlet weak var endTime: UILabel!
     @IBOutlet weak var divider: UIView!
+    @IBOutlet weak var location: UILabel!
 
     
     // Event that we get the data for this view from
@@ -29,27 +30,54 @@ class ViewControllerEventDetails: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fillData(curr: contents!) // contents variable filled when preparing for segue
+        fillData(curr: contents!) // contents variable set when preparing for segue
     }
     
 
     // Populate cell with the data and store the event that it comes from
     func fillData(curr: Event) {
-        contents = curr
-        self.eventTitle.text = curr.eventTitle
-        self.eventDescription.text = curr.description
-        self.startTime.text = curr.eventStart?.string()
-        if curr.eventEnd != nil {
-            self.endTime.text = curr.eventEnd?.string()
+        
+        // Title, description, location
+        if contents!.eventTitle != "" {
+            self.eventTitle.text = "\(contents!.eventTitle)"
+        } else {
+            self.eventTitle.text = "No Title"
         }
-        else { // no end time (all-day event)
+        if contents!.description != "null" {
+            self.eventDescription.text = "\(contents!.description)"
+        } else {
+            self.eventDescription.text = "No Details"
+        }
+        if contents!.location != "" {
+            self.location.text = "\(contents!.location)"
+            if let color = locationColors[(contents!.location)] {
+                self.divider.backgroundColor = color
+            }
+            else { // unrecognized location
+                self.divider.backgroundColor = gray
+            }
+        } else {
+            self.location.text = "Unknown Location"
+        }
+        
+        // Start and end times
+        if let es = contents!.eventStart {
+            var minuteStart = String(es.minute)
+            if(minuteStart == "0") {
+                minuteStart = "00"
+            }
+            self.startTime.text = "\(contents!.eventStart!.hour):\(minuteStart)"
+        } else {
+            self.startTime.text = "All Day"
+        }
+        if let ee = contents!.eventEnd {
+            var minuteEnd = String(ee.minute)
+            if(minuteEnd == "0") {
+                minuteEnd = "00"
+            }
+            self.endTime.text = "-\(contents!.eventEnd!.hour):\(minuteEnd)"
+        } else {
             self.endTime.text = ""
-        }
-        if let newColor = locationColors[curr.location] {
-            self.divider.backgroundColor = newColor
-        }
-        else { // unrecognized location
-            self.divider.backgroundColor = gray
         }
     }
     

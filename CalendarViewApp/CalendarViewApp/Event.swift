@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Event {
+public class Event {
     
     var eventTitle = ""
     var eventStart: Date? = nil

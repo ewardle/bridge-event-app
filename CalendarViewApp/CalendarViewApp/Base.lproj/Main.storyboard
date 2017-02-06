@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHC-9P-Tao" id="DKm-AP-xAJ">
-                                            <frame key="frameInset" width="375" height="90"/>
+                                            <frame key="frameInset" width="375" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IET-7x-UR7" userLabel="Event Description">
@@ -129,7 +129,6 @@
                         <outlet property="EventListCalendar" destination="eSQ-0n-xkV" id="Ixt-by-sAD"/>
                         <outlet property="calendarView" destination="5Gu-zM-Hee" id="uB2-PF-Q9J"/>
                         <outlet property="syncCalendarButton" destination="I85-e3-2b7" id="w4C-Q0-9jb"/>
-                        <outlet property="tableView" destination="eSQ-0n-xkV" id="Z8e-Vw-bIp"/>
                         <segue destination="BH6-dY-F79" kind="popoverPresentation" identifier="EventDetails" popoverAnchorView="eSQ-0n-xkV" id="KvW-Eo-N0Z">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -176,7 +175,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KkO-7j-tYD" id="5lu-qN-uHt">
-                                            <frame key="frameInset" width="375" height="65"/>
+                                            <frame key="frameInset" width="375" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Date Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR0-Wr-pJr">
@@ -201,7 +200,7 @@
                                         <rect key="frame" x="0.0" y="93" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F2T-79-3RJ" id="Hpm-cn-vyp">
-                                            <frame key="frameInset" width="375" height="100"/>
+                                            <frame key="frameInset" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7f2-31-X5Q" userLabel="Event Description">
@@ -307,7 +306,7 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4E-ah-FOR">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4E-ah-FOR">
                                 <frame key="frameInset" minX="60" minY="119" width="58" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -342,13 +341,6 @@
                                     <color key="titleColor" red="0.51372549020000002" green="0.2274509804" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhZ-2p-8zC">
-                                <frame key="frameInset" minX="272" minY="113" width="58" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2o-sP-Hni">
                                 <frame key="frameInset" minX="25" minY="28" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -356,30 +348,34 @@
                                     <color key="titleColor" red="0.51372549020000002" green="0.2274509804" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wPd-lC-K6G" kind="show" identifier="BackToCalendar" id="Pbn-fK-AEe"/>
+                                    <segue destination="phg-e6-A1o" kind="show" identifier="BackToCalendar" id="4tI-lx-Xjd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhZ-2p-8zC">
+                                <frame key="frameInset" minX="272" minY="90" width="58" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="description" destination="VAn-dh-ZOP" id="dGc-a6-21b"/>
                         <outlet property="divider" destination="20l-EF-1bb" id="PsJ-0N-Uah"/>
                         <outlet property="endTime" destination="PxG-eH-25H" id="7RH-dN-ysT"/>
                         <outlet property="eventDescription" destination="VAn-dh-ZOP" id="YpN-ad-K3G"/>
                         <outlet property="eventTitle" destination="RdQ-PG-0NQ" id="bmO-nD-DPZ"/>
-                        <outlet property="location" destination="KhZ-2p-8zC" id="Lwn-8L-HfL"/>
+                        <outlet property="location" destination="KhZ-2p-8zC" id="Jil-6j-NKm"/>
                         <outlet property="startTime" destination="M4E-ah-FOR" id="Hk8-en-9Iz"/>
-                        <outlet property="title" destination="RdQ-PG-0NQ" id="X29-11-0wM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YyH-6z-KTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="-125"/>
+            <point key="canvasLocation" x="348" y="-125.4872563718141"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Pbn-fK-AEe"/>
-        <segue reference="KvW-Eo-N0Z"/>
+        <segue reference="F13-eT-Yd9"/>
     </inferredMetricsTieBreakers>
 </document>

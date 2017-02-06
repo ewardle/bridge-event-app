@@ -22,12 +22,13 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     let daysOfTheWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
     let week = DateInRegion().previousWeekend
     
+    var selectedListCellEvent: Event? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Register event summary cell type for event list
-        EventList.register(EventSummaryCell.self, forCellReuseIdentifier: "summaryCell")
-        
+        EventList.register(UINib.init(nibName: "EventSummaryCell", bundle: nil), forCellReuseIdentifier: "EventSummaryCell")
         //Make call to server
         getEvents()
     }
@@ -51,7 +52,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         
         if let dateExists = listToPullFrom?[sectionDay] {
             // Use event summary cell
-            let cell = EventList.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.EventSummaryCell", for: indexPath as IndexPath) as! EventSummaryCell
+            let cell = EventList.dequeueReusableCell(withIdentifier: "EventSummaryCell", for: indexPath as IndexPath) as! EventSummaryCell
             
             let currEvent = dateExists[indexPath.row]
             
@@ -198,6 +199,21 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    // Go to event details (trigger segue) when event list row selected
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let rowIndex = tableView.indexPathForSelectedRow!
+        if let selectedListCell = tableView.cellForRow(at:rowIndex) as? EventSummaryCell {
+            selectedListCellEvent = selectedListCell.contents
+            performSegue(withIdentifier: "EventDetails", sender: self)
+        }
+    }
+    // Send current event when viewing details
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EventDetails" {
+            let destination = segue.destination as? ViewControllerEventDetails
+            destination!.contents = selectedListCellEvent
+        }
+    }
     
 }
 

@@ -15,6 +15,7 @@
 		6941DF4D1E47E5D900C9A86E /* EventSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6941DF491E47E5D900C9A86E /* EventSummaryCell.xib */; };
 		6941DF4F1E47E5ED00C9A86E /* ViewControllerEventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6941DF4E1E47E5ED00C9A86E /* ViewControllerEventDetails.swift */; };
 		6941DF501E47E5ED00C9A86E /* ViewControllerEventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6941DF4E1E47E5ED00C9A86E /* ViewControllerEventDetails.swift */; };
+		6941DF511E47FC9200C9A86E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F43D51E1A0476008C1D62 /* Event.swift */; };
 		D00614351E206E6A00866B11 /* CalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00614341E206E6A00866B11 /* CalendarHeaderView.xib */; };
 		D006143D1E20715300866B11 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006143C1E20715300866B11 /* CalendarHeaderView.swift */; };
 		D006143F1E208ADA00866B11 /* CalendarHeaderView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = D006143E1E208ADA00866B11 /* CalendarHeaderView2.xib */; };
@@ -413,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6941DF511E47FC9200C9A86E /* Event.swift in Sources */,
 				D024F03C1E1317D1004AD2A5 /* CalendarViewAppTests.swift in Sources */,
 				6941DF4B1E47E5D900C9A86E /* EventSummaryCell.swift in Sources */,
 				6941DF501E47E5ED00C9A86E /* ViewControllerEventDetails.swift in Sources */,
@@ -598,6 +600,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 5678P7WK6Y;
 				INFOPLIST_FILE = CalendarViewAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amrit.CalendarViewAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -614,6 +617,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 5678P7WK6Y;
 				INFOPLIST_FILE = CalendarViewAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amrit.CalendarViewAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

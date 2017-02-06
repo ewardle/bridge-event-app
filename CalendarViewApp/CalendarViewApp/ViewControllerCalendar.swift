@@ -20,6 +20,8 @@ class ViewControllerCalendar: UIViewController {
     var calendarListEventDay: [Event]? = nil
     let now = Date()
 
+    var selectedListCellEvent: Event? = nil
+    
     let darkPurple = UIColor(colorWithHexValue: 0x3A284C)
     let dimPurple = UIColor(colorWithHexValue: 0x574865)
     let lightGrey = UIColor(colorWithHexValue: 0xB3B3B3)
@@ -39,7 +41,7 @@ class ViewControllerCalendar: UIViewController {
         
         
         // Register event summary cell type for event list section
-        EventListCalendar.register(EventSummaryCell.self, forCellReuseIdentifier: "summaryCell")
+        EventListCalendar.register(UINib.init(nibName: "EventSummaryCell", bundle: nil), forCellReuseIdentifier: "EventSummaryCell")
         
         //load CalendarView after retrieving list from Server
         self.loadCalendarView()
@@ -235,7 +237,7 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
         //Traverse through calendarListEventDay list
         if self.calendarListEventDay != nil {
             // Use event summary cell
-            let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "com.CalendarViewApp.EventSummaryCell", for: indexPath as IndexPath) as! EventSummaryCell
+            let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "EventSummaryCell", for: indexPath as IndexPath) as! EventSummaryCell
             let eventInfo = self.calendarListEventDay?[indexPath.row]
             
             /*
@@ -272,6 +274,22 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
         }
         else {
             return 1
+        }
+    }
+    
+    // Go to event details (trigger segue) when event list row selected
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let rowIndex = tableView.indexPathForSelectedRow!
+        if let selectedListCell = tableView.cellForRow(at:rowIndex) as? EventSummaryCell {
+            selectedListCellEvent = selectedListCell.contents
+            performSegue(withIdentifier: "EventDetails", sender: self)
+        }
+    }
+    // Send current event when viewing details
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EventDetails" {
+            let destination = segue.destination as? ViewControllerEventDetails
+            destination!.contents = selectedListCellEvent
         }
     }
 }
