@@ -35,7 +35,9 @@ public class EventResponseManager {
             public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {
                 if (response.isSuccessful()) {
                     mEventResponse = response.body();
-                    mEventListListener.setEventList(mEventResponse.getEventItems());
+                    if (mEventListListener != null) {
+                        mEventListListener.setEventList(mEventResponse.getEventItems());
+                    }
 
                 } else {
                     Log.d("TEST", "Response Error");
@@ -50,10 +52,12 @@ public class EventResponseManager {
         });
 
     }
-    public void attachListener(EventListListener eventListListener){
+
+    public void attachListener(EventListListener eventListListener) {
         this.mEventListListener = eventListListener;
     }
-    public void detachListener(){
+
+    public void detachListener() {
         this.mEventListListener = null;
     }
 }

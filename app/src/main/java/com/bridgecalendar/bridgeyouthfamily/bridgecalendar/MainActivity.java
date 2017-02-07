@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
 
 
         eventResponseManager = new EventResponseManager(this);
-        eventResponseManager.getSearchList("bridgekelowna@gmail.com", "2016-01-21T10:00:31-08:00", "2017-12-31T11:00:31-08:00");
+        eventResponseManager.getSearchList("bridgekelowna@gmail.com", "2016-01-21T10:00:31-08:00", "2025-12-31T11:00:31-08:00");
         //calendar listener for user date selection change
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
