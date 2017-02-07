@@ -38,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHC-9P-Tao" id="DKm-AP-xAJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IET-7x-UR7" userLabel="Event Description">
@@ -155,7 +155,7 @@
                             <constraint firstAttribute="trailing" secondItem="hZY-7s-KEW" secondAttribute="trailing" id="zQW-Tf-Djl"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="Vl4-lD-5ob" userLabel="Calendar"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendarIcon.png" id="Vl4-lD-5ob" userLabel="Calendar"/>
                     <connections>
                         <outlet property="EventListCalendar" destination="eSQ-0n-xkV" id="Ixt-by-sAD"/>
                         <outlet property="calendarView" destination="5Gu-zM-Hee" id="uB2-PF-Q9J"/>
@@ -207,7 +207,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KkO-7j-tYD" id="5lu-qN-uHt">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Date Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OR0-Wr-pJr">
@@ -233,7 +233,7 @@
                                         <rect key="frame" x="0.0" y="93" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F2T-79-3RJ" id="Hpm-cn-vyp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7f2-31-X5Q" userLabel="Event Description">
@@ -310,7 +310,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="0dA-v3-eJC" secondAttribute="bottom" constant="45" id="tcq-6d-DuD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="BT2-aY-bvw" userLabel="List"/>
+                    <tabBarItem key="tabBarItem" title="List" image="listIcon.png" id="BT2-aY-bvw" userLabel="List"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="EventList" destination="0dA-v3-eJC" id="4dL-6b-trV"/>
@@ -414,9 +414,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendarIcon.png" width="25" height="25"/>
         <image name="gear.png" width="2000" height="2000"/>
+        <image name="listIcon.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KvW-Eo-N0Z"/>
+        <segue reference="F13-eT-Yd9"/>
     </inferredMetricsTieBreakers>
 </document>
