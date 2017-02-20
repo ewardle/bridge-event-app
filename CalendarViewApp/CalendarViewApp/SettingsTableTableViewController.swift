@@ -39,6 +39,7 @@ class SettingsTableTableViewController: UITableViewController {
         }
         
         defaultFilterSettings()
+        locationfilterAction()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -57,18 +58,23 @@ class SettingsTableTableViewController: UITableViewController {
     func defaultFilterSettings() {
         //sets values to true if there are none
         defaults.register(defaults: ["kelownaFilter" : true])
-    
-        let val = defaults.bool(forKey: "kelownaFilter")
-        print(val)
+        defaults.register(defaults: ["peachlandFilter" : true])
     }
     
     
     
     //checks the user's previous preferences and sets the switches appropriately
     func locationfilterAction() {
-        // let val = defaults.bool(forKey: "kelownaFilter")
+        let val = defaults.bool(forKey: "kelownaFilter")
+        let val2 = defaults.bool(forKey: "peachlandFilter")
+
+        
         if kelownaSwitch != nil {
-            kelownaSwitch.setOn(false, animated: false)
+            kelownaSwitch.setOn(val, animated: false)
+        }
+        
+        if peachlandSwitch != nil {
+            peachlandSwitch.setOn(val2, animated: false)
         }
     }
     
@@ -161,11 +167,17 @@ class SettingsTableTableViewController: UITableViewController {
     @IBAction func kelownaAction(_ sender: Any) {
         let val = kelownaSwitch.isOn
         defaults.set(val, forKey:"kelownaFilter")
+        
+        
     }
     
     //saves setting for Peachland filtering
     //TODO: add in code for the actual filtering
     @IBAction func peachlandAction(_ sender: Any) {
+        let val = peachlandSwitch.isOn
+        defaults.set(val, forKey:"peachlandFilter")
+        
+        
+
     }
-    
 }
