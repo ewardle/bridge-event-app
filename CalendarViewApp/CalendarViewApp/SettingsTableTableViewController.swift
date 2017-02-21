@@ -41,6 +41,14 @@ class SettingsTableTableViewController: UITableViewController {
         defaultFilterSettings()
         locationfilterAction()
         
+        //changes top navigation bar to a darker color, in order to see the white status bar better
+        navigationController?.navigationBar.barTintColor = UIColor.init(colorWithHexValue: 0x336600)
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.tintColor = UIColor.white;
+
+
+
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

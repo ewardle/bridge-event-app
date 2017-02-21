@@ -93,6 +93,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="jht-xl-TmU">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="Fbc-zV-5BA">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="doneAction:" destination="HVm-dO-cj1" id="u7b-dZ-tFy"/>
                             </connections>
