@@ -38,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHC-9P-Tao" id="DKm-AP-xAJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IET-7x-UR7" userLabel="Event Description">
@@ -289,7 +289,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.31764705879999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Weekly Events" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pp3-xB-NJa" userLabel="ListHeader">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Weekly Events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pp3-xB-NJa" userLabel="ListHeader">
                                 <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.2627450980392157" green="0.45882352941176469" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -299,14 +299,27 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Af1-Tv-2GA">
+                                <rect key="frame" x="0.0" y="20" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="UE1-ul-Qr7"/>
+                                    <constraint firstAttribute="height" constant="50" id="pgx-wM-3xQ"/>
+                                </constraints>
+                                <state key="normal" image="gear.png"/>
+                                <connections>
+                                    <segue destination="EdF-ZM-1bz" kind="presentation" id="je3-VD-IvB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0dA-v3-eJC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="2yd-WQ-avM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0dA-v3-eJC" secondAttribute="trailing" constant="-16" id="8mY-xF-9aB"/>
                             <constraint firstItem="0dA-v3-eJC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="9gm-2Z-0Za"/>
+                            <constraint firstItem="Af1-Tv-2GA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="DKD-Br-X8h"/>
                             <constraint firstItem="pp3-xB-NJa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ni5-aH-jag"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pp3-xB-NJa" secondAttribute="trailing" constant="-16" id="Qp1-5D-FU5"/>
+                            <constraint firstItem="Af1-Tv-2GA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fC3-EV-JnD"/>
                             <constraint firstItem="pp3-xB-NJa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="nL8-5Q-P0T"/>
                             <constraint firstAttribute="bottomMargin" secondItem="0dA-v3-eJC" secondAttribute="bottom" constant="45" id="tcq-6d-DuD"/>
                         </constraints>
@@ -380,16 +393,6 @@
                                     <color key="titleColor" red="0.51372549020000002" green="0.2274509804" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2o-sP-Hni">
-                                <rect key="frame" x="25" y="28" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.51372549020000002" green="0.2274509804" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="phg-e6-A1o" kind="show" identifier="BackToCalendar" id="4tI-lx-Xjd"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhZ-2p-8zC">
                                 <rect key="frame" x="272" y="90" width="58" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -397,8 +400,40 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O00-3I-1yc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="49"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="MKm-2d-EKw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2o-sP-Hni">
+                                <rect key="frame" x="16" y="29" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="phg-e6-A1o" kind="show" identifier="BackToCalendar" animates="NO" id="4tI-lx-Xjd"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NO-ef-8sC" userLabel="Phone Status Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1529411765" green="0.31764705879999999" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O00-3I-1yc" firstAttribute="top" secondItem="9qb-Aq-3U4" secondAttribute="bottom" id="6oh-cg-2gd"/>
+                            <constraint firstAttribute="trailing" secondItem="O00-3I-1yc" secondAttribute="trailing" id="9Ew-Oh-EPs"/>
+                            <constraint firstItem="R2o-sP-Hni" firstAttribute="top" secondItem="9qb-Aq-3U4" secondAttribute="bottom" constant="9" id="U6E-M7-MzT"/>
+                            <constraint firstItem="O00-3I-1yc" firstAttribute="leading" secondItem="AMz-V9-fsY" secondAttribute="leading" id="kQT-kD-LEW"/>
+                            <constraint firstItem="R2o-sP-Hni" firstAttribute="leading" secondItem="AMz-V9-fsY" secondAttribute="leadingMargin" id="mc1-Bb-nB1"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="divider" destination="20l-EF-1bb" id="PsJ-0N-Uah"/>
@@ -420,6 +455,7 @@
         <image name="listIcon.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Opm-NE-XCq"/>
         <segue reference="KvW-Eo-N0Z"/>
     </inferredMetricsTieBreakers>
 </document>

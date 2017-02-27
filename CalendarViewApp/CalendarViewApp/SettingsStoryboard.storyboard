@@ -93,6 +93,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="jht-xl-TmU">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="Fbc-zV-5BA">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="doneAction:" destination="HVm-dO-cj1" id="u7b-dZ-tFy"/>
                             </connections>
@@ -149,6 +150,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eAk-at-he9">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="peachlandAction:" destination="rqC-Gh-pwf" eventType="valueChanged" id="fix-s1-QIB"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Peachland" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBB-h3-w4r">
                                                     <rect key="frame" x="21" y="11" width="92" height="21"/>
