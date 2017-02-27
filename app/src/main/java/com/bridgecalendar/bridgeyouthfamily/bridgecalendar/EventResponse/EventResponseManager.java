@@ -19,8 +19,8 @@ public class EventResponseManager {
     private EventResponse mEventResponse;
     private EventListListener mEventListListener;
 
-    public EventResponseManager(EventListListener eventListListener) {
-        mEventListListener = eventListListener;
+    public EventResponseManager() {
+
     }
 
     public void getSearchList(String calendarName, String minTime, String maxTime) {
@@ -37,6 +37,7 @@ public class EventResponseManager {
                     mEventResponse = response.body();
                     if (mEventListListener != null) {
                         mEventListListener.setEventList(mEventResponse.getEventItems());
+                        Log.d("TEST", "setting events");
                     }
 
                 } else {

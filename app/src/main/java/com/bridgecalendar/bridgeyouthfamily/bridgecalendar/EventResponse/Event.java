@@ -84,5 +84,11 @@ public class Event extends WeekViewEvent {
         String dateString = sdf.format(date);
         return dateString;
     }
+    public String getEventEndTime() {
+        Date date = new Date(mEnd.getCalendarDateTime().getValue());
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
+        String dateString = sdf.format(date);
+        return dateString;
+    }
 
 }

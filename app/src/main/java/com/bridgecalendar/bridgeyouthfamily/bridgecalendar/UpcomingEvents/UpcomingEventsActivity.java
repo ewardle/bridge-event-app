@@ -41,7 +41,8 @@ public class UpcomingEventsActivity extends AppCompatActivity implements EventLi
         setSupportActionBar(toolbar);
 
         mEventList = new ArrayList<>();
-        eventResponseManager = new EventResponseManager(this);
+        eventResponseManager = new EventResponseManager();
+        eventResponseManager.attachListener(this);
 
 
         mWeekView.setMonthChangeListener(new MonthLoader.MonthChangeListener() {
