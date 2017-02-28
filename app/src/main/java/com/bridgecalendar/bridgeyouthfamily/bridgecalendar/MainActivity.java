@@ -1,10 +1,12 @@
 package com.bridgecalendar.bridgeyouthfamily.bridgecalendar;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
     EventResponseManager eventResponseManager;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
+    private ActionBarDrawerToggle mDrawerToggle;
     private RecyclerView mRecyclerView;
     private EventAdapter mEventAdapter;
 
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements EventListListener
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
         mCalendarView = (CalendarView) findViewById(R.id.calendar_view);
         mEmptyEventsTextView = (TextView) findViewById(R.id.no_event_text_view);
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mDrawerToggle = setupDrawerToggle();
 
         setNavDrawerListener(mNavigationView);
 
@@ -135,7 +141,29 @@ public class MainActivity extends AppCompatActivity implements EventListListener
 
 
     }
+    private ActionBarDrawerToggle setupDrawerToggle() {
+        return new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
+    }
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+
+
+    }
     private void setNavDrawerListener(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
