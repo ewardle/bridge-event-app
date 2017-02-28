@@ -21,6 +21,6 @@ public class Event {
         self.eventStart = eS
         self.eventEnd = eE
         self.description = desc
-        self.location = loc
+        self.location = loc.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) // trim whitespace
     }
 }

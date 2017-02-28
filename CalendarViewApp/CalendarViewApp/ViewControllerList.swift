@@ -215,5 +215,8 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
+    @IBAction func unwindFromEventDetails(segue: UIStoryboardSegue) {
+    }
 }
 

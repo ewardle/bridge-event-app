@@ -194,22 +194,60 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         return "CalendarHeaderView2"
     }
     
+    func filteredEventList(list: [Event]) -> [Event]? {
+
+        // Create new empty list and copy items in that aren't filtered out
+        var calendarFilteredEventList: [Event] = [Event]()
+        let defaults = UserDefaults.standard
+        // Go through list to see if any exist and pass through filter
+        for eventInfo in list as [Event] {
+            let isUnfiltered: Bool? = defaults.bool(forKey: "\(eventInfo.location.lowercased())Filter")
+            // Event row will be shown if not explicitly filtered out
+            if isUnfiltered == nil || isUnfiltered == true {
+                calendarFilteredEventList.append(eventInfo)
+            }
+        }
+        if calendarFilteredEventList.count > 0 {
+            return calendarFilteredEventList
+        }
+        else {
+            return nil
+        }
+    }
+    
     func selectedNewDate(dateSelected: Int, monthOfSelected: Int) {
-        /*Set calendarListEventDay to nil in order to check if event exists
-          for newly selected date
-        */
+        // Set calendarListEventDay to nil in order to check if unfiltered events exist for newly selected date
         self.calendarListEventDay = nil
         
-        /*If event list for selected date exists set calendarListEventDay to that list
-          otherwise leave calendarListEventDay nil
-        */
+        // If event list for selected date exists, and unfiltered events exist, set calendarListEventDay to that list
         if (self.calendarListEvent?[dateSelected]) != nil && self.calendarListEvent?[dateSelected]?[0].eventStart?.month == monthOfSelected {
-            self.calendarListEventDay = self.calendarListEvent?[dateSelected]
-            //print("Dont see this!")
+            /*
+            // Create new empty list and copy items in that aren't filtered out
+            var calendarFilteredEventList: [Event] = [Event]()
+            let defaults = UserDefaults.standard
+            // Go through list to see if any exist and pass through filter
+            for eventInfo in self.calendarListEvent![dateSelected]! as [Event] {
+                let isUnfiltered: Bool? = defaults.bool(forKey: "\(eventInfo.location.lowercased())Filter")
+                // Event row will be shown if not explicitly filtered out
+                if isUnfiltered == nil || isUnfiltered == true {
+                    calendarFilteredEventList.append(eventInfo)
+                }
+            }
+            if calendarFilteredEventList.count > 0 {
+                self.calendarListEventDay = calendarFilteredEventList
+            }
+            */
+            self.calendarListEventDay = filteredEventList(list: self.calendarListEvent![dateSelected]!)
+            
         }
+        // If the month of event start is next month, use that list instead and filter similarly
         else if (self.calendarListEventNext?[dateSelected]) != nil && self.calendarListEventNext?[dateSelected]?[0].eventStart?.month == monthOfSelected {
-            self.calendarListEventDay = self.calendarListEventNext?[dateSelected]
+            
+            /* self.calendarListEventDay = self.calendarListEventNext?[dateSelected] */
+            self.calendarListEventDay = filteredEventList(list: self.calendarListEventNext![dateSelected]!)
+            
         }
+        // Otherwise, leave calendarListEventDay nil.
         
         //reload TableView to show events for newly selected date if they exist
         self.EventListCalendar.dataSource = self
@@ -236,9 +274,10 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
         
         //Traverse through calendarListEventDay list
         if self.calendarListEventDay != nil {
+
             // Use event summary cell
             let cell = EventListCalendar.dequeueReusableCell(withIdentifier: "EventSummaryCell", for: indexPath as IndexPath) as! EventSummaryCell
-            let eventInfo = self.calendarListEventDay?[indexPath.row]
+            let eventInfo = calendarListEventDay?[indexPath.row]
             
             /*
             cell.CalendarEventDay.text = "\(eventInfo!.eventTitle)"
@@ -291,5 +330,8 @@ extension ViewControllerCalendar: UITableViewDelegate, UITableViewDataSource {
             let destination = segue.destination as? ViewControllerEventDetails
             destination!.contents = selectedListCellEvent
         }
+    }
+    
+    @IBAction func unwindFromEventDetails(segue: UIStoryboardSegue) {
     }
 }
