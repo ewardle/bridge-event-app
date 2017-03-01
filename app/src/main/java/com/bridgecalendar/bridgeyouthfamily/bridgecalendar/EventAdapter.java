@@ -45,15 +45,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         TextView eventSummaryTextView = holder.eventSummaryTextView;
         TextView eventStartTextView = holder.eventStartTextView;
         TextView eventDescriptionTextView = holder.eventDescriptionTextView;
-        String[] summary = event.getSummary().split(",");
-        Log.d("APP DEBUG",summary.toString());
-        if(summary.length > 1) {
-            eventSummaryTextView.setText(summary[0]);
-            eventDescriptionTextView.setText("Location: " + summary[1]);
-        }else {
-            eventSummaryTextView.setText(summary[0]);
-            eventDescriptionTextView.setText("Location: Unknown");
+
+        if (event.getSummary() != null) {
+            eventSummaryTextView.setText(event.getSummary());
+        } else {
+            eventSummaryTextView.setText("Unknown");
         }
+        if (event.getEventLocation() != null) {
+            eventDescriptionTextView.setText("Location: " + event.getEventLocation());
+        } else {
+            eventDescriptionTextView.setText("Unknown");
+        }
+
         eventStartTextView.setText(event.getEventStartTime() + " - " + event.getEventEndTime());
 
     }

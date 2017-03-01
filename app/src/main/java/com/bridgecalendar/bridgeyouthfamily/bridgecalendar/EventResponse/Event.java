@@ -21,6 +21,10 @@ import java.util.Date;
 public class Event extends WeekViewEvent {
     @SerializedName("summary")
     private String summary;
+    @SerializedName("description")
+    private String description;
+    @SerializedName("location")
+    private String location;
     @SerializedName("id")
     private String id;
     @SerializedName("start")
@@ -42,6 +46,14 @@ public class Event extends WeekViewEvent {
 
     public End getEnd() {
         return mEnd;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getEventLocation() {
+        return this.location;
     }
 
     public WeekViewEvent toWeekViewEvent() {
@@ -69,9 +81,9 @@ public class Event extends WeekViewEvent {
 //        if(weekViewEvent.getId() == 1){
 //            weekViewEvent.setColor();
 //        }
-        if(summary.length > 1) {
+        if (summary.length > 1) {
             weekViewEvent.setLocation(summary[1]);
-            if(weekViewEvent.getLocation().equals("Kelowna")){
+            if (weekViewEvent.getLocation().equals("Kelowna")) {
                 weekViewEvent.setColor(Color.CYAN);
             }
         }
@@ -84,6 +96,7 @@ public class Event extends WeekViewEvent {
         String dateString = sdf.format(date);
         return dateString;
     }
+
     public String getEventEndTime() {
         Date date = new Date(mEnd.getCalendarDateTime().getValue());
         SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");

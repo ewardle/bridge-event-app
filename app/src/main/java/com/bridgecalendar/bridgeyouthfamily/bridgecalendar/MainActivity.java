@@ -29,6 +29,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
     private EventAdapter mEventAdapter;
 
     private TextView mEmptyEventsTextView;
+
     //TODO set to query only current month + previous + next
     //TODO reupload server code to update setMaxResults = 2499
     @Override
@@ -82,7 +84,24 @@ public class MainActivity extends AppCompatActivity implements EventListListener
 
         eventResponseManager = new EventResponseManager();
         eventResponseManager.attachListener(this);
-        eventResponseManager.getSearchList("bridgekelowna@gmail.com", "2016-01-21T10:00:31-08:00", "2025-12-31T11:00:31-08:00");
+        Calendar calendar = Calendar.getInstance();
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH) + 1;
+        int nextMonth = currentMonth + 1;
+        int previousMonth = currentMonth - 1;
+        String currentMonthString = "" + currentMonth;
+        String nextMonthString = "" + nextMonth;
+        String previousMonthString = "" + previousMonth;
+        if ((currentMonth) < 10) {
+            currentMonthString = String.format("%02d", (currentMonth));
+        }
+        if ((nextMonth) < 10) {
+            nextMonthString = String.format("%02d", (nextMonth));
+        }
+        if ((previousMonth) < 10) {
+            previousMonthString = String.format("%02d", (previousMonth));
+        }
+        eventResponseManager.getSearchList("bridgekelowna@gmail.com", currentYear + "-"+previousMonthString+"-01T00:00:31-08:00", currentYear +"-"+nextMonthString+"-31T23:59:31-08:00");
         //calendar listener for user date selection change
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -119,8 +138,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
                     if (count == 0) {
                         mEmptyEventsTextView.setVisibility(View.VISIBLE);
                         mRecyclerView.setVisibility(View.GONE);
-                    }
-                    else {
+                    } else {
                         mRecyclerView.setVisibility(View.VISIBLE);
                         mEmptyEventsTextView.setVisibility(View.GONE);
 
@@ -141,9 +159,11 @@ public class MainActivity extends AppCompatActivity implements EventListListener
 
 
     }
+
     private ActionBarDrawerToggle setupDrawerToggle() {
         return new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
     }
+
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -155,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -164,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
 
 
     }
+
     private void setNavDrawerListener(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
