@@ -140,10 +140,33 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
     func getEvents() {
         
         print("Getting events")
-        self.calendarListEvent = Bcalendar().getBCalListEvents()
-        self.calendarListEvent2 = Bcalendar().getBCalListEvents2()
+        self.calendarListEvent = filteredEventDictionary(dictionary: Bcalendar().getBCalListEvents())
+        self.calendarListEvent2 = filteredEventDictionary(dictionary: Bcalendar().getBCalListEvents2())
         self.setDataSource()
         
+    }
+    
+    func filteredEventDictionary(dictionary: [Int: [Event]]) -> [Int: [Event]]? {
+        // Create new dictionary for daily sublists
+        var filteredDictionary: [Int: [Event]] = [Int: [Event]]()
+        let defaults = UserDefaults.standard
+        for (key, list) in dictionary {
+            if dictionary[key] != nil {
+                var filteredList: [Event] = [Event]()
+                // See if any events exist and pass through filter
+                for eventInfo in list as [Event] {
+                    let isUnfiltered: Bool? = defaults.bool(forKey: "\(eventInfo.location.lowercased())Filter")
+                    // Event row shows if not explicitly filtered out
+                    if isUnfiltered == nil || isUnfiltered == true {
+                        filteredList.append(eventInfo);
+                    }
+                }
+                if filteredList.count > 0 {
+                    filteredDictionary[key] = filteredList
+                }
+            }
+        }
+        return filteredDictionary
     }
     
     //load the list view
@@ -179,8 +202,8 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
         if(Bcalendar().updated() == true) {
             print("ViewControllerList check: calendar was updated")
             Bcalendar().setListUpdated(updated: false)
-            self.calendarListEvent = Bcalendar().getBCalListEvents()
-            self.calendarListEvent2 = Bcalendar().getBCalListEvents2()
+            self.calendarListEvent = filteredEventDictionary(dictionary: Bcalendar().getBCalListEvents())
+            self.calendarListEvent2 = filteredEventDictionary(dictionary: Bcalendar().getBCalListEvents2())
             self.setDataSource()
             self.EventList.reloadData()
         }

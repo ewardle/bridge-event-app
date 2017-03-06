@@ -63,7 +63,6 @@ class ViewControllerCalendar: UIViewController {
         
         //Reloads calendar list with new event list when pressed
         syncCalendarButton.addTarget(self, action: #selector(updateListOfEvents(button:)), for: .touchUpInside)
-        
     }
     
     func retrieveCurrentMonthEvents() {

@@ -171,20 +171,21 @@ class SettingsTableTableViewController: UITableViewController {
     }
     
     //saves setting for Kelowna filtering
-    //TODO: add in code for the actual filtering
+    //Filtering is done from calendar and list views
     @IBAction func kelownaAction(_ sender: Any) {
         let val = kelownaSwitch.isOn
         defaults.set(val, forKey:"kelownaFilter")
-        
-        
+        // Indicate that the calendar list has changed
+        Bcalendar().setListUpdated(updated: true)
     }
     
     //saves setting for Peachland filtering
-    //TODO: add in code for the actual filtering
+    //Filtering is done from calendar and list views
     @IBAction func peachlandAction(_ sender: Any) {
         let val = peachlandSwitch.isOn
         defaults.set(val, forKey:"peachlandFilter")
-        
+        // Indicate that the calendar list has changed
+        Bcalendar().setListUpdated(updated: true)
         
 
     }
