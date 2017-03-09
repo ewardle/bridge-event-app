@@ -72,6 +72,7 @@
 		8D16F02F1E49967900856CA1 /* listIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "listIcon@3x.png"; path = "Images/listIcon@3x.png"; sourceTree = SOURCE_ROOT; };
 		8D94CBAF1E4934230010E384 /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
 		8D94CBB11E4935430010E384 /* SettingsTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableTableViewController.swift; sourceTree = "<group>"; };
+		8DA934B11E71F3A9004B6F5C /* CalendarViewApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CalendarViewApp.entitlements; sourceTree = "<group>"; };
 		8DFD70661E493A5C0053A066 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gear.png; path = Images/gear.png; sourceTree = SOURCE_ROOT; };
 		9FBE3F96A5A4403CA515C9B3 /* Pods-CalendarViewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewApp/Pods-CalendarViewApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C3F0F7519AC3CA6022EB3305 /* Pods-CalendarViewAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewAppTests/Pods-CalendarViewAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +166,7 @@
 		D024F0251E1317D1004AD2A5 /* CalendarViewApp */ = {
 			isa = PBXGroup;
 			children = (
+				8DA934B11E71F3A9004B6F5C /* CalendarViewApp.entitlements */,
 				D024F0261E1317D1004AD2A5 /* AppDelegate.swift */,
 				D0CDEE6E1E25C31D00409A92 /* Bcalendar.swift */,
 				D00F43D51E1A0476008C1D62 /* Event.swift */,
@@ -266,8 +268,13 @@
 				TargetAttributes = {
 					D024F0221E1317D1004AD2A5 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = S7AR24V7MM;
+						DevelopmentTeam = 54F5LEGD78;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					D024F0361E1317D1004AD2A5 = {
 						CreatedOnToolsVersion = 8.1;
@@ -591,7 +598,8 @@
 			baseConfigurationReference = 9FBE3F96A5A4403CA515C9B3 /* Pods-CalendarViewApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S7AR24V7MM;
+				CODE_SIGN_ENTITLEMENTS = CalendarViewApp/CalendarViewApp.entitlements;
+				DEVELOPMENT_TEAM = 54F5LEGD78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
 					"$(inherited)",
@@ -600,7 +608,7 @@
 				INFOPLIST_FILE = CalendarViewApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.calendar.CalendarViewApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridge.CalendarViewApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
@@ -612,7 +620,8 @@
 			baseConfigurationReference = 671723650B19A8B9134B9D90 /* Pods-CalendarViewApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = S7AR24V7MM;
+				CODE_SIGN_ENTITLEMENTS = CalendarViewApp/CalendarViewApp.entitlements;
+				DEVELOPMENT_TEAM = 54F5LEGD78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
 					"$(inherited)",
@@ -621,7 +630,7 @@
 				INFOPLIST_FILE = CalendarViewApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.calendar.CalendarViewApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridge.CalendarViewApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
