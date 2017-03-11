@@ -51,7 +51,24 @@ public class UpcomingEventsActivity extends AppCompatActivity implements EventLi
                 List<WeekViewEvent> weekViewEvents = new ArrayList<>();
 
                 if (!networkCalled) {
-                    eventResponseManager.getSearchList("bridgekelowna@gmail.com", "2016-01-09T10:00:31-08:00", "2017-12-31T11:00:31-08:00");
+                    Calendar calendar = Calendar.getInstance();
+                    int currentYear = calendar.get(Calendar.YEAR);
+                    int currentMonth = calendar.get(Calendar.MONTH) + 1;
+                    int nextMonth = currentMonth + 1;
+                    int previousMonth = currentMonth - 1;
+                    String currentMonthString = "" + currentMonth;
+                    String nextMonthString = "" + nextMonth;
+                    String previousMonthString = "" + previousMonth;
+                    if ((currentMonth) < 10) {
+                        currentMonthString = String.format("%02d", (currentMonth));
+                    }
+                    if ((nextMonth) < 10) {
+                        nextMonthString = String.format("%02d", (nextMonth));
+                    }
+                    if ((previousMonth) < 10) {
+                        previousMonthString = String.format("%02d", (previousMonth));
+                    }
+                    eventResponseManager.getSearchList("bridgekelowna@gmail.com", currentYear + "-"+previousMonthString+"-01T00:00:31-08:00", currentYear +"-"+nextMonthString+"-31T23:59:31-08:00");
                     networkCalled = true;
 
                 }

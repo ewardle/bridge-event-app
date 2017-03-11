@@ -7,8 +7,17 @@
             />
         <item
             android:id="@+id/drawer_settings_menu"
-            android:title="Settings"
+            android:title="Filters"
             />
+        <item
+            android:id="@+id/drawer_website"
+            android:title="Website"
+            />
+        <item
+            android:id="@+id/drawer_refresh_events"
+            android:title="Refresh Events"
+            />
+
 
     </group>
 </menu>

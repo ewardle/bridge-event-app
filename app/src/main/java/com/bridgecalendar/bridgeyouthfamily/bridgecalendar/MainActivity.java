@@ -2,6 +2,7 @@ package com.bridgecalendar.bridgeyouthfamily.bridgecalendar;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
         if ((previousMonth) < 10) {
             previousMonthString = String.format("%02d", (previousMonth));
         }
-        eventResponseManager.getSearchList("bridgekelowna@gmail.com", currentYear + "-"+previousMonthString+"-01T00:00:31-08:00", currentYear +"-"+nextMonthString+"-31T23:59:31-08:00");
+        eventResponseManager.getSearchList("bridgekelowna@gmail.com", currentYear + "-" + previousMonthString + "-01T00:00:31-08:00", currentYear + "-" + nextMonthString + "-31T23:59:31-08:00");
         //calendar listener for user date selection change
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -124,16 +125,17 @@ public class MainActivity extends AppCompatActivity implements EventListListener
                     int count = 0;
                     //mTextView.setText("" + unixTimeStart);
                     for (int i = 0; i < mEventList.size(); i++) {
-                        long eventEnd = mEventList.get(i).getEnd().getCalendarDateTime().getValue();
-                        long eventStart = mEventList.get(i).getStart().getCalendarDateTime().getValue();
-                        //mTextView2.setText("" + eventEnd);
-                        if (eventStart >= unixTimeStart && eventEnd <= unixTimeEnd) {
-                            count++;
-                            mRecyclerViewEventList.add(mEventList.get(i));
-                            //mTextView.setText("" + mEventList.get(i).getSummary());
+                        if (mEventList.get(i).getStart().getCalendarDateTime() != null) {
+                            long eventEnd = mEventList.get(i).getEnd().getCalendarDateTime().getValue();
+                            long eventStart = mEventList.get(i).getStart().getCalendarDateTime().getValue();
+                            //mTextView2.setText("" + eventEnd);
+                            if (eventStart >= unixTimeStart && eventEnd <= unixTimeEnd) {
+                                count++;
+                                mRecyclerViewEventList.add(mEventList.get(i));
+                                //mTextView.setText("" + mEventList.get(i).getSummary());
+                            }
+
                         }
-
-
                     }
                     if (count == 0) {
                         mEmptyEventsTextView.setVisibility(View.VISIBLE);
@@ -207,6 +209,8 @@ public class MainActivity extends AppCompatActivity implements EventListListener
                 // Either use fragment or new settings activity
                 activityClassObject = SettingsActivity.class;
                 break;
+            case R.id.drawer_website:
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.thebridgeservices.ca/")));
             default:
                 activityClassObject = UpcomingEventsActivity.class;
                 break;
