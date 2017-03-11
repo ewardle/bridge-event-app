@@ -258,8 +258,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
     @Override
     protected void onStart() {
         super.onStart();
-        if (eventResponseManager == null) {
-
+        if (eventResponseManager.mEventListListener == null) {
             eventResponseManager.attachListener(this);
         }
 
@@ -269,6 +268,9 @@ public class MainActivity extends AppCompatActivity implements EventListListener
     protected void onResume() {
         super.onResume();
 
+        if (eventResponseManager.mEventListListener == null) {
+            eventResponseManager.attachListener(this);
+        }
     }
 
     @Override

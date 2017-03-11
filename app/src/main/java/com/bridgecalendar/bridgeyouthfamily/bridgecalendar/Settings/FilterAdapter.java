@@ -50,8 +50,13 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder
         filterTextView.setText(filter);
         holder.filterCheckBox.setOnCheckedChangeListener(null);
 
+        if(filteredList.contains(holder.filterTextView.getText().toString())){
+            Log.d("LOG", "contains " + holder.filterTextView.getText().toString());
+            holder.filterCheckBox.setChecked(true);
+        }
+
         //if true, your checkbox will be selected, else unselected
-        holder.filterCheckBox.setChecked(isSelectedList.contains(filterList.get(position)));
+        //holder.filterCheckBox.setChecked(isSelectedList.contains(filterList.get(position)));
 
         holder.filterCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -59,7 +64,14 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder
                 if (isChecked) {
                     isSelectedList.add(holder.getAdapterPosition());
                     filteredList.add(holder.filterTextView.getText().toString());
-                    Log.d("LOG", "" + holder.getAdapterPosition());
+                    Log.d("LOG", "added: " + isSelectedList.toString());
+                    Log.d("LOG", "added: " + filteredList.toString());
+                }
+                if (!isChecked) {
+                    isSelectedList.remove(new Integer(holder.getAdapterPosition()));
+                    filteredList.remove(holder.filterTextView.getText().toString());
+                    Log.d("LOG", "removed: " + isSelectedList.toString());
+                    Log.d("LOG", "removed: " + filteredList.toString());
                 }
 
             }
@@ -93,6 +105,7 @@ public class FilterAdapter extends RecyclerView.Adapter<FilterAdapter.ViewHolder
 
     public void setFilteredList(List<String> filteredList) {
         this.filteredList = filteredList;
+        Log.d("LOG",""+filteredList.toString());
     }
 
     public void setIsSelectedList(List<Integer> isSelectedList) {

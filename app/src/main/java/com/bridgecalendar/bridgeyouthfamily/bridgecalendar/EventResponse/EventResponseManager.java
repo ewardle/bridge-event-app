@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class EventResponseManager {
     public static final String BASE_URL = "http://138.197.129.140:8080";
     private EventResponse mEventResponse;
-    private EventListListener mEventListListener;
+    public EventListListener mEventListListener;
 
 
     public EventResponseManager() {
