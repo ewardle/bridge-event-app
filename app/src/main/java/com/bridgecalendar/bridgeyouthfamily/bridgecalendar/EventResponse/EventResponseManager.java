@@ -1,5 +1,6 @@
 package com.bridgecalendar.bridgeyouthfamily.bridgecalendar.EventResponse;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.bridgecalendar.bridgeyouthfamily.bridgecalendar.CalendarAPI.CalendarAPI;
@@ -19,6 +20,7 @@ public class EventResponseManager {
     private EventResponse mEventResponse;
     private EventListListener mEventListListener;
 
+
     public EventResponseManager() {
 
     }
@@ -30,6 +32,7 @@ public class EventResponseManager {
                 .build();
         CalendarAPI calendarAPI = retrofit.create(CalendarAPI.class);
         Call<EventResponse> call2 = calendarAPI.getEvents(calendarName, minTime, maxTime);
+        Log.d("TEST", "Call<EventResponse> call2");
         call2.enqueue(new Callback<EventResponse>() {
             @Override
             public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {
@@ -47,7 +50,7 @@ public class EventResponseManager {
 
             @Override
             public void onFailure(Call<EventResponse> call, Throwable t) {
-
+                Log.d("TEST", "Response failure");
             }
 
         });

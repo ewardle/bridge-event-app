@@ -1,6 +1,8 @@
 package com.bridgecalendar.bridgeyouthfamily.bridgecalendar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
@@ -32,7 +35,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Arya on 1/4/2017.
@@ -41,6 +46,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements EventListListener {
     private List<Event> mEventList;
     private List<Event> mRecyclerViewEventList;
+    private HashSet<String> uniqueLocationSet;
 
     private CalendarView mCalendarView;
     EventResponseManager eventResponseManager;
@@ -59,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements EventListListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         mEventList = new ArrayList<>();
+        uniqueLocationSet = new HashSet<>();
         mRecyclerViewEventList = new ArrayList<>();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -200,19 +207,44 @@ public class MainActivity extends AppCompatActivity implements EventListListener
 
     //drawer menu item actions
     private void drawerItemSelection(MenuItem item) {
-        Class activityClassObject;
+
         switch (item.getItemId()) {
             case R.id.upcoming_events_menu:
-                activityClassObject = UpcomingEventsActivity.class;
+                Intent startUpcomming = new Intent(this, UpcomingEventsActivity.class);
+                startActivity(startUpcomming);
                 break;
             case R.id.drawer_settings_menu:
-                // Either use fragment or new settings activity
-                activityClassObject = SettingsActivity.class;
+                Intent startSettings = new Intent(this, SettingsActivity.class);
+                ArrayList<String> filterList = new ArrayList<>(uniqueLocationSet);
+                startSettings.putStringArrayListExtra("filterList", filterList);
+                startActivity(startSettings);
                 break;
             case R.id.drawer_website:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.thebridgeservices.ca/")));
+                break;
+            case R.id.drawer_refresh_events:
+                Calendar calendar = Calendar.getInstance();
+                int currentYear = calendar.get(Calendar.YEAR);
+                int currentMonth = calendar.get(Calendar.MONTH) + 1;
+                int nextMonth = currentMonth + 1;
+                int previousMonth = currentMonth - 1;
+                String currentMonthString = "" + currentMonth;
+                String nextMonthString = "" + nextMonth;
+                String previousMonthString = "" + previousMonth;
+                if ((currentMonth) < 10) {
+                    currentMonthString = String.format("%02d", (currentMonth));
+                }
+                if ((nextMonth) < 10) {
+                    nextMonthString = String.format("%02d", (nextMonth));
+                }
+                if ((previousMonth) < 10) {
+                    previousMonthString = String.format("%02d", (previousMonth));
+                }
+                eventResponseManager.getSearchList("bridgekelowna@gmail.com", currentYear + "-" + previousMonthString + "-01T00:00:31-08:00", currentYear + "-" + nextMonthString + "-31T23:59:31-08:00");
+                break;
             default:
-                activityClassObject = UpcomingEventsActivity.class;
+                Intent startDefault = new Intent(this, UpcomingEventsActivity.class);
+                startActivity(startDefault);
                 break;
         }
         try {
@@ -220,8 +252,6 @@ public class MainActivity extends AppCompatActivity implements EventListListener
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Intent startActivity = new Intent(this, activityClassObject);
-        startActivity(startActivity);
         mDrawerLayout.closeDrawers();
     }
 
@@ -260,7 +290,26 @@ public class MainActivity extends AppCompatActivity implements EventListListener
     @Override
     public void setEventList(List<Event> eventList) {
         mEventList.clear();
-        mEventList.addAll(eventList);
+
+        List<Event> tempList = eventList;
+        SharedPreferences prefs = this.getSharedPreferences("bridge", Context.MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet("filterList", null);
+        if (set != null) {
+            Log.d("LOG","Getting from shared preferences events..");
+            List<String> filterList = new ArrayList<>(set);
+            List<Event> tempList2 = new ArrayList<>();
+            for (Event event : tempList) {
+                if (filterList.contains(event.getEventLocation())) {
+                    tempList2.add(event);
+                }
+            }
+            mEventList.addAll(tempList2);
+        } else {
+            mEventList.addAll(tempList);
+        }
+        for (Event event : tempList) {
+            uniqueLocationSet.add(event.getEventLocation());
+        }
         // mTextView2.setText(""+mEventList.size());
     }
 }

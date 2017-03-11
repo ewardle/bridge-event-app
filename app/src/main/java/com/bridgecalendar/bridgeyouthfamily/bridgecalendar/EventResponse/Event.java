@@ -21,10 +21,10 @@ import java.util.Date;
 public class Event extends WeekViewEvent {
     @SerializedName("summary")
     private String summary;
-    @SerializedName("description")
-    private String description;
     @SerializedName("location")
     private String location;
+    @SerializedName("description")
+    private String description;
     @SerializedName("id")
     private String id;
     @SerializedName("start")

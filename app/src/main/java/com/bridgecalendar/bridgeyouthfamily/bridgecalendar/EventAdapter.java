@@ -45,19 +45,25 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         TextView eventSummaryTextView = holder.eventSummaryTextView;
         TextView eventStartTextView = holder.eventStartTextView;
         TextView eventDescriptionTextView = holder.eventDescriptionTextView;
+        TextView eventLocationTextView = holder.eventLocationTextView;
 
         if (event.getSummary() != null) {
             eventSummaryTextView.setText(event.getSummary());
         } else {
-            eventSummaryTextView.setText("Unknown");
+            eventSummaryTextView.setText("Unknown Title");
         }
         if (event.getEventLocation() != null) {
-            eventDescriptionTextView.setText("Location: " + event.getEventLocation());
+            eventLocationTextView.setText("Location: " + event.getEventLocation());
         } else {
-            eventDescriptionTextView.setText("Unknown");
+            eventLocationTextView.setText("Location: Unknown Location");
+        }
+        if (event.getDescription() != null) {
+            eventDescriptionTextView.setText("Description: " + event.getDescription());
+        } else {
+            eventDescriptionTextView.setText("Description: Unknown Description");
         }
 
-        eventStartTextView.setText(event.getEventStartTime() + " - " + event.getEventEndTime());
+        eventStartTextView.setText("Time: "+ event.getEventStartTime() + " - " + event.getEventEndTime());
 
     }
 
@@ -70,9 +76,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
         private TextView eventSummaryTextView;
         private TextView eventStartTextView;
         private TextView eventDescriptionTextView;
+        private TextView eventLocationTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            eventLocationTextView = (TextView) itemView.findViewById(R.id.event_location_text_view);
             eventSummaryTextView = (TextView) itemView.findViewById(R.id.event_summary_text_view);
             eventDescriptionTextView = (TextView) itemView.findViewById(R.id.event_description_text_view);
             eventStartTextView = (TextView) itemView.findViewById(R.id.event_start_time_text_view);
