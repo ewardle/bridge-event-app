@@ -176,7 +176,7 @@ class SettingsTableTableViewController: UITableViewController {
         let val = kelownaSwitch.isOn
         defaults.set(val, forKey:"kelownaFilter")
         // Indicate that the calendar list has changed
-        Bcalendar().setListUpdated(updated: true)
+        //Bcalendar().setListUpdated(updated: true)
     }
     
     //saves setting for Peachland filtering
@@ -185,7 +185,7 @@ class SettingsTableTableViewController: UITableViewController {
         let val = peachlandSwitch.isOn
         defaults.set(val, forKey:"peachlandFilter")
         // Indicate that the calendar list has changed
-        Bcalendar().setListUpdated(updated: true)
+        //Bcalendar().setListUpdated(updated: true)
         
 
     }

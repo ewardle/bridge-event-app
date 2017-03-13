@@ -74,7 +74,9 @@ public class Bcalendar {
             var location = "Kelowna"
             
             if checkLocation != "null" {
-                location = checkLocation
+                // If location is defined, restrict it to just the city name
+                var splitLocation = checkLocation.components(separatedBy: ",")
+                location = splitLocation[0]
             }
             
             //Convert UNIX date into Date object
@@ -103,6 +105,8 @@ public class Bcalendar {
         else {
             Bcalendar.sCalendarListEvent = calendarListEvent
         }
+        
+        
         
         return calendarListEvent
     }

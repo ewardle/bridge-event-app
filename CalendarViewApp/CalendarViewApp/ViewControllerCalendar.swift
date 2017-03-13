@@ -200,7 +200,8 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         let defaults = UserDefaults.standard
         // Go through list to see if any exist and pass through filter
         for eventInfo in list as [Event] {
-            let isUnfiltered: Bool? = defaults.bool(forKey: "\(eventInfo.location.lowercased())Filter")
+            let isUnfiltered: Bool? = defaults.object(forKey: "\(eventInfo.location.lowercased())Filter") as! Bool?
+            print("\(eventInfo.location) is in defaults?: \(isUnfiltered)")
             // Event row will be shown if not explicitly filtered out
             if isUnfiltered == nil || isUnfiltered == true {
                 calendarFilteredEventList.append(eventInfo)
