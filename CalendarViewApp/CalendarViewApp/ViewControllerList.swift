@@ -155,7 +155,7 @@ class ViewControllerList: UIViewController, UITableViewDelegate, UITableViewData
                 var filteredList: [Event] = [Event]()
                 // See if any events exist and pass through filter
                 for eventInfo in list as [Event] {
-                    let isUnfiltered: Bool? = defaults.bool(forKey: "\(eventInfo.location.lowercased())Filter")
+                    let isUnfiltered: Bool? = defaults.object(forKey: "\(eventInfo.location.lowercased())Filter") as! Bool?
                     // Event row shows if not explicitly filtered out
                     if isUnfiltered == nil || isUnfiltered == true {
                         filteredList.append(eventInfo);
