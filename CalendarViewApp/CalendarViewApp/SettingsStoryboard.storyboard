@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -123,21 +124,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F3o-GP-jMS">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F3o-GP-jMS">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="kelownaAction:" destination="rqC-Gh-pwf" eventType="valueChanged" id="c3G-23-tSr"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kelowna" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q80-3X-FEg">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kelowna" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q80-3X-FEg">
                                                     <rect key="frame" x="21" y="11" width="81" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="q80-3X-FEg" secondAttribute="bottom" constant="3" id="JyE-6r-Kkw"/>
+                                                <constraint firstItem="q80-3X-FEg" firstAttribute="top" secondItem="G8A-6V-s9s" secondAttribute="topMargin" constant="3" id="PjN-6Z-OhW"/>
+                                                <constraint firstItem="F3o-GP-jMS" firstAttribute="top" secondItem="G8A-6V-s9s" secondAttribute="top" constant="6" id="Wcb-og-u8a"/>
+                                                <constraint firstAttribute="trailing" secondItem="F3o-GP-jMS" secondAttribute="trailing" constant="8" id="hdj-gG-HHF"/>
+                                                <constraint firstAttribute="bottom" secondItem="F3o-GP-jMS" secondAttribute="bottom" constant="6" id="lg3-Az-ENS"/>
+                                                <constraint firstItem="q80-3X-FEg" firstAttribute="leading" secondItem="G8A-6V-s9s" secondAttribute="leadingMargin" constant="13" id="qCu-Qf-pRL"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="ZfX-hu-bzz">
@@ -147,21 +154,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eAk-at-he9">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eAk-at-he9">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="peachlandAction:" destination="rqC-Gh-pwf" eventType="valueChanged" id="fix-s1-QIB"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Peachland" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBB-h3-w4r">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Peachland" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBB-h3-w4r">
                                                     <rect key="frame" x="21" y="11" width="92" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="eAk-at-he9" secondAttribute="trailing" constant="8" id="9Iy-Gt-dr4"/>
+                                                <constraint firstAttribute="bottom" secondItem="eAk-at-he9" secondAttribute="bottom" constant="6" id="BIC-fG-D35"/>
+                                                <constraint firstItem="eAk-at-he9" firstAttribute="top" secondItem="4t0-v5-4Ef" secondAttribute="top" constant="6" id="CuV-KN-6lW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="XBB-h3-w4r" secondAttribute="bottom" constant="3" id="ErI-9N-XMi"/>
+                                                <constraint firstItem="XBB-h3-w4r" firstAttribute="leading" secondItem="4t0-v5-4Ef" secondAttribute="leadingMargin" constant="13" id="a5b-Zd-3Fu"/>
+                                                <constraint firstItem="XBB-h3-w4r" firstAttribute="top" secondItem="4t0-v5-4Ef" secondAttribute="topMargin" constant="3" id="yTf-gS-QSb"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

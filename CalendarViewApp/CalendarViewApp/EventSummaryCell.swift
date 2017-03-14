@@ -22,7 +22,19 @@ class EventSummaryCell: UITableViewCell {
     // Event that we got the data for this cell from
     var contents: Event? = nil
     
-    let locationColors: [String: UIColor] = ["Peachland": UIColor(colorWithHexValue: 0xFF9999), "Kelowna": UIColor(colorWithHexValue: 0x99CCFF)] //placeholders until we can get the place names programmatically
+    // Note: locations not specified here will show up in default grey
+    let locationColors: [String: UIColor] = [
+        "Vernon": UIColor(colorWithHexValue: 0xFFCC99),
+        "Lake Country": UIColor(colorWithHexValue: 0x9999FF),
+        "Glenmore": UIColor(colorWithHexValue: 0x99CC99),
+        "Rutland": UIColor(colorWithHexValue: 0x99CCCC),
+        "Kelowna": UIColor(colorWithHexValue: 0x99CCFF),
+        "West Kelowna": UIColor(colorWithHexValue: 0xCC99CC),
+        "Westbank": UIColor(colorWithHexValue: 0xCC99CC),
+        "Peachland": UIColor(colorWithHexValue: 0xFF9999),
+        "Summerland": UIColor(colorWithHexValue: 0x99FF99),
+        "Penticton": UIColor(colorWithHexValue: 0xCCCC99)
+    ]
     let gray = UIColor.gray
     
     override func awakeFromNib() {

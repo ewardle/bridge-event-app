@@ -121,6 +121,8 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         if cellState.isSelected {
             myCustomCell.dayLabel.textColor = UIColor.white
+            //reload TableView with events for selected date
+            selectedNewDate(dateSelected: cellState.date.day, monthOfSelected: cellState.date.month)
         } else {
             if cellState.dateBelongsTo == .thisMonth {
                 myCustomCell.dayLabel.textColor = dimPurple
@@ -130,7 +132,7 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         }
         
         //reload TableView with events for selected date
-        selectedNewDate(dateSelected: cellState.date.day, monthOfSelected: cellState.date.month)
+        //selectedNewDate(dateSelected: cellState.date.day, monthOfSelected: cellState.date.month)
         
     }
     
@@ -175,7 +177,7 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
     // This setups the display of your header
     func calendar(_ calendar: JTAppleCalendarView, willDisplaySectionHeader header: JTAppleHeaderView, range: (start: Date, end: Date), identifier: String) {
         
-        //print("Identifier: \(identifier)");
+        //print("Identifier: \(identifier)")
         
         if(identifier=="CalendarHeaderView"){
             let headerCell = (header as? CalendarHeaderView)
@@ -187,6 +189,9 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     func calendar(_ calendar: JTAppleCalendarView, sectionHeaderIdentifierFor range: (start: Date, end: Date), belongingTo month: Int) -> String {
+        
+        //print("Month change")
+        
         if month == now.month {
             return "CalendarHeaderView"
         }
@@ -200,7 +205,8 @@ extension ViewControllerCalendar: JTAppleCalendarViewDataSource, JTAppleCalendar
         let defaults = UserDefaults.standard
         // Go through list to see if any exist and pass through filter
         for eventInfo in list as [Event] {
-            let isUnfiltered: Bool? = defaults.bool(forKey: "\(eventInfo.location.lowercased())Filter")
+            let isUnfiltered: Bool? = defaults.object(forKey: "\(eventInfo.location.lowercased())Filter") as! Bool?
+            //print("\(eventInfo.location) is in defaults?: \(isUnfiltered)")
             // Event row will be shown if not explicitly filtered out
             if isUnfiltered == nil || isUnfiltered == true {
                 calendarFilteredEventList.append(eventInfo)
