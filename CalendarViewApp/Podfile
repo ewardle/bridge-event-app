@@ -12,6 +12,8 @@ target ‘CalendarViewApp’ do
   pod 'SwiftyJSON'
   pod 'SwiftDate', '~> 4.0'
   pod 'JTAppleCalendar', '~> 6.0'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
 
   target ‘CalendarViewAppTests' do
     inherit! :search_paths
