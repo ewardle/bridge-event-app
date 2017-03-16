@@ -165,7 +165,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo)
         
         // Change this to your preferred presentation option
-        completionHandler([])
+        completionHandler(
+            [UNNotificationPresentationOptions.alert,
+             UNNotificationPresentationOptions.sound,
+             UNNotificationPresentationOptions.badge])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -182,6 +185,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         completionHandler()
     }
+    
+    
 }
 // [END ios_10_message_handling]
 // [START ios_10_data_message_handling]
