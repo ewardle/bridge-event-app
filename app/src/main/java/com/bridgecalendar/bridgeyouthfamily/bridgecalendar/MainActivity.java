@@ -296,22 +296,27 @@ public class MainActivity extends AppCompatActivity implements EventListListener
         List<Event> tempList = eventList;
         SharedPreferences prefs = this.getSharedPreferences("bridge", Context.MODE_PRIVATE);
         Set<String> set = prefs.getStringSet("filterList", null);
-        if (set != null) {
-            Log.d("LOG","Getting from shared preferences events..");
+        if (set != null && set.size()!=0) {
+
             List<String> filterList = new ArrayList<>(set);
             List<Event> tempList2 = new ArrayList<>();
-            for (Event event : tempList) {
-                if (filterList.contains(event.getEventLocation())) {
-                    tempList2.add(event);
+
+
+                for (Event event : tempList) {
+                    if (filterList.contains(event.getEventLocation())) {
+                        tempList2.add(event);
+                    }
                 }
-            }
+
             mEventList.addAll(tempList2);
+
         } else {
             mEventList.addAll(tempList);
         }
         for (Event event : tempList) {
             uniqueLocationSet.add(event.getEventLocation());
         }
+        mEventAdapter.notifyDataSetChanged();
         // mTextView2.setText(""+mEventList.size());
     }
 }

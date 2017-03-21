@@ -26,8 +26,7 @@ public class FirebaseNotificationService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         String messageBody = remoteMessage.getNotification().getBody();
         super.onMessageReceived(remoteMessage);
-        Log.d("DEBUG", "From: " + remoteMessage.getFrom());
-        Log.d("DEBUG", "Notification Message Body: " + messageBody);
+
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.bridge_logo)

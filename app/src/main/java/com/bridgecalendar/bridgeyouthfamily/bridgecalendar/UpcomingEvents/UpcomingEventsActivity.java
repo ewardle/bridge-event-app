@@ -1,6 +1,8 @@
 package com.bridgecalendar.bridgeyouthfamily.bridgecalendar.UpcomingEvents;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +22,7 @@ import com.bridgecalendar.bridgeyouthfamily.bridgecalendar.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Arya on 1/14/2017.
@@ -43,42 +46,41 @@ public class UpcomingEventsActivity extends AppCompatActivity implements EventLi
         mEventList = new ArrayList<>();
         eventResponseManager = new EventResponseManager();
         eventResponseManager.attachListener(this);
+        if (!networkCalled) {
+            Calendar calendar = Calendar.getInstance();
+            int currentYear = calendar.get(Calendar.YEAR);
+            int currentMonth = calendar.get(Calendar.MONTH) + 1;
+            int nextMonth = currentMonth + 1;
+            int previousMonth = currentMonth - 1;
+            String currentMonthString = "" + currentMonth;
+            String nextMonthString = "" + nextMonth;
+            String previousMonthString = "" + previousMonth;
+            if ((currentMonth) < 10) {
+                currentMonthString = String.format("%02d", (currentMonth));
+            }
+            if ((nextMonth) < 10) {
+                nextMonthString = String.format("%02d", (nextMonth));
+            }
+            if ((previousMonth) < 10) {
+                previousMonthString = String.format("%02d", (previousMonth));
+            }
+            eventResponseManager.getSearchList("bridgekelowna@gmail.com", currentYear + "-" + previousMonthString + "-01T00:00:31-08:00", currentYear + "-" + nextMonthString + "-31T23:59:31-08:00");
+            networkCalled = true;
 
+        }
 
         mWeekView.setMonthChangeListener(new MonthLoader.MonthChangeListener() {
             @Override
             public List<? extends WeekViewEvent> onMonthChange(int newYear, int newMonth) {
                 List<WeekViewEvent> weekViewEvents = new ArrayList<>();
 
-                if (!networkCalled) {
-                    Calendar calendar = Calendar.getInstance();
-                    int currentYear = calendar.get(Calendar.YEAR);
-                    int currentMonth = calendar.get(Calendar.MONTH) + 1;
-                    int nextMonth = currentMonth + 1;
-                    int previousMonth = currentMonth - 1;
-                    String currentMonthString = "" + currentMonth;
-                    String nextMonthString = "" + nextMonth;
-                    String previousMonthString = "" + previousMonth;
-                    if ((currentMonth) < 10) {
-                        currentMonthString = String.format("%02d", (currentMonth));
-                    }
-                    if ((nextMonth) < 10) {
-                        nextMonthString = String.format("%02d", (nextMonth));
-                    }
-                    if ((previousMonth) < 10) {
-                        previousMonthString = String.format("%02d", (previousMonth));
-                    }
-                    eventResponseManager.getSearchList("bridgekelowna@gmail.com", currentYear + "-"+previousMonthString+"-01T00:00:31-08:00", currentYear +"-"+nextMonthString+"-31T23:59:31-08:00");
-                    networkCalled = true;
-
-                }
                 for (Event event : mEventList) {
                     if (eventMatches(event.toWeekViewEvent(), newYear, newMonth)) {
                         weekViewEvents.add(event.toWeekViewEvent());
 
                     }
                 }
-                Log.d("APP DEBUG", " weekViewEvents.add(event.toWeekViewEvent()) size:" + weekViewEvents.size());
+
                 return weekViewEvents;
             }
         });
@@ -86,7 +88,7 @@ public class UpcomingEventsActivity extends AppCompatActivity implements EventLi
             @Override
             public void onEventClick(WeekViewEvent event, RectF eventRect) {
 
-                    Toast.makeText(UpcomingEventsActivity.this, "Location: " + event.getLocation(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpcomingEventsActivity.this, "Location: " + event.getLocation(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -124,8 +126,26 @@ public class UpcomingEventsActivity extends AppCompatActivity implements EventLi
     @Override
     public void setEventList(List<Event> eventList) {
         mEventList.clear();
-        mEventList.addAll(eventList);
+
+        List<Event> tempList = eventList;
+        SharedPreferences prefs = this.getSharedPreferences("bridge", Context.MODE_PRIVATE);
+        Set<String> set = prefs.getStringSet("filterList", null);
+        if (set != null && set.size() != 0) {
+
+            List<String> filterList = new ArrayList<>(set);
+            List<Event> tempList2 = new ArrayList<>();
+
+            for (Event event : tempList) {
+                if (filterList.contains(event.getEventLocation())) {
+                    tempList2.add(event);
+
+                }
+            }
+
+            mEventList.addAll(tempList2);
+        } else {
+            mEventList.addAll(tempList);
+        }
         mWeekView.notifyDatasetChanged();
-        Log.d("APP DEBUG", " retrofit event list size:" + mEventList.size());
     }
 }

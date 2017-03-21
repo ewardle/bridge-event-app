@@ -48,8 +48,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 isSelectedList = filterAdapter.getSelectedList();
                 filteredList = filterAdapter.getFilterList();
-                Log.d("LOG", "" + isSelectedList.toString());
-                Log.d("LOG", "" + filteredList.toString());
+
                 SharedPreferences prefs = getSharedPreferences("bridge", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = prefs.edit();
                 Set<String> set = new HashSet<>();
@@ -63,7 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences("bridge", Context.MODE_PRIVATE);
         Set<String> set = prefs.getStringSet("filterList", null);
         filterLocationList.removeAll(Collections.singleton(null));
-        Log.d("LOG", filterLocationList.toString());
+
         recyclerView = (RecyclerView) findViewById(R.id.filter_recycler_view);
         filterAdapter = new FilterAdapter(this, filterLocationList);
         if (set != null) {
