@@ -9,15 +9,17 @@
 import UIKit
 import UserNotifications
 
-class SettingsTableTableViewController: UITableViewController {
+class SettingsFilterViewController: UITableViewController {
 
     //outlets for filtering
     @IBOutlet weak var kelownaSwitch: UISwitch!
     @IBOutlet weak var peachlandSwitch: UISwitch!
     
-    //user defaults
-    let defaults = UserDefaults.standard
-    
+    //Event data from calendar
+    var calendarListEvent: [Int: [Event]]? = nil
+    var calendarListEventNext: [Int: [Event]]? = nil
+    var locationList: [String]? = nil
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,8 +40,8 @@ class SettingsTableTableViewController: UITableViewController {
             // Fallback on earlier versions
         }
         
-        defaultFilterSettings()
-        locationfilterAction()
+        // Populate list of locations to use
+        self.setupLocationList()
         
         //changes top navigation bar to a darker color, in order to see the white status bar better
         navigationController?.navigationBar.barTintColor = UIColor.init(colorWithHexValue: 0x336600)
@@ -57,20 +59,62 @@ class SettingsTableTableViewController: UITableViewController {
         
     }
 
+    // MARK: Data Setup Functions
+    
+    func setupLocationList() {
+        // Get events first
+        self.getEvents()
+        
+        let locationSet = NSMutableOrderedSet.init()
+        // Find locations mentioned in this month's events
+        for (key, list) in calendarListEvent! {
+            if calendarListEvent?[key] != nil {
+                for eventInfo in list as [Event] {
+                    // Only unique locations actually get added
+                    locationSet.add(eventInfo.location)
+                }
+            }
+        }
+        // Include locations from next month's events
+        for (key, list) in calendarListEventNext! {
+            if calendarListEvent?[key] != nil {
+                for eventInfo in list as [Event] {
+                    // Only unique locations actually get added
+                    locationSet.add(eventInfo.location)
+                }
+            }
+        }
+        // Sort alphabetically
+        let sortDescriptor = NSSortDescriptor(key: "", ascending: true)
+        locationSet.sort(using: [sortDescriptor])
+        
+        // Represent as array
+        locationList = locationSet.array as? [String]
+    }
+    
+    //use completion handler to make call to server using Alamofire
+    func getEvents() {
+        
+        print("Getting events...")
+        self.calendarListEvent = Bcalendar().getBCalListEvents()
+        self.calendarListEventNext = Bcalendar().getBCalListEvents2()
+        
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    // Static list version of filter assignment (obsolete, moved to cellForRowAt)
+    /*
     //set filtering defaults for saving
     func defaultFilterSettings() {
         //sets values to true if there are none
         defaults.register(defaults: ["kelownaFilter" : true])
         defaults.register(defaults: ["peachlandFilter" : true])
     }
-    
-    
-    
     //checks the user's previous preferences and sets the switches appropriately
     func locationfilterAction() {
         let val = defaults.bool(forKey: "kelownaFilter")
@@ -85,20 +129,38 @@ class SettingsTableTableViewController: UITableViewController {
             peachlandSwitch.setOn(val2, animated: false)
         }
     }
+    */
     
     // MARK: - Table view data source
-
-
-    /*
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return locationList!.count
+    }
+    
+    // Populate table with cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        // Make a cell for each unique listed location (list gets populated on view load)
+        let location = locationList![indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationFilteringCell", for: indexPath as IndexPath) as! LocationFilteringCell
+        cell.locationName.text = location
+            
+        // Check user's previous preferences and set the switches appropriately
+        var value = UserDefaults.standard.object(forKey: "\(location.lowercased())Filter")
+        print("Location: \(location.lowercased())Filter; \(value)")
+        if (value == nil) {
+            // Register locations that aren't previously assigned; events from there show by default
+            UserDefaults.standard.register(defaults: ["\(location.lowercased())Filter" : true])
+            value = true
+        }
+        cell.locationSwitch.setOn(value as! Bool, animated: false)
+        
         return cell
     }
-    */
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -149,27 +211,9 @@ class SettingsTableTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    //open notifications settings
-    @IBAction func notificationAction(_ sender: Any) {
-        let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString) as! URL
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    
-    //open bridge site in web browser
-    @IBAction func urlAction(_ sender: Any) {
-        let url = URL(string: "http://www.thebridgeservices.ca/calendars")
-        
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        } else {
-            UIApplication.shared.openURL(url!)
-        }
-    }
-    
+    // Individual functions for saving settings in static list
+    // (moved to cell subclass in dynamic version)
+    /*
     //saves setting for Kelowna filtering
     //Filtering is done from calendar and list views
     @IBAction func kelownaAction(_ sender: Any) {
@@ -186,7 +230,6 @@ class SettingsTableTableViewController: UITableViewController {
         defaults.set(val, forKey:"peachlandFilter")
         // Indicate that the calendar list has changed
         //Bcalendar().setListUpdated(updated: true)
-        
-
     }
+    */
 }
