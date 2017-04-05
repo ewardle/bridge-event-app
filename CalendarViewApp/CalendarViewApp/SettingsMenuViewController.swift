@@ -15,8 +15,8 @@ class SettingsMenuViewController: UITableViewController {
         super.viewDidLoad()
         
     
-        defaultFilterSettings()
-        locationfilterAction()
+      //  defaultFilterSettings()
+        //locationfilterAction()
         
         //changes top navigation bar to a darker color, in order to see the white status bar better
         navigationController?.navigationBar.barTintColor = UIColor.init(colorWithHexValue: 0x336600)
