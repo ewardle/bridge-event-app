@@ -1,22 +1,15 @@
 //
-//  SettingsTableTableViewController.swift
-//  testCal
+//  SettingsMenuViewController.swift
+//  CalendarViewApp
 //
-//  Created by Becca Hembling on 2017-01-30.
-//  Copyright © 2017 com.example. All rights reserved.
+//  Created by Eliana on 2017-03-26.
+//  Copyright © 2017 Amrit. All rights reserved.
 //
 
 import UIKit
 import UserNotifications
 
-class SettingsTableTableViewController: UITableViewController {
-
-    //outlets for filtering
-    @IBOutlet weak var kelownaSwitch: UISwitch!
-    @IBOutlet weak var peachlandSwitch: UISwitch!
-    
-    //user defaults
-    let defaults = UserDefaults.standard
+class SettingsMenuViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +22,12 @@ class SettingsTableTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = UIColor.init(colorWithHexValue: 0x336600)
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white;
-
-
-
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,32 +35,15 @@ class SettingsTableTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    //set filtering defaults for saving
-    func defaultFilterSettings() {
-        //sets values to true if there are none
-        defaults.register(defaults: ["kelownaFilter" : true])
-        defaults.register(defaults: ["peachlandFilter" : true])
-    }
-    
-    
-    
-    //checks the user's previous preferences and sets the switches appropriately
-    func locationfilterAction() {
-        let val = defaults.bool(forKey: "kelownaFilter")
-        let val2 = defaults.bool(forKey: "peachlandFilter")
-
-        
-        if kelownaSwitch != nil {
-            kelownaSwitch.setOn(val, animated: false)
-        }
-        
-        if peachlandSwitch != nil {
-            peachlandSwitch.setOn(val2, animated: false)
-        }
-    }
-    
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -127,14 +99,14 @@ class SettingsTableTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    //exit settings page
-    @IBAction func doneAction(_ sender: Any) {
+
+    // Exit settings page
+    @IBAction func doneAction(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    //open notifications settings
-    @IBAction func notificationAction(_ sender: Any) {
+    // Open notifications settings
+    @IBAction func notificationAction(_ sender: AnyObject) {
         let settingsUrl = NSURL(string:UIApplicationOpenSettingsURLString) as! URL
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
@@ -143,8 +115,8 @@ class SettingsTableTableViewController: UITableViewController {
         }
     }
     
-    //open bridge site in web browser
-    @IBAction func urlAction(_ sender: Any) {
+    // Open Bridge site in web browser
+    @IBAction func urlAction(_ sender: AnyObject) {
         let url = URL(string: "http://www.thebridgeservices.ca/calendars")
         
         if #available(iOS 10.0, *) {
@@ -154,23 +126,5 @@ class SettingsTableTableViewController: UITableViewController {
         }
     }
     
-    //saves setting for Kelowna filtering
-    //Filtering is done from calendar and list views
-    @IBAction func kelownaAction(_ sender: Any) {
-        let val = kelownaSwitch.isOn
-        defaults.set(val, forKey:"kelownaFilter")
-        // Indicate that the calendar list has changed
-        //Bcalendar().setListUpdated(updated: true)
-    }
     
-    //saves setting for Peachland filtering
-    //Filtering is done from calendar and list views
-    @IBAction func peachlandAction(_ sender: Any) {
-        let val = peachlandSwitch.isOn
-        defaults.set(val, forKey:"peachlandFilter")
-        // Indicate that the calendar list has changed
-        //Bcalendar().setListUpdated(updated: true)
-        
-
-    }
 }
