@@ -23,7 +23,10 @@
 		8D16F0311E49967900856CA1 /* listIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D16F02E1E49967900856CA1 /* listIcon@2x.png */; };
 		8D16F0321E49967900856CA1 /* listIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D16F02F1E49967900856CA1 /* listIcon@3x.png */; };
 		8D94CBB01E4934230010E384 /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D94CBAF1E4934230010E384 /* SettingsStoryboard.storyboard */; };
-		8D94CBB21E4935430010E384 /* SettingsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D94CBB11E4935430010E384 /* SettingsTableTableViewController.swift */; };
+		8D9C41F71E7209D7003CF9F8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D9C41F61E7209D7003CF9F8 /* GoogleService-Info.plist */; };
+		8DA352011E959AF100D3ADC3 /* LocationFilteringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA351FE1E959AF100D3ADC3 /* LocationFilteringCell.swift */; };
+		8DA352021E959AF100D3ADC3 /* SettingsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA351FF1E959AF100D3ADC3 /* SettingsFilterViewController.swift */; };
+		8DA352031E959AF100D3ADC3 /* SettingsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA352001E959AF100D3ADC3 /* SettingsMenuViewController.swift */; };
 		8DFD70671E493A5C0053A066 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DFD70661E493A5C0053A066 /* gear.png */; };
 		D00614351E206E6A00866B11 /* CalendarHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D00614341E206E6A00866B11 /* CalendarHeaderView.xib */; };
 		D006143D1E20715300866B11 /* CalendarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D006143C1E20715300866B11 /* CalendarHeaderView.swift */; };
@@ -71,7 +74,11 @@
 		8D16F02E1E49967900856CA1 /* listIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "listIcon@2x.png"; path = "Images/listIcon@2x.png"; sourceTree = SOURCE_ROOT; };
 		8D16F02F1E49967900856CA1 /* listIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "listIcon@3x.png"; path = "Images/listIcon@3x.png"; sourceTree = SOURCE_ROOT; };
 		8D94CBAF1E4934230010E384 /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
-		8D94CBB11E4935430010E384 /* SettingsTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableTableViewController.swift; sourceTree = "<group>"; };
+		8D9C41F61E7209D7003CF9F8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8DA351FE1E959AF100D3ADC3 /* LocationFilteringCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationFilteringCell.swift; sourceTree = "<group>"; };
+		8DA351FF1E959AF100D3ADC3 /* SettingsFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFilterViewController.swift; sourceTree = "<group>"; };
+		8DA352001E959AF100D3ADC3 /* SettingsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuViewController.swift; sourceTree = "<group>"; };
+		8DA934B11E71F3A9004B6F5C /* CalendarViewApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CalendarViewApp.entitlements; sourceTree = "<group>"; };
 		8DFD70661E493A5C0053A066 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gear.png; path = Images/gear.png; sourceTree = SOURCE_ROOT; };
 		9FBE3F96A5A4403CA515C9B3 /* Pods-CalendarViewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewApp/Pods-CalendarViewApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C3F0F7519AC3CA6022EB3305 /* Pods-CalendarViewAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarViewAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CalendarViewAppTests/Pods-CalendarViewAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,9 +172,13 @@
 		D024F0251E1317D1004AD2A5 /* CalendarViewApp */ = {
 			isa = PBXGroup;
 			children = (
+				8DA934B11E71F3A9004B6F5C /* CalendarViewApp.entitlements */,
 				D024F0261E1317D1004AD2A5 /* AppDelegate.swift */,
 				D0CDEE6E1E25C31D00409A92 /* Bcalendar.swift */,
 				D00F43D51E1A0476008C1D62 /* Event.swift */,
+				8DA351FE1E959AF100D3ADC3 /* LocationFilteringCell.swift */,
+				8DA351FF1E959AF100D3ADC3 /* SettingsFilterViewController.swift */,
+				8DA352001E959AF100D3ADC3 /* SettingsMenuViewController.swift */,
 				D024F02A1E1317D1004AD2A5 /* Main.storyboard */,
 				8D16F0271E49956100856CA1 /* calendarIcon@1x.png */,
 				8D16F0281E49956100856CA1 /* calendarIcon@2x.png */,
@@ -176,7 +187,6 @@
 				8D16F02E1E49967900856CA1 /* listIcon@2x.png */,
 				8D16F02F1E49967900856CA1 /* listIcon@3x.png */,
 				8D94CBAF1E4934230010E384 /* SettingsStoryboard.storyboard */,
-				8D94CBB11E4935430010E384 /* SettingsTableTableViewController.swift */,
 				D024F0281E1317D1004AD2A5 /* ViewControllerList.swift */,
 				6941DF4E1E47E5ED00C9A86E /* ViewControllerEventDetails.swift */,
 				8DFD70661E493A5C0053A066 /* gear.png */,
@@ -197,6 +207,7 @@
 				D024F02D1E1317D1004AD2A5 /* Assets.xcassets */,
 				D024F02F1E1317D1004AD2A5 /* LaunchScreen.storyboard */,
 				D024F0321E1317D1004AD2A5 /* Info.plist */,
+				8D9C41F61E7209D7003CF9F8 /* GoogleService-Info.plist */,
 			);
 			path = CalendarViewApp;
 			sourceTree = "<group>";
@@ -266,8 +277,16 @@
 				TargetAttributes = {
 					D024F0221E1317D1004AD2A5 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 5678P7WK6Y;
+						DevelopmentTeam = 54F5LEGD78;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					D024F0361E1317D1004AD2A5 = {
 						CreatedOnToolsVersion = 8.1;
@@ -310,6 +329,7 @@
 				D024F02C1E1317D1004AD2A5 /* Main.storyboard in Resources */,
 				8D16F02C1E49956100856CA1 /* calendarIcon@3x.png in Resources */,
 				8D16F0301E49967900856CA1 /* listIcon@1x.png in Resources */,
+				8D9C41F71E7209D7003CF9F8 /* GoogleService-Info.plist in Resources */,
 				8D16F02A1E49956100856CA1 /* calendarIcon@1x.png in Resources */,
 				8D16F0311E49967900856CA1 /* listIcon@2x.png in Resources */,
 				6941DF4C1E47E5D900C9A86E /* EventSummaryCell.xib in Resources */,
@@ -428,8 +448,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D00F43D61E1A0476008C1D62 /* Event.swift in Sources */,
-				8D94CBB21E4935430010E384 /* SettingsTableTableViewController.swift in Sources */,
 				D00614411E208B2D00866B11 /* CalendarHeaderView2.swift in Sources */,
+				8DA352021E959AF100D3ADC3 /* SettingsFilterViewController.swift in Sources */,
 				D006143D1E20715300866B11 /* CalendarHeaderView.swift in Sources */,
 				D0C74CAE1E1AEC7A0064F795 /* ListCellHeader.swift in Sources */,
 				D0A00B7C1E2DDEE30085BD06 /* CalendarViewSelectionCell.swift in Sources */,
@@ -438,10 +458,12 @@
 				D024F0291E1317D1004AD2A5 /* ViewControllerList.swift in Sources */,
 				D0DB945B1E467FD90060F76D /* UIColorHexExt.swift in Sources */,
 				D024F0271E1317D1004AD2A5 /* AppDelegate.swift in Sources */,
+				8DA352031E959AF100D3ADC3 /* SettingsMenuViewController.swift in Sources */,
 				D08996221E1BF748008AA738 /* ViewControllerCalendar.swift in Sources */,
 				D0CDEE6F1E25C31D00409A92 /* Bcalendar.swift in Sources */,
 				D060B86E1E1461C000C12638 /* ListCell.swift in Sources */,
 				D0BF1C011E1F3FE40063DEE6 /* CellView.swift in Sources */,
+				8DA352011E959AF100D3ADC3 /* LocationFilteringCell.swift in Sources */,
 				6941DF4F1E47E5ED00C9A86E /* ViewControllerEventDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,7 +613,8 @@
 			baseConfigurationReference = 9FBE3F96A5A4403CA515C9B3 /* Pods-CalendarViewApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5678P7WK6Y;
+				CODE_SIGN_ENTITLEMENTS = CalendarViewApp/CalendarViewApp.entitlements;
+				DEVELOPMENT_TEAM = 54F5LEGD78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
 					"$(inherited)",
@@ -600,10 +623,11 @@
 				INFOPLIST_FILE = CalendarViewApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Amrit.CalendarViewApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridge.CalendarViewApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -612,7 +636,8 @@
 			baseConfigurationReference = 671723650B19A8B9134B9D90 /* Pods-CalendarViewApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5678P7WK6Y;
+				CODE_SIGN_ENTITLEMENTS = CalendarViewApp/CalendarViewApp.entitlements;
+				DEVELOPMENT_TEAM = 54F5LEGD78;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
 					"$(inherited)",
@@ -621,10 +646,11 @@
 				INFOPLIST_FILE = CalendarViewApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Amrit.CalendarViewApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bridge.CalendarViewApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

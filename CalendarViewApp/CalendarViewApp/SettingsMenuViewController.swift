@@ -14,22 +14,9 @@ class SettingsMenuViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //asks permission if not already granted
-        //this can get taken out if it is found elsewhere in the code
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert])
-            { (granted, error) in
-                if granted == true{
-                    NSLog("Granted")
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
-                if let error = error {
-                    NSLog("Error: \(error)")
-                }
-            }
-        } else {
-            // Fallback on earlier versions
-        }
+    
+      //  defaultFilterSettings()
+        //locationfilterAction()
         
         //changes top navigation bar to a darker color, in order to see the white status bar better
         navigationController?.navigationBar.barTintColor = UIColor.init(colorWithHexValue: 0x336600)
